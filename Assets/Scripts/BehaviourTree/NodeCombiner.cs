@@ -1,0 +1,25 @@
+using System.Collections.Generic;
+
+namespace BehaviourTree
+{
+    /// <summary>
+    /// Composite node
+    /// </summary>
+    public abstract class NodeCombiner : NodeRoot
+    {
+        protected List<NodeRoot> nodeChildList = new List<NodeRoot>();
+
+        public NodeCombiner(NodeType nodeType) : base(nodeType) { }
+
+        /// <summary>
+        /// Add new child node
+        /// </summary>
+        /// <param name="nodeRoot"></param>
+        public void AddNode(NodeRoot nodeRoot)
+        {
+            int count = nodeChildList.Count;
+            nodeRoot.NodeIndex = count;
+            nodeChildList.Add(nodeRoot);
+        }
+    }
+}
