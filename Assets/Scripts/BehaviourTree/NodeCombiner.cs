@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace BehaviourTree
 {
     /// <summary>
@@ -7,8 +5,6 @@ namespace BehaviourTree
     /// </summary>
     public abstract class NodeCombiner : NodeRoot
     {
-        protected List<NodeRoot> nodeChildList = new List<NodeRoot>();
-
         public NodeCombiner(NodeType nodeType) : base(nodeType) { }
 
         /// <summary>
