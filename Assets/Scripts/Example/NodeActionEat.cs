@@ -12,8 +12,12 @@ public class NodeActionEat : NodeAction
         }
 
         student.AddEnergy(.5f);
-        student.ChangeFood(-.4f);
-        return ResultType.Running;
+        if(student.HasFood)
+        {
+            student.ChangeFood(-.4f);
+            return ResultType.Running;
+        }
+        return ResultType.Fail;
     }
 
     public void SetStudent(Student student) => this.student = student;

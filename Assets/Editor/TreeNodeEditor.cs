@@ -7,9 +7,9 @@ using BehaviourTree;
 public class TreeNodeEditor : EditorWindow
 {
     // Save all nodes in the window
-    private List<NodeRoot> nodeRootList = new List<NodeRoot>();
+    private List<NodeValue> nodeRootList = new List<NodeValue>();
     // currently selected node
-    private NodeRoot selectNode = null;
+    private NodeValue selectNode = null;
 
     [MenuItem("Window/CreateTree")]
     static void ShowWindow()
@@ -23,6 +23,8 @@ public class TreeNodeEditor : EditorWindow
     private bool makeTransitionMode = false;
     private void OnGUI()
     {
+
+        name = GUI.TextField(new Rect(10, 10, Screen.width - 20, 20), name, 10);
         Event _event = Event.current;
         mousePosition = _event.mousePosition;
 
@@ -76,7 +78,7 @@ public class TreeNodeEditor : EditorWindow
         if (makeTransitionMode && _event.type == EventType.MouseDown)
         {
             int selectIndex = 0;
-            NodeRoot newSelectNode = GetMouseInNode(out selectIndex);
+            NodeValue newSelectNode = GetMouseInNode(out selectIndex);
             // If a node is selected when the mouse is pressed, the newly selected root node is added as a child node of selectNode
             if (selectNode != newSelectNode)
             {
@@ -103,8 +105,8 @@ public class TreeNodeEditor : EditorWindow
         BeginWindows();
         for (int i = 0; i < nodeRootList.Count; i++)
         {
-            NodeRoot nodeRoot = nodeRootList[i];
-            nodeRoot.WindowRect = GUI.Window(i, nodeRoot.WindowRect, DrawNodeWindow, "111");
+            NodeValue nodeRoot = nodeRootList[i];
+            nodeRoot.WindowRect = GUI.Window(i, nodeRoot.WindowRect, DrawNodeWindow, nodeRoot.Name);
 
             DrawToChildCurve(nodeRoot);
         }
@@ -116,19 +118,23 @@ public class TreeNodeEditor : EditorWindow
 
     void DrawNodeWindow(int id)
     {
-        NodeRoot nodeRoot = nodeRootList[id];
+        NodeValue nodeRoot = nodeRootList[id];
+        GUI.BeginGroup(new Rect(0, 0, nodeRoot.WindowRect.width, Screen.height));
+        nodeRoot.Name = GUILayout.TextField(nodeRoot.Name, 15, "textfield");
+        GUI.EndGroup();
+
         // The window that can be dragged
         GUI.DragWindow();
     }
 
     // Get the node where the mouse is
-    private NodeRoot GetMouseInNode(out int index)
+    private NodeValue GetMouseInNode(out int index)
     {
         index = 0;
-        NodeRoot selectRoot = null;
+        NodeValue selectRoot = null;
         for (int i = 0; i < nodeRootList.Count; i++)
         {
-            NodeRoot nodeRoot = nodeRootList[i];
+            NodeValue nodeRoot = nodeRootList[i];
             // If the mouse position is included in the Rect range of the node, it is regarded as a selectable node
             if (nodeRoot.WindowRect.Contains(mousePosition))
             {
@@ -147,7 +153,7 @@ public class TreeNodeEditor : EditorWindow
         if (type == 0)
         {
             // add a new node
-            menu.AddItem(new GUIContent("Add Node"), false, AddNode);
+            menu.AddItem(new GUIContent("Add new node"), false, AddNode);
         }
         else
         {
@@ -165,7 +171,7 @@ public class TreeNodeEditor : EditorWindow
     // add node
     private void AddNode()
     {
-        NodeSelect nodeSelect = new NodeSelect();
+        NodeValue nodeSelect = new NodeValue();
         nodeSelect.WindowRect = new Rect(mousePosition.x, mousePosition.y, 100, 100);
         nodeRootList.Add(nodeSelect);
     }
@@ -192,11 +198,11 @@ public class TreeNodeEditor : EditorWindow
     ///  Draw lines from the node to all child nodes every frame
     /// </summary>
     /// <param name="nodeRoot"></param>
-    private void DrawToChildCurve(NodeRoot nodeRoot)
+    private void DrawToChildCurve(NodeValue nodeRoot)
     {
         for (int i = nodeRoot.ChildNodeList.Count - 1; i >= 0; --i)
         {
-            NodeRoot childNode = nodeRoot.ChildNodeList[i];
+            NodeValue childNode = nodeRoot.ChildNodeList[i];
             // delete invalid nodes
             if (childNode == null || childNode.IsRelease)
             {

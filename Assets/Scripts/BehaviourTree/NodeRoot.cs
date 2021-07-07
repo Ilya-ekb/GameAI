@@ -15,12 +15,6 @@ namespace BehaviourTree
             get => nodeIndex;
             set => nodeIndex = value; 
         }
-        public List<NodeRoot> ChildNodeList => nodeChildList;
-        public Rect WindowRect { get => windowRect; set => windowRect = value; }
-        /// <summary>
-        ///  Whether it is a valid node, isRelease = true is a destroyed node, it is an invalid node
-        /// </summary>
-        public bool IsRelease => isRelease;
 
         /// <summary>
         /// Node type
@@ -30,21 +24,12 @@ namespace BehaviourTree
         /// Node index in sequence
         /// </summary>
         private int nodeIndex;
-        private bool isRelease = false;
-        private Rect windowRect = new Rect(0, 0, 100, 100);
 
         protected List<NodeRoot> nodeChildList = new List<NodeRoot>();
 
         public NodeRoot(NodeType nodeType)
         {
             this.nodeType = nodeType;
-        }
-        /// <summary>
-        /// Called when a node is deleted
-        /// </summary>
-        public void Release()
-        {
-            isRelease = true;
         }
 
         /// <summary>
