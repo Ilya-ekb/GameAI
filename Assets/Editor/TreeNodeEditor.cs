@@ -1,8 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using BehaviourTree;
+using System;
+using System.Linq;
 
 public class TreeNodeEditor : EditorWindow
 {
@@ -23,8 +24,6 @@ public class TreeNodeEditor : EditorWindow
     private bool makeTransitionMode = false;
     private void OnGUI()
     {
-
-        name = GUI.TextField(new Rect(10, 10, Screen.width - 20, 20), name, 10);
         Event _event = Event.current;
         mousePosition = _event.mousePosition;
 
@@ -106,7 +105,7 @@ public class TreeNodeEditor : EditorWindow
         for (int i = 0; i < nodeRootList.Count; i++)
         {
             NodeValue nodeRoot = nodeRootList[i];
-            nodeRoot.WindowRect = GUI.Window(i, nodeRoot.WindowRect, DrawNodeWindow, nodeRoot.Name);
+            nodeRoot.WindowRect = GUI.Window(i, nodeRoot.WindowRect, DrawNodeWindow, string.IsNullOrEmpty(nodeRoot.Name) ? nodeRoot.NodeType.ToString() + " node": nodeRoot.Name);
 
             DrawToChildCurve(nodeRoot);
         }
@@ -119,10 +118,8 @@ public class TreeNodeEditor : EditorWindow
     void DrawNodeWindow(int id)
     {
         NodeValue nodeRoot = nodeRootList[id];
-        GUI.BeginGroup(new Rect(0, 0, nodeRoot.WindowRect.width, Screen.height));
-        nodeRoot.Name = GUILayout.TextField(nodeRoot.Name, 15, "textfield");
-        GUI.EndGroup();
-
+        nodeRoot.Name = GUILayout.TextField(nodeRoot.Name, 15);
+        nodeRoot.NodeType = (NodeType)EditorGUILayout.Popup((int)nodeRoot.NodeType, Enum.GetValues(typeof(NodeType)).Cast<NodeType>().Select(x => x.ToString()).ToArray());
         // The window that can be dragged
         GUI.DragWindow();
     }
