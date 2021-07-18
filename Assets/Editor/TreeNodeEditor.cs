@@ -11,6 +11,8 @@ public class TreeNodeEditor : EditorWindow
     private List<NodeValue> nodeRootList = new List<NodeValue>();
     // currently selected node
     private NodeValue selectNode = null;
+    private NodeAsset asset;
+    private string assetName = string.Empty;
 
     [MenuItem("Window/CreateTree")]
     static void ShowWindow()
@@ -58,6 +60,9 @@ public class TreeNodeEditor : EditorWindow
                 }
             }
         }
+
+
+        DrawMainMenu();
 
         // Unable to connect when the selected node is empty
         if (selectNode == null)
@@ -115,10 +120,49 @@ public class TreeNodeEditor : EditorWindow
         Repaint();
     }
 
+    void DrawMainMenu()
+    {
+        if (nodeRootList.Count > 0)
+        {
+            assetName = GUI.TextField(new Rect(Screen.width/2 - 260, 10, 200, 20), assetName);
+            if(GUI.Button(new Rect(Screen.width - 110, 10, 100, 20), "Clear"))
+            {
+                nodeRootList.Clear();
+                asset = null;
+            }
+
+            if(!string.IsNullOrEmpty(assetName) && GUI.Button(new Rect(Screen.width/2, 10, 100, 20), "Save"))
+            {
+                if (!asset)
+                {
+                    asset = CreateInstance<NodeAsset>();
+                }
+                asset.FullAsset(assetName, nodeRootList.Find(e => e.IsRootNode));
+            }
+        }
+        else
+        {
+            assetName = string.Empty;
+            asset = (NodeAsset)EditorGUI.ObjectField(new Rect(10, 10, 200, 20), asset, typeof(NodeAsset));
+            if (asset)
+            {
+                if(GUI.Button(new Rect(220, 10, 100, 20), "Load"))
+                {
+                    assetName = asset.name;
+                    nodeRootList = asset.ReturnNodeList(asset.NodeValue);
+                }
+            }
+        }
+    }
+
     void DrawNodeWindow(int id)
     {
         NodeValue nodeRoot = nodeRootList[id];
-        nodeRoot.Name = GUILayout.TextField(nodeRoot.Name, 15);
+        nodeRoot.ShowName = GUI.Toggle(new Rect(1, 2, 10, 20), nodeRoot.ShowName, "", EditorStyles.miniButton);
+        if (nodeRoot.ShowName)
+        {
+            nodeRoot.Name = GUILayout.TextField(nodeRoot.Name, 15);
+        }
         nodeRoot.NodeType = (NodeType)EditorGUILayout.Popup((int)nodeRoot.NodeType, Enum.GetValues(typeof(NodeType)).Cast<NodeType>().Select(x => x.ToString()).ToArray());
         // The window that can be dragged
         GUI.DragWindow();
@@ -169,8 +213,9 @@ public class TreeNodeEditor : EditorWindow
     private void AddNode()
     {
         NodeValue nodeSelect = new NodeValue();
-        nodeSelect.WindowRect = new Rect(mousePosition.x, mousePosition.y, 100, 100);
+        nodeSelect.WindowRect = new Rect(mousePosition.x, mousePosition.y, 120, 100);
         nodeRootList.Add(nodeSelect);
+        nodeSelect.IsRootNode = nodeRootList.Count == 1;
     }
 
     // Connect child nodes
@@ -188,6 +233,7 @@ public class TreeNodeEditor : EditorWindow
         {
             nodeRootList[selectIndex].Release();
             nodeRootList.Remove(selectNode);
+            nodeRootList.ForEach((a) => a.IsRootNode = nodeRootList.Count == 1);
         }
     }
 

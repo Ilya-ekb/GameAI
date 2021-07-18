@@ -25,6 +25,7 @@ namespace BehaviourTree
             }
             lastRunningNode = null;
             ResultType result = ResultType.Fail;
+
             for (int i = index; i < nodeChildList.Count; i++)
             {
                 NodeRoot nodeRoot = nodeChildList[i];

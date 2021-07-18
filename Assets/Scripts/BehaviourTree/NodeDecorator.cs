@@ -7,7 +7,7 @@ namespace BehaviourTree
     {
         private ResultType untilResultType = ResultType.Fail;
 
-        public NodeDecorator():base(NodeType.Decorator) { }
+        public NodeDecorator() : base(NodeType.Decorator) { }
 
         /// <summary>
         /// Has only one child node, executing until result == untilResultType
@@ -18,7 +18,7 @@ namespace BehaviourTree
         {
             NodeRoot nodeRoot = nodeChildList[0];
             ResultType result = nodeRoot.Execute();
-            if(result != untilResultType)
+            if (result != untilResultType)
             {
                 return ResultType.Running;
             }

@@ -8,19 +8,34 @@ using UnityEngine;
 [Serializable]
 public class NodeValue 
 {
-    public bool IsRootNode = false;
-    public NodeType NodeType = NodeType.Select;
-    public List<NodeValue> ChildNodeList = new List<NodeValue>();
+    public bool IsRootNode { get => isRootNode; set => isRootNode = value; }
+    public NodeType NodeType { get => nodeType; set => nodeType = value; }
+    public List<NodeValue> ChildNodeList => childNodeList;
+    public string Name { get => name; set => name = value; }
+    public string Description { get => description; set => description = value; }
+    public Rect WindowRect 
+    {
+        get => windowRect; 
+        set
+        {
+            windowRect = value;
+        }
+    }
+    public bool IsRelease => isRelease;
+    public bool ShowName { get; set; }
+    [SerializeField] private bool isRootNode = false;
+    [SerializeField] private NodeType nodeType = NodeType.Select;
+    [SerializeField] private List<NodeValue> childNodeList = new List<NodeValue>();
 
-    public string Name = string.Empty;
-    public string Description = string.Empty;
+    [SerializeField] private string name = string.Empty;
+    [SerializeField] private string description = string.Empty;
 
-    public Rect WindowRect = new Rect(.0f, .0f, 100.0f, 100.0f);
+    [SerializeField] private Rect windowRect;
 
-    public bool IsRelease = false;  
+    [SerializeField] private bool isRelease = false;
 
     public void Release()
     {
-        IsRelease = true;
+        isRelease = true;
     }
 }
