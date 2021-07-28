@@ -1,28 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using Character.CharacterResources;
 
 namespace Character.CharacterIndicator
 {
-    public class Angry : IInternalCondition
+    public class Angry : Condition
     {
-        public float Value => value;
-
-        private float value;
-
-        public Angry(float startAngry)
-        {
-            value = startAngry;
-        }
-
-        public void Increase(float value)
-        {
-            this.value = Mathf.Clamp(this.value + value, .0f, 100.0f);
-        }
-
-        public void Reduce(float value)
-        {
-            this.value = Mathf.Clamp(this.value - value, .0f, 100.0f);
-        }
+        public Angry(float startValue) : base(startValue, ConditionType.Angry) { }
     }
 }

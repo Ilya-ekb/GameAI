@@ -1,5 +1,6 @@
 using Character.CharacterBehaviour;
 using Character.CharacterIndicator;
+using Character.CharacterResources;
 
 using System.Collections;
 using System.Collections.Generic;
@@ -9,11 +10,11 @@ namespace Character
 {
     public class SimpleCharacter : MonoBehaviour, ICharacter
     {
-        public IInternalCondition Health => health;
+        public Health Health => health;
 
-        public IInternalCondition Anxiety => anxiety;
+        public Anxiety Anxiety => anxiety;
 
-        public IInternalCondition Angry => angry;
+        public Angry Angry => angry;
 
         public IAction Atack => throw new System.NotImplementedException();
 
@@ -26,6 +27,10 @@ namespace Character
         public float StartHealth { get => startHealth; set => startHealth = value; }
         public float StartAnxiety { get => startAnxiety; set => startAnxiety = value; }
         public float StartAngry { get => startAngry; set => startAngry = value; }
+
+        public List<ICharacterResource> Resources => throw new System.NotImplementedException();
+
+        public List<IKnowlerge> Knowlerges => throw new System.NotImplementedException();
 
         [SerializeField] private float startHealth = 100.0f;
         [SerializeField] private float startAnxiety = 0.0f;

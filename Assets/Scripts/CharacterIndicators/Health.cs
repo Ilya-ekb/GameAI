@@ -1,28 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using Character.CharacterResources;
 
 namespace Character.CharacterIndicator
 {
-    public class Health : IInternalCondition
+    [Serializable]
+    public class Health : Condition
     {
-        public float Value => value;
-
-        private float value;
-
-        public Health(float startHealt)
-        {
-            value = startHealt;
-        }
-
-        public void Increase(float value)
-        {
-            this.value = Mathf.Clamp(this.value + value, .0f, 100.0f);
-        }
-
-        public void Reduce(float value)
-        {
-            this.value = Mathf.Clamp(this.value - value, .0f, 100.0f);
-        }
+        public Health(float startValue):base(startValue, ConditionType.Health) { }
     }
 }

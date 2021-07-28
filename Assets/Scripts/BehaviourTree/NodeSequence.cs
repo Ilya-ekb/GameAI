@@ -18,33 +18,33 @@ namespace BehaviourTree
         /// <returns></returns>
         public override ResultType Execute()
         {
+            ResultType result = ResultType.Fail;
+
             int index = 0;
-            if(lastRunningNode != null)
+            if (lastRunningNode != null)
             {
                 index = lastRunningNode.NodeIndex;
             }
             lastRunningNode = null;
-            ResultType result = ResultType.Fail;
 
             for (int i = index; i < nodeChildList.Count; i++)
             {
                 NodeRoot nodeRoot = nodeChildList[i];
                 result = nodeRoot.Execute();
-                if(result == ResultType.Fail)
+                if (result == ResultType.Fail)
                 {
                     break;
                 }
-                if(result == ResultType.Running)
+                if (result == ResultType.Running)
                 {
                     lastRunningNode = nodeRoot;
                     break;
                 }
-                if(result == ResultType.Success)
+                if (result == ResultType.Success)
                 {
                     continue;
                 }
             }
-
             return result;
         }
     }

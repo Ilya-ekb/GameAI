@@ -1,4 +1,7 @@
 
+using Character.CharacterBehaviour;
+
+using System;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -10,11 +13,13 @@ namespace BehaviourTree
     /// </summary>
     public abstract class NodeRoot
     {
-        public int NodeIndex 
+        public int NodeIndex
         {
             get => nodeIndex;
-            set => nodeIndex = value; 
+            set => nodeIndex = value;
         }
+
+        public IAction Action { get => action; set => action = value; }
 
         /// <summary>
         /// Node type
@@ -27,6 +32,8 @@ namespace BehaviourTree
 
         protected List<NodeRoot> nodeChildList = new List<NodeRoot>();
 
+        private IAction action;
+
         public NodeRoot(NodeType nodeType)
         {
             this.nodeType = nodeType;
@@ -36,6 +43,9 @@ namespace BehaviourTree
         /// Execution node abstract method
         /// </summary>
         /// <returns>Return type of execution result</returns>
-        public abstract ResultType Execute();
+        public virtual ResultType Execute()
+        {
+            return action is null ? ResultType.Fail : action.Do();
+        }
     }
 }

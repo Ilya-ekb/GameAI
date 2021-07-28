@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using BehaviourTree;
+using Character.CharacterIndicator;
 
 namespace Character.CharacterBehaviour
 {
     public interface IAction
     {
         ICharacter thisCharacter { get; set; }
-        void Do();
+        IKnowlerge NeededKnowlegre { get; }
+        ResultType Do(params object[] vs);
     }
 }
