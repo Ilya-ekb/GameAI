@@ -1,10 +1,11 @@
 using UnityEngine;
 using BehaviourTree;
+using Character;
 
 public class NodeActionCooking : NodeAction
 {
     private Student student;
-    public override ResultType Execute()
+    public override ResultType Execute(ICharacter character)
     {
         if (student.FoodEnough)
         {

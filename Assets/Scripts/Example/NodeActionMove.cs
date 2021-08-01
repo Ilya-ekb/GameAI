@@ -1,4 +1,7 @@
 using BehaviourTree;
+
+using Character;
+
 using UnityEngine;
 
 public class NodeActionMove : NodeAction
@@ -6,7 +9,7 @@ public class NodeActionMove : NodeAction
     private Student student;
     private string targetName = string.Empty;
 
-    public override ResultType Execute()
+    public override ResultType Execute(ICharacter character)
     {
         GameObject target = GetTarget();
         if (target == null)

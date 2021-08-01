@@ -28,7 +28,7 @@ public class Student : MonoBehaviour
     private void Update()
     {
         ChangeEnergy(-.02f);
-        rootNode.Execute();
+        //rootNode.Execute();
         Debug.Log(this);
     }
 
