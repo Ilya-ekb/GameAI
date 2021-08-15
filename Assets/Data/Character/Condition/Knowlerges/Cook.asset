@@ -14,4 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxValue: 100
   minValue: 0
-  knowlergeType: 0
+  value: 0
+  knowlergeType: 3
+  needResources: []
+  needConditions:
+  - {fileID: 0}

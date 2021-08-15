@@ -1,13 +1,13 @@
 using Models.Resources;
 using System.Collections.Generic;
 
-namespace Character.Condition.Knowlerge
+namespace Models.Character.Conditions.Knowlerge
 {
     public interface IKnowlerge : ICondition
     {
         KnowlergeType KnowlergeType { get; }
-        IEnumerable<IResource> NeedResources { get; }
-        IEnumerable<ICondition> NeedConditions { get; }
+        IEnumerable<VariableContainer<Resource>> NeedResources { get; }
+        IEnumerable<VariableContainer<Condition>> NeedConditions { get; }
 
     }
     public enum KnowlergeType 

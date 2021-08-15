@@ -1,16 +1,16 @@
-using Character.Behaviour;
-using Character.Condition;
-using Character.Condition.Knowlerge;
+using Models.Character.Behaviour;
+using Models.Character.Conditions;
+using Models.Character.Conditions.Knowlerge;
 using Models.Resources;
 using System.Collections.Generic;
 
-namespace Character
+namespace Models.Character
 {
     public interface ICharacter
     {
-        List<ICondition> Conditions { get; }
-        List<IResource> Resources{ get; }
-        List<IKnowlerge> Knowlerges { get; }
+        List<VariableContainer<Condition>> Conditions { get; }
+        List<VariableContainer<Resource>> Resources{ get; }
+        List<VariableContainer<Knowlerge>> Knowlerges { get; }
         List<IAction> Actions { get; }
     }
 }

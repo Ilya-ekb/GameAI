@@ -1,17 +1,14 @@
 using UnityEngine;
 using BehaviourTree;
-using Models.Resources;
-using Character.Condition.Knowlerge;
+using Models.Character.Conditions.Knowlerge;
 
-namespace Character.Behaviour
+namespace Models.Character.Behaviour
 {
     public abstract class Action : ScriptableObject, IAction
     {
         public IKnowlerge[] NeededKnowlerges => neededKnowlerges;
-        public IResource[] NeededResources => neededResources;
 
         [SerializeField] protected Knowlerge[] neededKnowlerges;
-        [SerializeField] protected Resource[] neededResources;
 
         public virtual ResultType Do(ICharacter character)
         {

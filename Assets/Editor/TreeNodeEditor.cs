@@ -166,7 +166,7 @@ public class TreeNodeEditor : EditorWindow
         nodeRoot.NodeType = (NodeType)EditorGUILayout.Popup((int)nodeRoot.NodeType, Enum.GetValues(typeof(NodeType)).Cast<NodeType>().Select(x => x.ToString()).ToArray());
 
         nodeRoot.Action = nodeRoot.NodeType == NodeType.Action ?
-                          (Character.Behaviour.Action)EditorGUILayout.ObjectField(nodeRoot.Action, typeof(Character.Behaviour.Action)) :
+                          (Models.Character.Behaviour.Action)EditorGUILayout.ObjectField(nodeRoot.Action, typeof(Models.Character.Behaviour.Action)) :
                           null;
         // The window that can be dragged
         GUI.DragWindow();

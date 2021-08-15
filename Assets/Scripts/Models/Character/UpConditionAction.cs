@@ -1,13 +1,12 @@
 using BehaviourTree;
-using Character;
-using Character.Behaviour;
+using Models.Character;
 
 using System;
 
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Up Condition Action", menuName = "Character/Behaviour/Up Condition Action")]
-public class UpConditionAction : Character.Behaviour.Action
+public class UpConditionAction : Models.Character.Behaviour.Action
 {
     public override ResultType Do(ICharacter character)
     {

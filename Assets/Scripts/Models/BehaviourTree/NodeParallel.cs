@@ -1,4 +1,4 @@
-using Character;
+using Models.Character;
 
 namespace BehaviourTree
 {

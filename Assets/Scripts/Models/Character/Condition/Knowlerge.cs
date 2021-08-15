@@ -4,24 +4,32 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace Character.Condition.Knowlerge
+namespace Models.Character.Conditions.Knowlerge
 {
-    [CreateAssetMenu(fileName = "Knowlerge", menuName ="Character/Condition/Knowlerge")]
-    public class Knowlerge : Condition, IKnowlerge
+    [CreateAssetMenu(fileName = "Knowlerge", menuName ="Character/Knowlerge")]
+    public class Knowlerge : ScriptableObject, IKnowlerge
     {
         public KnowlergeType KnowlergeType => knowlergeType;
 
-        public IEnumerable<IResource> NeedResources => needResources ;
+        public IEnumerable<VariableContainer<Resource>> NeedResources => needResources;
 
-        public IEnumerable<ICondition> NeedConditions => needConditions;
+        public IEnumerable<VariableContainer<Condition>> NeedConditions => needConditions;
+
+        public ConditionType ConditionType => ConditionType.Knowlerge;
+        public float MaxValue => maxValue;
+        public float MinValue => minValue;
 
         [SerializeField] private KnowlergeType knowlergeType;
-        [SerializeField] private List<Resource> needResources;
-        [SerializeField] private List<Condition> needConditions;
+        [SerializeField] private float maxValue;
+        [SerializeField] private float minValue;
+
+        [SerializeField] private List<VariableContainer<Resource>> needResources;
+        [SerializeField] private List<VariableContainer<Condition>> needConditions;
+        [SerializeField] private List<VariableContainer<Knowlerge>> needKnolerges;
 
         public virtual bool CanUse(ICharacter character, Func<ICharacter, bool>[] conditionCompairs)
         {
-            var characterKnowlerge = character.Knowlerges.Find(e => e.KnowlergeType == knowlergeType);
+            var characterKnowlerge = character.Knowlerges.Find(e => e.Variable.KnowlergeType == knowlergeType);
             if (characterKnowlerge != null)
             {
                 return EnoughResources(character) && EnoughConditions(character, conditionCompairs);  
@@ -33,10 +41,10 @@ namespace Character.Condition.Knowlerge
         {
             foreach(var resource in needResources)
             {
-                var suitableResources = character.Resources.FindAll(e => e.ResourceType == resource.ResourceType);
+                var suitableResources = character.Resources.FindAll(e => e.Variable.ResourceType == resource.Variable.ResourceType);
                 if(suitableResources != null)
                 {
-                    suitableResources = suitableResources.FindAll(e => e.Count >= resource.Count);
+                    suitableResources = suitableResources.FindAll(e => e.Value >= resource.Value);
                     if(suitableResources == null && suitableResources.Count > 0)
                     {
                         return false;
@@ -56,6 +64,18 @@ namespace Character.Condition.Knowlerge
                 }
             }
             return true;
+        }
+
+        private void OnValidate()
+        {
+            foreach (var condition in needConditions)
+            {
+                condition.Update(condition.Variable?.ConditionType.ToString());
+            }
+            foreach (var resource in needResources)
+            {
+                resource.Update(resource.Variable?.ResourceType.ToString());
+            }
         }
     }
      

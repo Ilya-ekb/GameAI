@@ -1,6 +1,5 @@
 using BehaviourTree;
-
-using Character;
+using Models.Character;
 
 public class NodeActionWalk : NodeAction
 {

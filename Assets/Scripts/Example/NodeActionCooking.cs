@@ -1,6 +1,5 @@
-using UnityEngine;
 using BehaviourTree;
-using Character;
+using Models.Character;
 
 public class NodeActionCooking : NodeAction
 {

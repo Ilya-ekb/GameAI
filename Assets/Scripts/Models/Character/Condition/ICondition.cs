@@ -1,9 +1,15 @@
-namespace Character.Condition
+namespace Models.Character.Conditions
 {
-    public interface ICondition
+    public interface ICondition : IVariable
     {
-        float Value { get; }
-        bool Full { get; }
-        void Change(float value);
+        ConditionType ConditionType { get; }
+    }
+
+    public enum ConditionType
+    {
+        Healty,
+        Enegry,
+        Sentiment,
+        Knowlerge
     }
 }

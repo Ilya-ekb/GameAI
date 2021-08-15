@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Models.Resources
 {
-    public interface IResource
+    public interface IResource : IVariable
     {
         ResourceType ResourceType { get; }
-        float Count { get; }
     }
 
     public enum ResourceType

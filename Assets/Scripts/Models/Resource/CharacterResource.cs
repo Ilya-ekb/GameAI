@@ -4,13 +4,14 @@ using UnityEngine;
 namespace Models.Resources
 {
     [Serializable]
-    public class Resource : IResource
+    public class Resource : ScriptableObject, IResource
     {
         public ResourceType ResourceType => resourceType;
-
-        public float Count => count;
+        public float MaxValue => maxValue;
+        public float MinValue => minValue;
 
         [SerializeField] private ResourceType resourceType;
-        [SerializeField] private float count;
+        [SerializeField] private float maxValue;
+        [SerializeField] private float minValue;
     }
 }
