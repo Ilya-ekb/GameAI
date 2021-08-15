@@ -1,16 +1,20 @@
 using System;
+using System.Collections.Generic;
+
 using UnityEngine;
 
 namespace Models.Resources
 {
     [Serializable]
+    [CreateAssetMenu(fileName = "Resource", menuName = "Character/Resource")]
     public class Resource : ScriptableObject, IResource
     {
-        public ResourceType ResourceType => resourceType;
         public float MaxValue => maxValue;
         public float MinValue => minValue;
 
-        [SerializeField] private ResourceType resourceType;
+        public IEnumerable<ResourceAttribute> ResoureAttributes => resourceAttributes;
+
+        [SerializeField] private List<ResourceAttribute> resourceAttributes;
         [SerializeField] private float maxValue;
         [SerializeField] private float minValue;
     }

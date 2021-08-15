@@ -1,11 +1,13 @@
+using System.Collections.Generic;
+
 namespace Models.Resources
 {
     public interface IResource : IVariable
     {
-        ResourceType ResourceType { get; }
+        IEnumerable<ResourceAttribute> ResoureAttributes { get; }
     }
 
-    public enum ResourceType
+    public enum ResourceAttribute
     {
         None,
         Food,

@@ -11,7 +11,8 @@ namespace Models
         public T Variable => variable;
         public float Value => value;
 
-        [SerializeField, HideInInspector] private string name;
+        
+        private string name;
         [SerializeField] protected T variable;
         [SerializeField] protected float value;
 

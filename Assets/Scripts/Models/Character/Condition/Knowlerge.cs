@@ -15,9 +15,12 @@ namespace Models.Character.Conditions.Knowlerge
 
         public IEnumerable<VariableContainer<Condition>> NeedConditions => needConditions;
 
-        public ConditionType ConditionType => ConditionType.Knowlerge;
         public float MaxValue => maxValue;
         public float MinValue => minValue;
+
+        public IEnumerable<ConditionAttribyte> ConditionAttributes => conditionAttribytes;
+
+        private IEnumerable<ConditionAttribyte> conditionAttribytes = new ConditionAttribyte[] { ConditionAttribyte.Knowlerge }; 
 
         [SerializeField] private KnowlergeType knowlergeType;
         [SerializeField] private float maxValue;
@@ -41,7 +44,7 @@ namespace Models.Character.Conditions.Knowlerge
         {
             foreach(var resource in needResources)
             {
-                var suitableResources = character.Resources.FindAll(e => e.Variable.ResourceType == resource.Variable.ResourceType);
+                var suitableResources = character.Resources.FindAll(e => e.Variable.ResoureAttributes == resource.Variable.ResoureAttributes);
                 if(suitableResources != null)
                 {
                     suitableResources = suitableResources.FindAll(e => e.Value >= resource.Value);
@@ -70,11 +73,11 @@ namespace Models.Character.Conditions.Knowlerge
         {
             foreach (var condition in needConditions)
             {
-                condition.Update(condition.Variable?.ConditionType.ToString());
+                condition.Update(condition.Variable?.ConditionAttributes.ToString());
             }
             foreach (var resource in needResources)
             {
-                resource.Update(resource.Variable?.ResourceType.ToString());
+                resource.Update(resource.Variable?.ResoureAttributes.ToString());
             }
         }
     }

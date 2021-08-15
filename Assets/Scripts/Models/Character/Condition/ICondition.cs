@@ -1,11 +1,13 @@
+using System.Collections.Generic;
+
 namespace Models.Character.Conditions
 {
     public interface ICondition : IVariable
     {
-        ConditionType ConditionType { get; }
+        IEnumerable<ConditionAttribyte> ConditionAttributes { get; }
     }
 
-    public enum ConditionType
+    public enum ConditionAttribyte
     {
         Healty,
         Enegry,
