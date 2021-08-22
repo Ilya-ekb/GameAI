@@ -19,12 +19,13 @@ MonoBehaviour:
     - isRootNode: 0
       nodeType: 5
       childNodeList: []
+      action: {fileID: 0}
       name: Hungry
       description: 
       windowRect:
         serializedVersion: 2
-        x: 15
-        y: 240
+        x: 34
+        y: 210
         width: 120
         height: 100
       isRelease: 0
@@ -34,12 +35,13 @@ MonoBehaviour:
       - isRootNode: 0
         nodeType: 5
         childNodeList: []
+        action: {fileID: 0}
         name: Has Food
         description: 
         windowRect:
           serializedVersion: 2
-          x: 107
-          y: 395
+          x: 110
+          y: 348
           width: 120
           height: 100
         isRelease: 0
@@ -49,69 +51,76 @@ MonoBehaviour:
         - isRootNode: 0
           nodeType: 6
           childNodeList: []
+          action: {fileID: 11400000, guid: dbcb3eee79678764099b5fd001441e59, type: 2}
           name: Move Cooking
           description: 
           windowRect:
             serializedVersion: 2
-            x: 182
-            y: 567
+            x: 188
+            y: 487
             width: 120
             height: 100
           isRelease: 0
         - isRootNode: 0
           nodeType: 6
           childNodeList: []
+          action: {fileID: 11400000, guid: 68699cb0ad4f8444ea155f48f1407d69, type: 2}
           name: Cooking
           description: 
           windowRect:
             serializedVersion: 2
-            x: 341
-            y: 567
+            x: 360
+            y: 486
             width: 120
             height: 100
           isRelease: 0
+        action: {fileID: 0}
         name: 
         description: 
         windowRect:
           serializedVersion: 2
-          x: 267
-          y: 396
+          x: 261
+          y: 347
           width: 120
           height: 100
         isRelease: 0
+      action: {fileID: 0}
       name: 
       description: 
       windowRect:
         serializedVersion: 2
-        x: 188
-        y: 241
+        x: 194
+        y: 212
         width: 120
         height: 100
       isRelease: 0
     - isRootNode: 0
       nodeType: 6
       childNodeList: []
+      action: {fileID: 11400000, guid: dbcb3eee79678764099b5fd001441e59, type: 2}
       name: Move Eating
       description: 
       windowRect:
         serializedVersion: 2
-        x: 356
-        y: 239
+        x: 362
+        y: 213
         width: 120
         height: 100
       isRelease: 0
     - isRootNode: 0
       nodeType: 6
       childNodeList: []
+      action: {fileID: 0}
       name: Eat
       description: 
       windowRect:
         serializedVersion: 2
-        x: 530
-        y: 239
+        x: 536
+        y: 213
         width: 120
         height: 100
       isRelease: 0
+    action: {fileID: 0}
     name: Root
     description: 
     windowRect:

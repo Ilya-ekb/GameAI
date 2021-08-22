@@ -1,5 +1,5 @@
 using BehaviourTree;
-using Models.Character;
+using Models.CharacterModel;
 using UnityEngine;
 
 public class NodeActionMove : NodeAction

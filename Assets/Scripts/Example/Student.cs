@@ -1,8 +1,15 @@
 using UnityEngine;
 using BehaviourTree;
 using UnityEngine.AI;
+using System.Collections.Generic;
+using Models;
+using Models.CharacterModel.Conditions;
+using Models.Resources;
+using Models.CharacterModel.Conditions.Knowlerge;
+using Models.CharacterModel.Behaviour;
+using Models.CharacterModel;
 
-public class Student : MonoBehaviour
+public class Student : BaseCharacter
 {
     public NavMeshAgent Agent { get; set; }
     public bool IsHungry => energy <= minEnergy;
@@ -28,7 +35,7 @@ public class Student : MonoBehaviour
     private void Update()
     {
         ChangeEnergy(-.02f);
-        //rootNode.Execute();
+        rootNode.Execute(this);
         Debug.Log(this);
     }
 

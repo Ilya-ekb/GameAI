@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Models.Character.Conditions
+namespace Models.CharacterModel.Conditions
 {
     public interface ICondition : IVariable
     {

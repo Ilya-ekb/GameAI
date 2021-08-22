@@ -5,15 +5,16 @@ using UnityEngine;
 namespace Models
 {
     [Serializable]
-    public class VariableContainer<T> where T: ScriptableObject, IVariable 
+    public class VariableContainer<T> where T: IVariable 
     {
-
+        public CompairMode CompairMode => compairMode;
         public T Variable => variable;
         public float Value => value;
 
         
         private string name;
         [SerializeField] protected T variable;
+        [SerializeField] protected CompairMode compairMode;
         [SerializeField] protected float value;
 
         public virtual void Change(float value)

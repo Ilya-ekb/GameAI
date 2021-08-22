@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using BehaviourTree;
-using Models.Character.Behaviour;
+using Models.CharacterModel.Behaviour;
 using UnityEngine;
 
 [System.Serializable]

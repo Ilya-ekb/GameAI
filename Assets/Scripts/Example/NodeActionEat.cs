@@ -1,5 +1,5 @@
 using BehaviourTree;
-using Models.Character;
+using Models.CharacterModel;
 
 public class NodeActionEat : NodeAction
 {

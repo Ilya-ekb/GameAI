@@ -1,16 +1,20 @@
-using Models.Character.Behaviour;
-using Models.Character.Conditions;
-using Models.Character.Conditions.Knowlerge;
+using Models.CharacterModel.Behaviour;
+using Models.CharacterModel.Conditions;
+using Models.CharacterModel.Conditions.Knowlerge;
 using Models.Resources;
 using System.Collections.Generic;
 
-namespace Models.Character
+using UnityEngine;
+
+namespace Models.CharacterModel
 {
     public interface ICharacter
     {
+        Transform Transform { get; }
         List<VariableContainer<Condition>> Conditions { get; }
-        List<VariableContainer<Resource>> Resources{ get; }
+        List<VariableContainer<GameResource>> Resources{ get; }
         List<VariableContainer<Knowlerge>> Knowlerges { get; }
-        List<IAction> Actions { get; }
+
+        VariableContainer<T> FindContainer<T>(T container) where T: IVariable;
     }
 }

@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d25422e1a63139044a9f2533d593c3f8, type: 3}
-  m_Name: Cook
+  m_Script: {fileID: 11500000, guid: 8c82c49b98e596e4c86809a1802408da, type: 3}
+  m_Name: Enegy
   m_EditorClassIdentifier: 
+  conditionAttribytes: 01000000
   maxValue: 100
   minValue: 0
-  value: 0
-  knowlergeType: 3
-  needResources: []
-  needConditions:
-  - {fileID: 0}

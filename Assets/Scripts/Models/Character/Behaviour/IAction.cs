@@ -1,12 +1,11 @@
 using BehaviourTree;
-using Models.Character.Conditions.Knowlerge;
+using Models.CharacterModel.Conditions.Knowlerge;
 using Models.Resources;
 
-namespace Models.Character.Behaviour
+namespace Models.CharacterModel.Behaviour
 {
     public interface IAction
     {
-        IKnowlerge[] NeededKnowlerges { get; }
         ResultType Do(ICharacter character);
     }
 }

@@ -4,38 +4,38 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-namespace Models.Character.Conditions.Knowlerge
+namespace Models.CharacterModel.Conditions.Knowlerge
 {
     [CreateAssetMenu(fileName = "Knowlerge", menuName ="Character/Knowlerge")]
     public class Knowlerge : ScriptableObject, IKnowlerge
     {
         public KnowlergeType KnowlergeType => knowlergeType;
 
-        public IEnumerable<VariableContainer<Resource>> NeedResources => needResources;
+        public IEnumerable<VariableContainer<GameResource>> NeedResources => needResources;
 
         public IEnumerable<VariableContainer<Condition>> NeedConditions => needConditions;
 
-        public float MaxValue => maxValue;
-        public float MinValue => minValue;
+        public float MaxValue => maxChangeValue;
+        public float MinValue => minChangeValue;
 
         public IEnumerable<ConditionAttribyte> ConditionAttributes => conditionAttribytes;
 
         private IEnumerable<ConditionAttribyte> conditionAttribytes = new ConditionAttribyte[] { ConditionAttribyte.Knowlerge }; 
 
         [SerializeField] private KnowlergeType knowlergeType;
-        [SerializeField] private float maxValue;
-        [SerializeField] private float minValue;
+        [SerializeField] private float maxChangeValue;
+        [SerializeField] private float minChangeValue;
 
-        [SerializeField] private List<VariableContainer<Resource>> needResources;
+        [SerializeField] private List<VariableContainer<GameResource>> needResources;
         [SerializeField] private List<VariableContainer<Condition>> needConditions;
         [SerializeField] private List<VariableContainer<Knowlerge>> needKnolerges;
 
-        public virtual bool CanUse(ICharacter character, Func<ICharacter, bool>[] conditionCompairs)
+        public virtual bool CanUse(ICharacter character)
         {
             var characterKnowlerge = character.Knowlerges.Find(e => e.Variable.KnowlergeType == knowlergeType);
             if (characterKnowlerge != null)
             {
-                return EnoughResources(character) && EnoughConditions(character, conditionCompairs);  
+                return EnoughResources(character) && EnoughConditions(character);  
             }
             return false;
         }
@@ -57,16 +57,23 @@ namespace Models.Character.Conditions.Knowlerge
             return true;
         }
 
-        private bool EnoughConditions(ICharacter character, Func<ICharacter, bool>[] conditionCompairs)
+        private bool EnoughConditions(ICharacter character)
         {
-            foreach(var condition in conditionCompairs)
+            var result = false;
+            foreach(var condition in needConditions)
             {
-                if (!condition(character))
+                var characterCondition = character.FindContainer(condition.Variable);
+                if(characterCondition != null)
                 {
-                    return false;   
+                    result = CompairAction<Condition>.Compairs[condition.CompairMode].Invoke(characterCondition, condition);
+
+                    if (!result)
+                    {
+                        return result;
+                    }
                 }
             }
-            return true;
+            return result;
         }
 
         private void OnValidate()

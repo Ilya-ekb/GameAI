@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-namespace Models.Character.Conditions
+namespace Models.CharacterModel.Conditions
 {
     [Serializable]
     [CreateAssetMenu(fileName = "Condition", menuName = "Character/Condition")]

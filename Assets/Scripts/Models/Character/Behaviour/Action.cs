@@ -1,18 +1,25 @@
 using UnityEngine;
 using BehaviourTree;
-using Models.Character.Conditions.Knowlerge;
+using Models.CharacterModel.Conditions.Knowlerge;
 
-namespace Models.Character.Behaviour
+namespace Models.CharacterModel.Behaviour
 {
     public abstract class Action : ScriptableObject, IAction
     {
-        public IKnowlerge[] NeededKnowlerges => neededKnowlerges;
-
         [SerializeField] protected Knowlerge[] neededKnowlerges;
 
-        public virtual ResultType Do(ICharacter character)
+        public abstract ResultType Do(ICharacter character);
+        
+        protected float ComputeChangeValue(ICharacter character, IKnowlerge[] knowlerges)
         {
-            throw new System.NotImplementedException();
+            float result = 0.0f;
+            foreach (var knowlerge in knowlerges)
+            {
+                var knowlergeContainer = character.FindContainer(knowlerge);
+                result += knowlergeContainer.Value;
+            }
+
+            return result;
         }
     }
 }

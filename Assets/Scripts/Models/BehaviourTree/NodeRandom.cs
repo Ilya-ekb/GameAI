@@ -1,4 +1,4 @@
-using Models.Character;
+using Models.CharacterModel;
 using System.Collections.Generic;
 
 namespace BehaviourTree

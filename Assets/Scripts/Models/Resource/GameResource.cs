@@ -7,7 +7,7 @@ namespace Models.Resources
 {
     [Serializable]
     [CreateAssetMenu(fileName = "Resource", menuName = "Character/Resource")]
-    public class Resource : ScriptableObject, IResource
+    public class GameResource : ScriptableObject, IResource
     {
         public float MaxValue => maxValue;
         public float MinValue => minValue;

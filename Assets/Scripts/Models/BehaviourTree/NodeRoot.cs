@@ -1,5 +1,5 @@
-using Models.Character;
-using Models.Character.Behaviour;
+using Models.CharacterModel;
+using Models.CharacterModel.Behaviour;
 using System.Collections.Generic;
 
 namespace BehaviourTree
