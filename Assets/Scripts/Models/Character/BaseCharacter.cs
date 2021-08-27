@@ -21,14 +21,14 @@ namespace Models.CharacterModel
         [SerializeField] private List<VariableContainer<Knowlerge>> knowlerges;
         [SerializeField] private List<VariableContainer<Condition>> conditions;
 
-        public VariableContainer<T> FindContainer<T>(T container) where T : IVariable
+        public VariableContainer<T> FindContainer<T>(T container) where T : BaseVariable
         {
-            List<VariableContainer<IVariable>> tempList = new List<VariableContainer<IVariable>>();
-            tempList.AddRange(Resources.Cast<VariableContainer<IVariable>>());
-            tempList.AddRange(Knowlerges.Cast<VariableContainer<IVariable>>());
-            tempList.AddRange(Conditions.Cast<VariableContainer<IVariable>>());
+            List<VariableContainer<BaseVariable>> tempList = new List<VariableContainer<BaseVariable>>();
+            tempList.AddRange(Resources.Cast<VariableContainer<BaseVariable>>());
+            tempList.AddRange(Knowlerges.Cast<VariableContainer<BaseVariable>>());
+            tempList.AddRange(Conditions.Cast<VariableContainer<BaseVariable>>());
 
-            var result = tempList.Find(e => e.Variable == (IVariable)container);
+            var result = tempList.Find(e => e.Variable == container);
             
             return result as VariableContainer<T>; 
         }

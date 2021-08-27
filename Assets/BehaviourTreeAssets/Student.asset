@@ -19,13 +19,13 @@ MonoBehaviour:
     - isRootNode: 0
       nodeType: 5
       childNodeList: []
-      action: {fileID: 0}
+      action: {fileID: 11400000, guid: 0474c171a36662e4e8c4464471ea524a, type: 2}
       name: Hungry
       description: 
       windowRect:
         serializedVersion: 2
-        x: 34
-        y: 210
+        x: 43
+        y: 212
         width: 120
         height: 100
       isRelease: 0
@@ -35,7 +35,7 @@ MonoBehaviour:
       - isRootNode: 0
         nodeType: 5
         childNodeList: []
-        action: {fileID: 0}
+        action: {fileID: 11400000, guid: e8423be422ed84147bbbdf6ef0af60bb, type: 2}
         name: Has Food
         description: 
         windowRect:
@@ -89,7 +89,7 @@ MonoBehaviour:
       description: 
       windowRect:
         serializedVersion: 2
-        x: 194
+        x: 197
         y: 212
         width: 120
         height: 100
@@ -102,7 +102,7 @@ MonoBehaviour:
       description: 
       windowRect:
         serializedVersion: 2
-        x: 362
+        x: 371
         y: 213
         width: 120
         height: 100
@@ -110,7 +110,7 @@ MonoBehaviour:
     - isRootNode: 0
       nodeType: 6
       childNodeList: []
-      action: {fileID: 0}
+      action: {fileID: 11400000, guid: f72cdec64009c5d408ea745348e956ee, type: 2}
       name: Eat
       description: 
       windowRect:

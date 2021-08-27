@@ -1,3 +1,5 @@
+using Models.CharacterModel.Conditions;
+
 using System;
 using System.Collections.Generic;
 
@@ -7,10 +9,10 @@ namespace Models.Resources
 {
     [Serializable]
     [CreateAssetMenu(fileName = "Resource", menuName = "Character/Resource")]
-    public class GameResource : ScriptableObject, IResource
+    public class GameResource : BaseVariable 
     {
-        public float MaxValue => maxValue;
-        public float MinValue => minValue;
+        public override float MaxValue => maxValue;
+        public override float MinValue => minValue;
 
         public IEnumerable<ResourceAttribute> ResoureAttributes => resourceAttributes;
 

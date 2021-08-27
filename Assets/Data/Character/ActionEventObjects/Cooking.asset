@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7289f8fa4a810f44094c1c6f4ff8a1b8, type: 3}
   m_Name: Cooking
   m_EditorClassIdentifier: 
+  id: 
   neededKnowlerges:
   - {fileID: 11400000, guid: 1a42da09da6120941bdea37edadf179c, type: 2}
-  changingCondition: {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}
+  changingVariables:
+  - {fileID: 11400000, guid: ca36e14d8513dfd4c86608f4a94ebe5e, type: 2}
+  - {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}

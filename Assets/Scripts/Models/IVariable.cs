@@ -1,3 +1,5 @@
+using Models.CharacterModel.Conditions;
+
 using System;
 using System.Collections.Generic;
 
@@ -21,7 +23,7 @@ namespace Models
         LessOrEquals
     }
 
-    public static class CompairAction<T> where T : ScriptableObject, IVariable
+    public static class CompairAction<T> where T : BaseVariable
     {
         public static readonly Dictionary<CompairMode, Func<VariableContainer<T>, VariableContainer<T>, bool>> Compairs =
             new Dictionary<CompairMode, Func<VariableContainer<T>, VariableContainer<T>, bool>>

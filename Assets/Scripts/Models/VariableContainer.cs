@@ -1,3 +1,5 @@
+using Models.CharacterModel.Conditions;
+
 using System;
 
 using UnityEngine;
@@ -5,14 +7,14 @@ using UnityEngine;
 namespace Models
 {
     [Serializable]
-    public class VariableContainer<T> where T: IVariable 
+    public class VariableContainer<T> where T: BaseVariable 
     {
         public CompairMode CompairMode => compairMode;
         public T Variable => variable;
         public float Value => value;
 
         
-        private string name;
+        [SerializeField, HideInInspector]private string name;
         [SerializeField] protected T variable;
         [SerializeField] protected CompairMode compairMode;
         [SerializeField] protected float value;

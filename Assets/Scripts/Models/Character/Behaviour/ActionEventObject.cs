@@ -1,16 +1,13 @@
 using UnityEngine;
 using BehaviourTree;
 using Models.CharacterModel.Conditions.Knowlerge;
+using System;
 
 namespace Models.CharacterModel.Behaviour
 {
-    public abstract class Action : ScriptableObject, IAction
+    public abstract class ActionEventObject : BaseEventObject
     {
-        [SerializeField] protected Knowlerge[] neededKnowlerges;
-
-        public abstract ResultType Do(ICharacter character);
-        
-        protected float ComputeChangeValue(ICharacter character, IKnowlerge[] knowlerges)
+        protected float ComputeChangeValue(ICharacter character, Knowlerge[] knowlerges)
         {
             float result = 0.0f;
             foreach (var knowlerge in knowlerges)

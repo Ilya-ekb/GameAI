@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Models.CharacterModel.Behaviour
 {
     [CreateAssetMenu(fileName = "Move Action", menuName = "Character/Behaviour/Move Action")]
-    public class Move : Action
+    public class Move : ActionEventObject
     {
         public Vector3 TargetPosition { get => targetPosition; set => targetPosition = value; }
         public Quaternion TargetRotation { get => targetRotation; set => targetRotation = value; }

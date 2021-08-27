@@ -16,11 +16,13 @@ MonoBehaviour:
   maxChangeValue: 0
   minChangeValue: 0
   needResources:
-  - variable: {fileID: 11400000, guid: a601899db9dc5144b90b90c46e8403be, type: 2}
+  - name: System.Collections.Generic.List`1[Models.Resources.ResourceAttribute]
+    variable: {fileID: 11400000, guid: a601899db9dc5144b90b90c46e8403be, type: 2}
     compairMode: 2
     value: 0
   needConditions:
-  - variable: {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}
+  - name: System.Collections.Generic.List`1[Models.CharacterModel.Conditions.ConditionAttribyte]
+    variable: {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}
     compairMode: 2
     value: 0
   needKnolerges: []

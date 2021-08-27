@@ -4,6 +4,8 @@ using UnityEditor;
 using BehaviourTree;
 using System;
 using System.Linq;
+using Models.CharacterModel.Behaviour;
+using Models;
 
 public class TreeNodeEditor : EditorWindow
 {
@@ -14,7 +16,7 @@ public class TreeNodeEditor : EditorWindow
     private NodeAsset asset;
     private string assetName = string.Empty;
 
-    [MenuItem("Window/CreateTree")]
+    [MenuItem("Window/Behaviour Tree")]
     static void ShowWindow()
     {
         TreeNodeEditor window = EditorWindow.GetWindow<TreeNodeEditor>();
@@ -165,11 +167,17 @@ public class TreeNodeEditor : EditorWindow
         }
         nodeRoot.NodeType = (NodeType)EditorGUILayout.Popup((int)nodeRoot.NodeType, Enum.GetValues(typeof(NodeType)).Cast<NodeType>().Select(x => x.ToString()).ToArray());
 
-        nodeRoot.Action = nodeRoot.NodeType == NodeType.Action ?
-                          (Models.CharacterModel.Behaviour.Action)EditorGUILayout.ObjectField(nodeRoot.Action, typeof(Models.CharacterModel.Behaviour.Action)) :
-                          null;
+        if (nodeRoot.NodeType == NodeType.Action)
+        {
+            nodeRoot.Action = (ActionEventObject)EditorGUILayout.ObjectField(nodeRoot.Action, typeof(ActionEventObject));
+        }
+        if(nodeRoot.NodeType == NodeType.Condition)
+        {
+            nodeRoot.Action = (ConditionEventObject)EditorGUILayout.ObjectField(nodeRoot.Action, typeof(ConditionEventObject));
+        }
         // The window that can be dragged
         GUI.DragWindow();
+
     }
 
     // Get the node where the mouse is

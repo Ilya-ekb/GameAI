@@ -7,7 +7,7 @@ using UnityEngine;
 namespace Models.CharacterModel.Conditions.Knowlerge
 {
     [CreateAssetMenu(fileName = "Knowlerge", menuName ="Character/Knowlerge")]
-    public class Knowlerge : ScriptableObject, IKnowlerge
+    public class Knowlerge : BaseVariable
     {
         public KnowlergeType KnowlergeType => knowlergeType;
 
@@ -15,8 +15,8 @@ namespace Models.CharacterModel.Conditions.Knowlerge
 
         public IEnumerable<VariableContainer<Condition>> NeedConditions => needConditions;
 
-        public float MaxValue => maxChangeValue;
-        public float MinValue => minChangeValue;
+        public override float MaxValue => maxChangeValue;
+        public override float MinValue => minChangeValue;
 
         public IEnumerable<ConditionAttribyte> ConditionAttributes => conditionAttribytes;
 
