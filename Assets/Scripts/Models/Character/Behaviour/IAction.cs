@@ -1,8 +1,4 @@
 using BehaviourTree;
-using Models.CharacterModel.Conditions.Knowlerge;
-using Models.Resources;
-
-using System;
 
 namespace Models.CharacterModel.Behaviour
 {

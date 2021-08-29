@@ -1,7 +1,4 @@
-using UnityEngine;
-using BehaviourTree;
-using Models.CharacterModel.Conditions.Knowlerge;
-using System;
+using Models.CharacterModel.KnowlergeModel;
 
 namespace Models.CharacterModel.Behaviour
 {

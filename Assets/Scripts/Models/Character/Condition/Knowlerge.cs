@@ -1,34 +1,25 @@
+using Models.CharacterModel.Conditions;
 using Models.Resources;
-using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 
-namespace Models.CharacterModel.Conditions.Knowlerge
+namespace Models.CharacterModel.KnowlergeModel
 {
     [CreateAssetMenu(fileName = "Knowlerge", menuName ="Character/Knowlerge")]
     public class Knowlerge : BaseVariable
     {
         public KnowlergeType KnowlergeType => knowlergeType;
 
-        public IEnumerable<VariableContainer<GameResource>> NeedResources => needResources;
-
-        public IEnumerable<VariableContainer<Condition>> NeedConditions => needConditions;
-
         public override float MaxValue => maxChangeValue;
         public override float MinValue => minChangeValue;
-
-        public IEnumerable<ConditionAttribyte> ConditionAttributes => conditionAttribytes;
-
-        private IEnumerable<ConditionAttribyte> conditionAttribytes = new ConditionAttribyte[] { ConditionAttribyte.Knowlerge }; 
 
         [SerializeField] private KnowlergeType knowlergeType;
         [SerializeField] private float maxChangeValue;
         [SerializeField] private float minChangeValue;
 
-        [SerializeField] private List<VariableContainer<GameResource>> needResources;
-        [SerializeField] private List<VariableContainer<Condition>> needConditions;
-        [SerializeField] private List<VariableContainer<Knowlerge>> needKnolerges;
+        [SerializeField] private List<CompairContainer<GameResource>> needResources;
+        [SerializeField] private List<CompairContainer<Condition>> needConditions;
+        [SerializeField] private List<CompairContainer<Knowlerge>> needKnowlerges;
 
         public virtual bool CanUse(ICharacter character)
         {
@@ -78,14 +69,18 @@ namespace Models.CharacterModel.Conditions.Knowlerge
 
         private void OnValidate()
         {
-            foreach (var condition in needConditions)
-            {
-                condition.Update(condition.Variable?.ConditionAttributes.ToString());
-            }
-            foreach (var resource in needResources)
-            {
-                resource.Update(resource.Variable?.ResoureAttributes.ToString());
-            }
+            Dictionary<CompairMode, string> comp = new Dictionary<CompairMode, string> 
+            { 
+                { CompairMode.Equals, "==" }, 
+                { CompairMode.NotEquals, "!=" }, 
+                { CompairMode.Greater, ">" }, 
+                { CompairMode.GreaterOrEquals, ">=" }, 
+                { CompairMode.Less, "<" }, 
+                { CompairMode.LessOrEquals, "<=" }, 
+            };
+            needConditions.ForEach(e => e.Update($"{e.Variable?.name} {comp[e.CompairMode]} {e.Value}"));
+            needResources.ForEach(e => e.Update($"{e.Variable?.name} {comp[e.CompairMode]} {e.Value}"));
+            needKnowlerges.ForEach(e => e.Update($"{e.Variable?.name} {comp[e.CompairMode]} {e.Value}"));
         }
     }
      

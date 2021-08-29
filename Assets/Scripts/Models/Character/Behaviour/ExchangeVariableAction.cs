@@ -1,6 +1,6 @@
 using BehaviourTree;
 using Models.CharacterModel.Conditions;
-using Models.CharacterModel.Conditions.Knowlerge;
+using Models.CharacterModel.KnowlergeModel;
 
 using System.Collections.Generic;
 
@@ -9,11 +9,11 @@ using UnityEngine;
 namespace Models.CharacterModel.Behaviour
 {
     [System.Serializable, CreateAssetMenu(fileName = "Change Variable Action", menuName = "Character/Behaviour/Action Event Object/Change Variable Action")]
-    public class ChangeVariableAction : ActionEventObject
+    public class ExchangeVariableAction : ActionEventObject
     {
         [SerializeField] protected Knowlerge[] neededKnowlerges;
 
-        [SerializeField] private BaseVariable[] changingVariables;
+        [SerializeField] private List<VariableExchanger> variablesExchangers;
 
         public override ResultType Do(ICharacter character)
         {
@@ -23,7 +23,7 @@ namespace Models.CharacterModel.Behaviour
             {
                 foreach(var variableContainer in variableContainers)
                 {
-                    variableContainer.Change(ComputeChangeValue(character, neededKnowlerges));
+                    //variableContainer.Exchange(changingVariables.Find(e=>e.Variable == variableContainer.Variable));
                 }
             }
 
@@ -42,12 +42,12 @@ namespace Models.CharacterModel.Behaviour
                 }
             }
 
-            foreach ( var changingVar in changingVariables)
-            {
-                variableContainers.Add(character.FindContainer(changingVar));
-            }
+            //foreach (var changingVar in variablesExchangers)
+            //{
+            //    variableContainers.Add(character.FindContainer(changingVar.Variable));
+            //}
 
-            return variableContainers.Count == changingVariables.Length;
+            return variableContainers.Count == variablesExchangers.Count;
         }
     }
 }

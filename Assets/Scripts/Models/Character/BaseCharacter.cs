@@ -1,7 +1,7 @@
 using Models;
 using Models.CharacterModel.Behaviour;
 using Models.CharacterModel.Conditions;
-using Models.CharacterModel.Conditions.Knowlerge;
+using Models.CharacterModel.KnowlergeModel;
 using Models.Resources;
 using System.Collections.Generic;
 using System.Linq;

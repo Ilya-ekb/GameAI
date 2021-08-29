@@ -11,7 +11,7 @@ namespace Models
     [System.Serializable, CreateAssetMenu(fileName = "Condition Event Object", menuName = "Character/Behaviour/Condition Event Object")]
     public class ConditionEventObject : BaseEventObject
     {
-        [SerializeField] protected VariableContainer<BaseVariable>[] checkingCondtions;
+        [SerializeField] protected CompairContainer<BaseVariable>[] checkingCondtions;
 
         public override ResultType Do(ICharacter character)
         {

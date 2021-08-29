@@ -1,12 +1,6 @@
 using UnityEngine;
 using BehaviourTree;
 using UnityEngine.AI;
-using System.Collections.Generic;
-using Models;
-using Models.CharacterModel.Conditions;
-using Models.Resources;
-using Models.CharacterModel.Conditions.Knowlerge;
-using Models.CharacterModel.Behaviour;
 using Models.CharacterModel;
 
 public class Student : BaseCharacter

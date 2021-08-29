@@ -1,7 +1,5 @@
-using Models.Resources;
-using System.Collections.Generic;
 
-namespace Models.CharacterModel.Conditions.Knowlerge
+namespace Models.CharacterModel.KnowlergeModel
 {
     public enum KnowlergeType 
     {
