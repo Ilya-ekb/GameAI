@@ -18,7 +18,7 @@ namespace Models
         enum ActionSign
         {
             Add,
-            Devide
+            Sub,
         }
     }
 }

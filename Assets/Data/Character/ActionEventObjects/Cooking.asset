@@ -15,6 +15,24 @@ MonoBehaviour:
   id: 
   neededKnowlerges:
   - {fileID: 11400000, guid: 1a42da09da6120941bdea37edadf179c, type: 2}
-  changingVariables:
-  - {fileID: 11400000, guid: ca36e14d8513dfd4c86608f4a94ebe5e, type: 2}
-  - {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}
+  variablesExchangers:
+  - sourceContainer:
+      name: 
+      variable: {fileID: 11400000, guid: a601899db9dc5144b90b90c46e8403be, type: 2}
+      value: 1
+    recipientContainers:
+    - name: 
+      variable: {fileID: 11400000, guid: ca36e14d8513dfd4c86608f4a94ebe5e, type: 2}
+      value: 0
+      exchangeCoeficient: 0.8
+      actionSign: 0
+  - sourceContainer:
+      name: 
+      variable: {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}
+      value: 0.1
+    recipientContainers:
+    - name: 
+      variable: {fileID: 11400000, guid: ca36e14d8513dfd4c86608f4a94ebe5e, type: 2}
+      value: 0
+      exchangeCoeficient: 0.8
+      actionSign: 0
