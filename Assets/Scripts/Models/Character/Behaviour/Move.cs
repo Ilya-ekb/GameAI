@@ -1,4 +1,4 @@
-using BehaviourTree;
+using BehaviourTree.Core;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour
@@ -18,7 +18,7 @@ namespace Models.CharacterModel.Behaviour
         {
             if ((character.Transform.position - targetPosition).magnitude > .1f && Quaternion.Angle(character.Transform.rotation, targetRotation) > 1f)
             {
-                moveAction.Invoke(moveSpeed);
+                moveAction?.Invoke(moveSpeed);
                 return ResultType.Running;
             }
             return ResultType.Success;

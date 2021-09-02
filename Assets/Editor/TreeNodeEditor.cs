@@ -6,13 +6,15 @@ using System;
 using System.Linq;
 using Models.CharacterModel.Behaviour;
 using Models;
+using BehaviourTree.Data;
+using BehaviourTree.Core;
 
 public class TreeNodeEditor : EditorWindow
 {
     // Save all nodes in the window
-    private List<NodeValue> nodeRootList = new List<NodeValue>();
+    private List<NodeData> nodeRootList = new List<NodeData>();
     // currently selected node
-    private NodeValue selectNode = null;
+    private NodeData selectNode = null;
     private NodeAsset asset;
     private string assetName = string.Empty;
 
@@ -31,12 +33,15 @@ public class TreeNodeEditor : EditorWindow
         Event _event = Event.current;
         mousePosition = _event.mousePosition;
 
-        //Traverse all nodes and remove invalid nodes
-        for (int i = nodeRootList.Count - 1; i >= 0; --i)
+        if(nodeRootList != null)
         {
-            if (nodeRootList[i].IsRelease)
+            //Traverse all nodes and remove invalid nodes
+            for (int i = nodeRootList.Count - 1; i >= 0; --i)
             {
-                nodeRootList.RemoveAt(i);
+                if (nodeRootList[i].IsRelease)
+                {
+                    nodeRootList.RemoveAt(i);
+                }
             }
         }
 
@@ -84,11 +89,11 @@ public class TreeNodeEditor : EditorWindow
         if (makeTransitionMode && _event.type == EventType.MouseDown)
         {
             int selectIndex = 0;
-            NodeValue newSelectNode = GetMouseInNode(out selectIndex);
+            NodeData newSelectNode = GetMouseInNode(out selectIndex);
             // If a node is selected when the mouse is pressed, the newly selected root node is added as a child node of selectNode
             if (selectNode != newSelectNode)
             {
-                selectNode.ChildNodeList.Add(newSelectNode);
+                selectNode.ChildNodeDataList.Add(newSelectNode);
             }
 
             // cancel connection status
@@ -109,10 +114,10 @@ public class TreeNodeEditor : EditorWindow
         // start drawing node 
         // Note: You must call GUI.Window between BeginWindows(); and EndWindows(); to display
         BeginWindows();
-        for (int i = 0; i < nodeRootList.Count; i++)
+        for (int i = 0; i < nodeRootList?.Count; i++)
         {
-            NodeValue nodeRoot = nodeRootList[i];
-            nodeRoot.WindowRect = GUI.Window(i, nodeRoot.WindowRect, DrawNodeWindow, string.IsNullOrEmpty(nodeRoot.Name) ? nodeRoot.NodeType.ToString() + " node": nodeRoot.Name);
+            NodeData nodeRoot = nodeRootList[i];
+            nodeRoot.WindowRect = GUI.Window(i, nodeRoot.WindowRect, DrawNodeWindow, string.IsNullOrEmpty(nodeRoot.Name) ? nodeRoot.NodeType.ToString() + " node" : nodeRoot.Name);
 
             DrawToChildCurve(nodeRoot);
         }
@@ -151,7 +156,7 @@ public class TreeNodeEditor : EditorWindow
                 if(GUI.Button(new Rect(220, 10, 100, 20), "Load"))
                 {
                     assetName = asset.name;
-                    nodeRootList = asset.ReturnNodeList(asset.NodeValue);
+                    nodeRootList = asset.ReturnNodeList(asset.NodeData);
                 }
             }
         }
@@ -159,7 +164,7 @@ public class TreeNodeEditor : EditorWindow
 
     void DrawNodeWindow(int id)
     {
-        NodeValue nodeRoot = nodeRootList[id];
+        NodeData nodeRoot = nodeRootList[id];
         nodeRoot.ShowName = GUI.Toggle(new Rect(1, 2, 10, 20), nodeRoot.ShowName, "", EditorStyles.miniButton);
         if (nodeRoot.ShowName)
         {
@@ -181,13 +186,13 @@ public class TreeNodeEditor : EditorWindow
     }
 
     // Get the node where the mouse is
-    private NodeValue GetMouseInNode(out int index)
+    private NodeData GetMouseInNode(out int index)
     {
         index = 0;
-        NodeValue selectRoot = null;
+        NodeData selectRoot = null;
         for (int i = 0; i < nodeRootList.Count; i++)
         {
-            NodeValue nodeRoot = nodeRootList[i];
+            NodeData nodeRoot = nodeRootList[i];
             // If the mouse position is included in the Rect range of the node, it is regarded as a selectable node
             if (nodeRoot.WindowRect.Contains(mousePosition))
             {
@@ -224,7 +229,7 @@ public class TreeNodeEditor : EditorWindow
     // add node
     private void AddNode()
     {
-        NodeValue nodeSelect = new NodeValue();
+        NodeData nodeSelect = new NodeData();
         nodeSelect.WindowRect = new Rect(mousePosition.x, mousePosition.y, 120, 100);
         nodeRootList.Add(nodeSelect);
         nodeSelect.IsRootNode = nodeRootList.Count == 1;
@@ -253,15 +258,15 @@ public class TreeNodeEditor : EditorWindow
     ///  Draw lines from the node to all child nodes every frame
     /// </summary>
     /// <param name="nodeRoot"></param>
-    private void DrawToChildCurve(NodeValue nodeRoot)
+    private void DrawToChildCurve(NodeData nodeRoot)
     {
-        for (int i = nodeRoot.ChildNodeList.Count - 1; i >= 0; --i)
+        for (int i = nodeRoot.ChildNodeDataList.Count - 1; i >= 0; --i)
         {
-            NodeValue childNode = nodeRoot.ChildNodeList[i];
+            NodeData childNode = nodeRoot.ChildNodeDataList[i];
             // delete invalid nodes
             if (childNode == null || childNode.IsRelease)
             {
-                nodeRoot.ChildNodeList.RemoveAt(i);
+                nodeRoot.ChildNodeDataList.RemoveAt(i);
                 continue;
             }
             DrawNodeCurve(nodeRoot.WindowRect, childNode.WindowRect);

@@ -1,5 +1,5 @@
 
-namespace BehaviourTree
+namespace BehaviourTree.Core
 {
     /// <summary>
     /// Behaviour tree node type

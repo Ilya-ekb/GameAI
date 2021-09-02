@@ -1,6 +1,8 @@
+using BehaviourTree.Data;
+
 using Models.CharacterModel;
 
-namespace BehaviourTree
+namespace BehaviourTree.Core
 {
     /// <summary>
     /// Sequence node (combine node)
@@ -8,7 +10,7 @@ namespace BehaviourTree
     public class NodeSequence : NodeCombiner
     {
         private NodeRoot lastRunningNode;
-        public NodeSequence() : base(NodeType.Sequence) { }
+        public NodeSequence(NodeData data) : base(NodeType.Sequence, data) { }
 
         /// <summary>
         ///  The sequence node executes the child nodes once, as long as the node returns Success, it continues to execute the subsequent nodes until a node

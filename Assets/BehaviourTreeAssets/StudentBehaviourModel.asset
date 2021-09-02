@@ -10,67 +10,67 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a5d98dff8c6b5dd4492837dea704fd7d, type: 3}
-  m_Name: Student
+  m_Name: StudentBehaviourModel
   m_EditorClassIdentifier: 
   nodeValue:
     isRootNode: 1
     nodeType: 1
-    childNodeList:
+    childNodeDataList:
     - isRootNode: 0
       nodeType: 5
-      childNodeList: []
+      childNodeDataList: []
       action: {fileID: 11400000, guid: 0474c171a36662e4e8c4464471ea524a, type: 2}
-      name: Hungry
+      name: 
       description: 
       windowRect:
         serializedVersion: 2
-        x: 43
-        y: 212
+        x: 75
+        y: 205
         width: 120
         height: 100
       isRelease: 0
     - isRootNode: 0
       nodeType: 0
-      childNodeList:
+      childNodeDataList:
       - isRootNode: 0
         nodeType: 5
-        childNodeList: []
+        childNodeDataList: []
         action: {fileID: 11400000, guid: e8423be422ed84147bbbdf6ef0af60bb, type: 2}
-        name: Has Food
+        name: 
         description: 
         windowRect:
           serializedVersion: 2
-          x: 110
-          y: 348
+          x: 147
+          y: 366
           width: 120
           height: 100
         isRelease: 0
       - isRootNode: 0
         nodeType: 1
-        childNodeList:
+        childNodeDataList:
         - isRootNode: 0
           nodeType: 6
-          childNodeList: []
+          childNodeDataList: []
           action: {fileID: 11400000, guid: dbcb3eee79678764099b5fd001441e59, type: 2}
-          name: Move Cooking
+          name: 
           description: 
           windowRect:
             serializedVersion: 2
-            x: 188
-            y: 487
+            x: 208
+            y: 522
             width: 120
             height: 100
           isRelease: 0
         - isRootNode: 0
           nodeType: 6
-          childNodeList: []
+          childNodeDataList: []
           action: {fileID: 11400000, guid: 68699cb0ad4f8444ea155f48f1407d69, type: 2}
-          name: Cooking
+          name: 
           description: 
           windowRect:
             serializedVersion: 2
-            x: 360
-            y: 486
+            x: 349
+            y: 523
             width: 120
             height: 100
           isRelease: 0
@@ -79,8 +79,8 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 261
-          y: 347
+          x: 279
+          y: 366
           width: 120
           height: 100
         isRelease: 0
@@ -89,44 +89,44 @@ MonoBehaviour:
       description: 
       windowRect:
         serializedVersion: 2
-        x: 197
-        y: 212
+        x: 218
+        y: 206
         width: 120
         height: 100
       isRelease: 0
     - isRootNode: 0
       nodeType: 6
-      childNodeList: []
+      childNodeDataList: []
       action: {fileID: 11400000, guid: dbcb3eee79678764099b5fd001441e59, type: 2}
-      name: Move Eating
+      name: 
       description: 
       windowRect:
         serializedVersion: 2
-        x: 371
-        y: 213
+        x: 364
+        y: 204
         width: 120
         height: 100
       isRelease: 0
     - isRootNode: 0
       nodeType: 6
-      childNodeList: []
+      childNodeDataList: []
       action: {fileID: 11400000, guid: f72cdec64009c5d408ea745348e956ee, type: 2}
-      name: Eat
+      name: 
       description: 
       windowRect:
         serializedVersion: 2
-        x: 536
-        y: 213
+        x: 519
+        y: 205
         width: 120
         height: 100
       isRelease: 0
     action: {fileID: 0}
-    name: Root
+    name: 
     description: 
     windowRect:
       serializedVersion: 2
-      x: 284
-      y: 72
+      x: 291
+      y: 57
       width: 120
       height: 100
     isRelease: 0

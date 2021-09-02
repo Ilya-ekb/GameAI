@@ -1,6 +1,7 @@
+using BehaviourTree.Data;
 using Models.CharacterModel;
 
-namespace BehaviourTree
+namespace BehaviourTree.Core
 {
     /// <summary>
     /// Modification node (combiner node)
@@ -9,7 +10,7 @@ namespace BehaviourTree
     {
         private ResultType untilResultType = ResultType.Fail;
 
-        public NodeDecorator() : base(NodeType.Decorator) { }
+        public NodeDecorator(NodeData data) : base(NodeType.Decorator, data) { }
 
         /// <summary>
         /// Has only one child node, executing until result == untilResultType

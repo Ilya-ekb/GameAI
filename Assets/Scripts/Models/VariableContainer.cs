@@ -10,7 +10,7 @@ namespace Models
     public class VariableContainer<T> where T : BaseVariable
     {
         public T Variable => variable;
-        public virtual float Value => value;
+        public virtual float Value { get => value; set => this.value = Mathf.Max(value, variable.MinValue); }
 
 
         [SerializeField, HideInInspector] private string name;

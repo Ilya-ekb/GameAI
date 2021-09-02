@@ -1,11 +1,16 @@
+using BehaviourTree.Data;
+
 using Models.CharacterModel;
 
-namespace BehaviourTree
+namespace BehaviourTree.Core
 {
     public class NodeSelect : NodeCombiner
     {
         private NodeRoot lastRunningNode;
-        public NodeSelect() : base(NodeType.Select) { }
+
+        public NodeSelect(NodeData data) : base(NodeType.Select, data) 
+        {
+        }
 
         /// <summary>
         ///  Select the node to traverse all the child nodes in turn, if all return Fail, then return Fail to the parent node

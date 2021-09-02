@@ -1,3 +1,4 @@
+using Models.CharacterModel;
 using Models.CharacterModel.Conditions;
 using System;
 using UnityEngine;
@@ -9,10 +10,10 @@ namespace Models
     {
         [SerializeField] private float exchangeCoeficient;
         [SerializeField] private ActionSign actionSign;
-        public void GetValue(float incomeValue)
+        public float GetValue(float incomeValue)
         {
-            value = incomeValue * exchangeCoeficient;
-            value = actionSign == ActionSign.Add ? value : -value;
+            var value = incomeValue * exchangeCoeficient;
+            return actionSign == ActionSign.Add ? value : -value;
         }
 
         enum ActionSign

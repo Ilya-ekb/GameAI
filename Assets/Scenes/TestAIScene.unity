@@ -613,7 +613,7 @@ GameObject:
   - component: {fileID: 1832151059}
   - component: {fileID: 1832151064}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: Student
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,3 +731,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1a23321d76aef4f8873a444dc70535, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  behaviourModelData: {fileID: 11400000, guid: 0ec044bbdf600594b8b9afdc9d6809e1, type: 2}
+  resources:
+  - name: 
+    variable: {fileID: 11400000, guid: ca36e14d8513dfd4c86608f4a94ebe5e, type: 2}
+    value: 0
+  - name: 
+    variable: {fileID: 11400000, guid: a601899db9dc5144b90b90c46e8403be, type: 2}
+    value: 100
+  knowlerges:
+  - name: 
+    variable: {fileID: 11400000, guid: 1a42da09da6120941bdea37edadf179c, type: 2}
+    value: 0
+  conditions:
+  - name: 
+    variable: {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}
+    value: 100
+  period: 0.1

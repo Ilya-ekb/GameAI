@@ -1,5 +1,7 @@
 using Models.CharacterModel.KnowlergeModel;
 
+using UnityEngine;
+
 namespace Models.CharacterModel.Behaviour
 {
     public abstract class ActionEventObject : BaseEventObject
@@ -13,6 +15,7 @@ namespace Models.CharacterModel.Behaviour
                 result += knowlergeContainer.Value;
             }
 
+            Debug.Log($"Action {name} result {result}");
             return result;
         }
     }

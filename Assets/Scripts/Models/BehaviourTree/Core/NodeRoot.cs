@@ -2,7 +2,7 @@ using Models.CharacterModel;
 using Models.CharacterModel.Behaviour;
 using System.Collections.Generic;
 
-namespace BehaviourTree
+namespace BehaviourTree.Core
 {
     /// <summary>
     /// Node abstract class
@@ -15,8 +15,6 @@ namespace BehaviourTree
             set => nodeIndex = value;
         }
 
-        public IAction Action { get => action; set => action = value; }
-
         /// <summary>
         /// Node type
         /// </summary>
@@ -28,20 +26,20 @@ namespace BehaviourTree
 
         protected List<NodeRoot> nodeChildList = new List<NodeRoot>();
 
-        private IAction action;
-
         public NodeRoot(NodeType nodeType)
         {
             this.nodeType = nodeType;
         }
-
         /// <summary>
-        /// Execution node abstract method
+        /// 
         /// </summary>
         /// <returns>Return type of execution result</returns>
-        public virtual ResultType Execute(ICharacter character)
-        {
-            return action is null ? ResultType.Fail : action.Do(character);
-        }
+
+        /// <summary>
+        /// Current character execution node abstract method
+        /// </summary>
+        /// <param name="character">Current character</param>
+        /// <returns>Return type of execution result</returns>
+        public abstract ResultType Execute(ICharacter character);
     }
 }

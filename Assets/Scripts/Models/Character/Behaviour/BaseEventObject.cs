@@ -1,4 +1,4 @@
-using BehaviourTree;
+using BehaviourTree.Core;
 using UnityEngine;
 using System;
 

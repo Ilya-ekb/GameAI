@@ -1,13 +1,14 @@
+using BehaviourTree.Data;
 using Models.CharacterModel;
 
-namespace BehaviourTree
+namespace BehaviourTree.Core
 {
     /// <summary>
     /// Parallel node (comdiner node)
     /// </summary>
     public class NodeParallel : NodeCombiner
     {
-        public NodeParallel() : base(NodeType.Parallel) { }
+        public NodeParallel(NodeData data) : base(NodeType.Parallel, data) { }
 
         /// <summary>
         /// Execute all child nodes at same time, until one node return Fail or all nodes return Success

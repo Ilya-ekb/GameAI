@@ -1,14 +1,11 @@
-using BehaviourTree;
-using Models.CharacterModel.Conditions;
+using BehaviourTree.Core;
 using Models.CharacterModel.KnowlergeModel;
-
 using System.Collections.Generic;
-
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour
 {
-    [System.Serializable, CreateAssetMenu(fileName = "Change Variable Action", menuName = "Character/Behaviour/Action Event Object/Change Variable Action")]
+    [System.Serializable, CreateAssetMenu(fileName = "Exchange Variable Action", menuName = "Character/Behaviour/Action Event Object/Exchange Variable Action")]
     public class ExchangeVariableAction : ActionEventObject
     {
         [SerializeField] protected Knowlerge[] neededKnowlerges;
@@ -19,35 +16,27 @@ namespace Models.CharacterModel.Behaviour
         {
             var result = ResultType.Fail;
 
-            if (CanDo(character, out List<VariableContainer<BaseVariable>> variableContainers))
+            if (CanDo(character))
             {
-                foreach(var variableContainer in variableContainers)
+                foreach(var exchanger in variablesExchangers)
                 {
-                    //variableContainer.Exchange(changingVariables.Find(e=>e.Variable == variableContainer.Variable));
+                    exchanger.Exchange(character);
                 }
             }
 
             return result;
         }
 
-        private bool CanDo(ICharacter character, out List<VariableContainer<BaseVariable>> variableContainers)
+        private bool CanDo(ICharacter character)
         {
-            variableContainers = new List<VariableContainer<BaseVariable>>();
             foreach (var knowlerge in neededKnowlerges)
             {
                 if (!knowlerge.CanUse(character))
                 {
-                    variableContainers = null;
                     return false;
                 }
             }
-
-            //foreach (var changingVar in variablesExchangers)
-            //{
-            //    variableContainers.Add(character.FindContainer(changingVar.Variable));
-            //}
-
-            return variableContainers.Count == variablesExchangers.Count;
+            return true;
         }
     }
 }

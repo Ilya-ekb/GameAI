@@ -1,13 +1,15 @@
+using BehaviourTree.Data;
+
 using Models.CharacterModel;
 using System.Collections.Generic;
 
-namespace BehaviourTree
+namespace BehaviourTree.Core
 {
     public class NodeRandom : NodeCombiner
     {
         private NodeRoot lastRunningNode;
         
-        public NodeRandom() : base(NodeType.Random) { }
+        public NodeRandom(NodeData data) : base(NodeType.Random, data) { }
 
         public override ResultType Execute(ICharacter character)
         {

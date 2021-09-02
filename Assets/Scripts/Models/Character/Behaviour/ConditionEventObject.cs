@@ -1,9 +1,7 @@
-using BehaviourTree;
+using BehaviourTree.Core;
 using Models.CharacterModel;
 using Models.CharacterModel.Behaviour;
 using Models.CharacterModel.Conditions;
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Models
@@ -31,6 +29,7 @@ namespace Models
                     break;
                 }
             }
+            Debug.Log($"Condition {name} result {resultType}");
             return resultType;
         }
     }

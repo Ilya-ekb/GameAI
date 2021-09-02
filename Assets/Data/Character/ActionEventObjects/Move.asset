@@ -10,6 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c346be573497334a97cbb64da707fe0, type: 3}
-  m_Name: Move Action
+  m_Name: Move
   m_EditorClassIdentifier: 
-  neededKnowlerges: []
+  id: 
+  target: {fileID: 0}
