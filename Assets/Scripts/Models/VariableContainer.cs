@@ -7,11 +7,10 @@ using UnityEngine;
 namespace Models
 {
     [Serializable]
-    public class VariableContainer<T> where T : BaseVariable
+    public class VariableContainer<T> : BaseVariableContainer where T : BaseVariable
     {
-        public T Variable => variable;
-        public virtual float Value { get => value; set => this.value = Mathf.Max(value, variable.MinValue); }
-
+        public override BaseVariable Variable => variable;
+        public override float Value { get => value; internal set => this.value = Mathf.Max(value, variable.MinValue); }
 
         [SerializeField, HideInInspector] private string name;
         

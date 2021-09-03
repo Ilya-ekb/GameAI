@@ -23,7 +23,7 @@ namespace Models.CharacterModel.KnowlergeModel
 
         public virtual bool CanUse(ICharacter character)
         {
-            var characterKnowlerge = character.Knowlerges.Find(e => e.Variable.KnowlergeType == knowlergeType);
+            var characterKnowlerge = character.Knowlerges.Find(e => (e.Variable as Knowlerge).KnowlergeType == knowlergeType);
             if (characterKnowlerge != null)
             {
                 return EnoughResources(character) && EnoughConditions(character);  
@@ -35,7 +35,7 @@ namespace Models.CharacterModel.KnowlergeModel
         {
             foreach(var resource in needResources)
             {
-                var suitableResources = character.Resources.FindAll(e => e.Variable.ResoureAttributes == resource.Variable.ResoureAttributes);
+                var suitableResources = character.Resources.FindAll(e => (e.Variable as GameResource).ResoureAttributes == (resource.Variable as GameResource).ResoureAttributes);
                 if(suitableResources != null)
                 {
                     suitableResources = suitableResources.FindAll(e => e.Value >= resource.Value);

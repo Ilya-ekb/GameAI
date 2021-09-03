@@ -19,8 +19,10 @@ namespace Models.CharacterModel.Behaviour
             if ((character.Transform.position - targetPosition).magnitude > .1f && Quaternion.Angle(character.Transform.rotation, targetRotation) > 1f)
             {
                 moveAction?.Invoke(moveSpeed);
+                Debug.Log($"{name} action Running");
                 return ResultType.Running;
             }
+            Debug.Log($"{name} action Success");
             return ResultType.Success;
         }
     }
