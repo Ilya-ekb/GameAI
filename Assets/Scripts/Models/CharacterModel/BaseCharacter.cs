@@ -45,9 +45,9 @@ namespace Models.CharacterModel
 
         private IEnumerable<BaseVariableContainer> AllVariableContainers()
         {
-            var result = resources.Cast<BaseVariableContainer>().Concat(conditions.Cast<BaseVariableContainer>());
+            var result = resources.Concat(conditions.Cast<BaseVariableContainer>());
             
-            result = result.Concat(knowlerges.Cast<BaseVariableContainer>());
+            result = result.Concat(knowlerges);
 
             return result;
         }
