@@ -16,6 +16,6 @@ namespace Models.CharacterModel
         List<VariableContainer<GameResource>> Resources{ get; }
         List<VariableContainer<Knowlerge>> Knowlerges { get; }
 
-        VariableContainer<T> FindContainer<T>(T container) where T: BaseVariable;
+        BaseVariableContainer FindContainer<T>(T container) where T: BaseVariable;
     }
 }

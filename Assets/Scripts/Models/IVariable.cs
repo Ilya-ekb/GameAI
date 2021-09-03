@@ -25,15 +25,15 @@ namespace Models
 
     public static class CompairAction<T> where T : BaseVariable
     {
-        public static readonly Dictionary<CompairMode, Func<VariableContainer<T>, VariableContainer<T>, bool>> Compairs =
-            new Dictionary<CompairMode, Func<VariableContainer<T>, VariableContainer<T>, bool>>
+        public static readonly Dictionary<CompairMode, Func<BaseVariableContainer, VariableContainer<T>, bool>> Compairs =
+            new Dictionary<CompairMode, Func<BaseVariableContainer, VariableContainer<T>, bool>>
             {
                 {CompairMode.Equals, (a, b) => a.Value == b.Value },
-                {CompairMode.Greater, (a, b) => b.Value > a.Value },
-                {CompairMode.Less, (a, b) => b.Value < a.Value },
-                {CompairMode.NotEquals, (a, b) => b.Value != a.Value },
-                {CompairMode.GreaterOrEquals, (a, b) => b.Value >= a.Value },
-                {CompairMode.LessOrEquals, (a, b) => b.Value <= a.Value },
+                {CompairMode.Greater, (a, b) => a.Value > b.Value },
+                {CompairMode.Less, (a, b) => a.Value < b.Value },
+                {CompairMode.NotEquals, (a, b) => a.Value != b.Value },
+                {CompairMode.GreaterOrEquals, (a, b) => a.Value >= b.Value },
+                {CompairMode.LessOrEquals, (a, b) => a.Value <= b.Value },
             };
     }
 }
