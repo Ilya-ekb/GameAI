@@ -26,41 +26,24 @@ namespace Models.CharacterModel.KnowlergeModel
             var characterKnowlerge = character.Knowlerges.Find(e => (e.Variable as Knowlerge).KnowlergeType == knowlergeType);
             if (characterKnowlerge != null)
             {
-                return EnoughResources(character) && EnoughConditions(character);  
+                return Enough(character, needResources) && 
+                       Enough(character, needKnowlerges) && 
+                       Enough(character, needConditions);  
             }
             return false;
         }
 
-        private bool EnoughResources(ICharacter character)
+        private bool Enough<T>(ICharacter character, List<CompairContainer<T>> compairContainer)  where T : BaseVariable
         {
-            foreach(var resource in needResources)
+            var result = true;
+            foreach(var compairable in compairContainer)
             {
-                var suitableResources = character.Resources.FindAll(e => (e.Variable as GameResource).ResoureAttributes == (resource.Variable as GameResource).ResoureAttributes);
-                if(suitableResources != null)
-                {
-                    suitableResources = suitableResources.FindAll(e => e.Value >= resource.Value);
-                    if(suitableResources == null && suitableResources.Count > 0)
-                    {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-
-        private bool EnoughConditions(ICharacter character)
-        {
-            var result = false;
-            foreach(var condition in needConditions)
-            {
-                var characterCondition = character.FindContainer(condition.Variable);
+                var characterCondition = character.FindContainer(compairable.Variable);
                 if(characterCondition != null)
                 {
-                    result = CompairAction<Condition>.Compairs[condition.CompairMode].Invoke(characterCondition, condition);
-
-                    if (!result)
+                    if (!CompairAction<T>.Compairs[compairable.CompairMode].Invoke(characterCondition, compairable))
                     {
-                        return result;
+                        return false;
                     }
                 }
             }

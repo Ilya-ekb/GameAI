@@ -11,6 +11,8 @@ namespace Models.CharacterModel.Behaviour
         public Vector3 Velocity => agent.velocity;
         public Vector3 Destination => agent.destination;
 
+        public Vector3 CurrentPosition => agent.transform.position + Vector3.down * (agent.height / 2);
+
         private readonly NavMeshAgent agent;
 
         public NavMeshMoveBehaviour(NavMeshAgent agent)

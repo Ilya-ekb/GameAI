@@ -27,12 +27,12 @@ public class Student : MovableCharacter
 
     protected override void Update()
     {
-        if (FindContainer(Food).Value > 0 && FindContainer(Energy).Value <= 50)
+        if (FindContainer(Food).Value > 0 && FindContainer(Energy).Value <= 90 && FindContainer(Bread).Value <= 0)
         {
             SetTarget(EatTransform.position);
         }
 
-        if (FindContainer(Food).Value == 0 && FindContainer(Energy).Value <= 50 && FindContainer(Bread).Value > 0)
+        if (FindContainer(Food).Value == 0 && FindContainer(Energy).Value <= 90)
         {
             SetTarget(CookTransform.position);
         }
@@ -42,8 +42,7 @@ public class Student : MovableCharacter
         {
             foreach (var condition in Conditions)
             {
-                condition.Value -= .2f;
-                Debug.Log($"{condition.Variable.name} = {condition.Value}");
+                condition.Value -= .05f;
             }
 
             timer = Period;

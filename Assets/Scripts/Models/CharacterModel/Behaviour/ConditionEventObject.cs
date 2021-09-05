@@ -13,6 +13,10 @@ namespace Models
 
         public override ResultType Do(ICharacter character)
         {
+            if(checkingCondtions == null || checkingCondtions.Length == 0)
+            {
+                return ResultType.Fail;
+            }
             ResultType resultType = ResultType.Success;
             foreach (var checkingCondition in checkingCondtions)
             {

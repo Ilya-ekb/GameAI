@@ -16,13 +16,13 @@ MonoBehaviour:
   maxChangeValue: 0
   minChangeValue: 0
   needResources:
-  - name: System.Collections.Generic.List`1[Models.Resources.ResourceAttribute]
+  - name: Food > 0
     variable: {fileID: 11400000, guid: ca36e14d8513dfd4c86608f4a94ebe5e, type: 2}
-    compairMode: 2
     value: 0
+    compairMode: 2
   needConditions:
-  - name: System.Collections.Generic.List`1[Models.CharacterModel.Conditions.ConditionAttribyte]
+  - name: Enegy >= 0
     variable: {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}
-    compairMode: 2
     value: 0
-  needKnolerges: []
+    compairMode: 4
+  needKnowlerges: []

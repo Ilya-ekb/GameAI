@@ -22,6 +22,7 @@ namespace Models.CharacterModel.Behaviour
                 {
                     exchanger.Exchange(character);
                 }
+                result = ResultType.Running;
             }
 
             return result;

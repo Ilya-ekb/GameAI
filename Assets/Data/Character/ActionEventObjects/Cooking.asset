@@ -29,7 +29,7 @@ MonoBehaviour:
   - sourceContainer:
       name: 
       variable: {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}
-      value: 0.1
+      value: 0.05
     recipientContainers:
     - name: 
       variable: {fileID: 11400000, guid: ca36e14d8513dfd4c86608f4a94ebe5e, type: 2}

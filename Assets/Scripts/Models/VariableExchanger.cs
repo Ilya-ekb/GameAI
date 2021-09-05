@@ -19,8 +19,15 @@ namespace Models
             var source = character.FindContainer(sourceContainer.Variable);
             foreach (var recipientContainer in recipientContainers)
             {
+                var recCharCont = character.FindContainer(recipientContainer.Variable);
+
                 var sourceValue = Mathf.Min(source.Value, sourceContainer.Value);
-                character.FindContainer(recipientContainer.Variable).Value += recipientContainer.GetValue(sourceValue);
+                var recValue = recipientContainer.GetValue(sourceValue);
+
+                source.Value = Mathf.Clamp(source.Value - sourceValue, source.Variable.MinValue, source.Variable.MaxValue);
+                recCharCont.Value =  Mathf.Clamp(recCharCont.Value + recValue, recCharCont.Variable.MinValue, recCharCont.Variable.MaxValue);
+
+                Debug.Log($"Exchange {source.Variable.name} value {sourceValue} on {recCharCont.Variable.name} value {recValue}");
             }
         }
     }
