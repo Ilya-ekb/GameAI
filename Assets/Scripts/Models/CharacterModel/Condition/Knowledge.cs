@@ -5,43 +5,43 @@ using UnityEngine;
 
 namespace Models.CharacterModel.KnowlergeModel
 {
-    [CreateAssetMenu(fileName = "Knowlerge", menuName ="Character/Knowlerge")]
-    public class Knowlerge : BaseVariable
+    [CreateAssetMenu(fileName = "Knowledge", menuName ="Character/Knowledge")]
+    public class Knowledge : BaseVariable
     {
-        public KnowlergeType KnowlergeType => knowlergeType;
+        private KnowledgeType KnowledgeType => knowledgeType;
 
         public override float MaxValue => maxChangeValue;
         public override float MinValue => minChangeValue;
 
-        [SerializeField] private KnowlergeType knowlergeType;
+        [SerializeField] private KnowledgeType knowledgeType;
         [SerializeField] private float maxChangeValue;
         [SerializeField] private float minChangeValue;
 
         [SerializeField] private List<CompairContainer<GameResource>> needResources;
         [SerializeField] private List<CompairContainer<Condition>> needConditions;
-        [SerializeField] private List<CompairContainer<Knowlerge>> needKnowlerges;
+        [SerializeField] private List<CompairContainer<Knowledge>> needKnowledge;
 
         public virtual bool CanUse(ICharacter character)
         {
-            var characterKnowlerge = character.Knowlerges.Find(e => (e.Variable as Knowlerge).KnowlergeType == knowlergeType);
-            if (characterKnowlerge != null)
+            var characterKnowledge = character.Knowledge.Find(e => (e.Variable as Knowledge).KnowledgeType == knowledgeType);
+            if (characterKnowledge != null)
             {
                 return Enough(character, needResources) && 
-                       Enough(character, needKnowlerges) && 
+                       Enough(character, needKnowledge) && 
                        Enough(character, needConditions);  
             }
             return false;
         }
 
-        private bool Enough<T>(ICharacter character, List<CompairContainer<T>> compairContainer)  where T : BaseVariable
+        private bool Enough<T>(ICharacter character, List<CompairContainer<T>> compareContainer)  where T : BaseVariable
         {
             var result = true;
-            foreach(var compairable in compairContainer)
+            foreach(var comparable in compareContainer)
             {
-                var characterCondition = character.FindContainer(compairable.Variable);
+                var characterCondition = character.FindContainer(comparable.Variable);
                 if(characterCondition != null)
                 {
-                    if (!CompairAction<T>.Compairs[compairable.CompairMode].Invoke(characterCondition, compairable))
+                    if (!CompairAction<T>.Compairs[comparable.CompairMode].Invoke(characterCondition, comparable))
                     {
                         return false;
                     }
@@ -63,7 +63,7 @@ namespace Models.CharacterModel.KnowlergeModel
             };
             needConditions.ForEach(e => e.Update($"{e.Variable?.name} {comp[e.CompairMode]} {e.Value}"));
             needResources.ForEach(e => e.Update($"{e.Variable?.name} {comp[e.CompairMode]} {e.Value}"));
-            needKnowlerges.ForEach(e => e.Update($"{e.Variable?.name} {comp[e.CompairMode]} {e.Value}"));
+            needKnowledge.ForEach(e => e.Update($"{e.Variable?.name} {comp[e.CompairMode]} {e.Value}"));
         }
     }
      

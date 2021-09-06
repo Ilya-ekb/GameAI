@@ -14,7 +14,7 @@ namespace Models.CharacterModel
         Transform Transform { get; }
         List<VariableContainer<Condition>> Conditions { get; }
         List<VariableContainer<GameResource>> Resources{ get; }
-        List<VariableContainer<Knowlerge>> Knowlerges { get; }
+        List<VariableContainer<Knowledge>> Knowledge { get; }
 
         BaseVariableContainer FindContainer<T>(T container) where T: BaseVariable;
     }

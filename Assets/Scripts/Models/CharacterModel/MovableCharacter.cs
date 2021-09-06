@@ -1,6 +1,4 @@
 using UnityEngine;
-using System;
-using Unity.VisualScripting;
 
 namespace Models.CharacterModel
 {

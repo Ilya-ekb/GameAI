@@ -8,7 +8,7 @@ namespace Models.CharacterModel.Behaviour
     [System.Serializable, CreateAssetMenu(fileName = "Exchange Variable Action", menuName = "Character/Behaviour/Action Event Object/Exchange Variable Action")]
     public class ExchangeVariableAction : ActionEventObject
     {
-        [SerializeField] protected Knowlerge[] neededKnowlerges;
+        [SerializeField] protected Knowledge[] neededKnowledge;
 
         [SerializeField] private List<VariableExchanger> variablesExchangers;
 
@@ -30,7 +30,7 @@ namespace Models.CharacterModel.Behaviour
 
         private bool CanDo(ICharacter character)
         {
-            foreach (var knowlerge in neededKnowlerges)
+            foreach (var knowlerge in neededKnowledge)
             {
                 if (!knowlerge.CanUse(character))
                 {

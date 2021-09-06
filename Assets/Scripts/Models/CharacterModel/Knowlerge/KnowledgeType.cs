@@ -1,7 +1,7 @@
 
 namespace Models.CharacterModel.KnowlergeModel
 {
-    public enum KnowlergeType 
+    public enum KnowledgeType 
     {
         None,
         Treatment,

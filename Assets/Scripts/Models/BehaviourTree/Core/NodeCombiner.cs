@@ -1,5 +1,5 @@
 using BehaviourTree.Data;
-using BehaviourTree.Realiser;
+using BehaviourTree.Implementor;
 
 namespace BehaviourTree.Core
 {
@@ -14,7 +14,7 @@ namespace BehaviourTree.Core
             {
                 foreach (var child in data.ChildNodeDataList)
                 {
-                    AddNode(BehaviourRealiser.GetBehaviourNode(child));
+                    AddNode(BehaviourImplementor.GetBehaviourNode(child));
                 }
             }
         }

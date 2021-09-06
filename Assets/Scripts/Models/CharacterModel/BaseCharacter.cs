@@ -1,6 +1,6 @@
 using BehaviourTree.Core;
 using BehaviourTree.Data;
-using BehaviourTree.Realiser;
+using BehaviourTree.Implementor;
 
 using Models.CharacterModel.Conditions;
 using Models.CharacterModel.KnowlergeModel;
@@ -15,13 +15,14 @@ namespace Models.CharacterModel
     public abstract class BaseCharacter : MonoBehaviour, ICharacter
     {
         public List<VariableContainer<GameResource>> Resources => resources;
-        public List<VariableContainer<Knowlerge>> Knowlerges => knowlerges;
+        public List<VariableContainer<Knowledge>> Knowledge => knowledge;
+
         public List<VariableContainer<Condition>> Conditions => conditions;
         public Transform Transform => transform;
 
         [SerializeField] private NodeAsset behaviourModelData;
         [SerializeField] private List<VariableContainer<GameResource>> resources;
-        [SerializeField] private List<VariableContainer<Knowlerge>> knowlerges;
+        [SerializeField] private List<VariableContainer<Knowledge>> knowledge;
         [SerializeField] private List<VariableContainer<Condition>> conditions;
 
         private IEnumerable<BaseVariableContainer> commonContainers;
@@ -30,7 +31,7 @@ namespace Models.CharacterModel
         protected virtual void Start()
         {
             commonContainers = AllVariableContainers();
-            behaviour =  BehaviourRealiser.GetBehaviourNode(behaviourModelData.NodeData);
+            behaviour =  BehaviourImplementor.GetBehaviourNode(behaviourModelData.NodeData);
         }
 
         protected virtual void Update()
@@ -47,7 +48,7 @@ namespace Models.CharacterModel
         {
             var result = resources.Concat(conditions.Cast<BaseVariableContainer>());
             
-            result = result.Concat(knowlerges);
+            result = result.Concat(knowledge);
 
             return result;
         }

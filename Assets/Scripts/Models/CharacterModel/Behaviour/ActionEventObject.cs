@@ -6,13 +6,13 @@ namespace Models.CharacterModel.Behaviour
 {
     public abstract class ActionEventObject : BaseEventObject
     {
-        protected float ComputeChangeValue(ICharacter character, Knowlerge[] knowlerges)
+        protected float ComputeChangeValue(ICharacter character, Knowledge[] knowlerges)
         {
             float result = 0.0f;
-            foreach (var knowlerge in knowlerges)
+            foreach (var knowledge in knowlerges)
             {
-                var knowlergeContainer = character.FindContainer(knowlerge);
-                result += knowlergeContainer.Value;
+                var knowledgeContainer = character.FindContainer(knowledge);
+                result += knowledgeContainer.Value;
             }
 
             Debug.Log($"Action {name} result {result}");

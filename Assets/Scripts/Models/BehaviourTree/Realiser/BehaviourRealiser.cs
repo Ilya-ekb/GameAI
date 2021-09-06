@@ -2,9 +2,9 @@ using BehaviourTree.Core;
 using BehaviourTree.Data;
 using Models.CharacterModel;
 
-namespace BehaviourTree.Realiser
+namespace BehaviourTree.Implementor
 {
-    public static class BehaviourRealiser
+    public static class BehaviourImplementor
     {
         public static NodeRoot GetBehaviourNode(NodeData data)
         {
