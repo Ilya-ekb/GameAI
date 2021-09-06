@@ -282,7 +282,7 @@ namespace Assets.Editor
                 style.normal.textColor = Color.red;
                 style.fontSize = 8;
                 style.fontStyle = FontStyle.Bold;
-                Handles.Label(endPos + Vector3.down * 15 + Vector3.left * end.width/2.1f, index.ToString(), style);
+                Handles.Label(endPos + Vector3.down + Vector3.left * end.width/1.8f, index.ToString(), style);
             }
             Handles.DrawLine(startPos, endPos);
         }
