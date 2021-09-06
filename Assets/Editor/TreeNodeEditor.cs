@@ -110,7 +110,8 @@ namespace Assets.Editor
             for (int i = 0; i < nodeRootList?.Count; i++)
             {
                 NodeData nodeRoot = nodeRootList[i];
-                nodeRoot.WindowRect = GUI.Window(i, nodeRoot.WindowRect, DrawNodeWindow, string.IsNullOrEmpty(nodeRoot.Name) ? nodeRoot.NodeType.ToString() + " node" : nodeRoot.Name);
+                var showName = string.IsNullOrEmpty(nodeRoot.Name) ? nodeRoot.NodeType.ToString() + " node " : nodeRoot.Name;
+                nodeRoot.WindowRect = GUI.Window(i, nodeRoot.WindowRect, DrawNodeWindow, showName);
 
                 DrawToChildCurve(nodeRoot);
             }
@@ -173,6 +174,13 @@ namespace Assets.Editor
             {
                 nodeRoot.Action = (ConditionEventObject)EditorGUILayout.ObjectField(nodeRoot.Action, typeof(ConditionEventObject));
             }
+            if(nodeRoot.NodeType == NodeType.Sequence)
+            {
+                for(var i = 0; i < nodeRoot.ChildNodeDataList.Count; i++)
+                {
+                    var nodeChild = nodeRoot.ChildNodeDataList[i];
+                }
+            }
             // The window that can be dragged
             GUI.DragWindow();
 
@@ -225,7 +233,6 @@ namespace Assets.Editor
             NodeData nodeSelect = new NodeData();
             nodeSelect.WindowRect = new Rect(mousePosition.x, mousePosition.y, 120, 100);
             nodeRootList.Add(nodeSelect);
-            nodeSelect.IsRootNode = nodeRootList.Count == 1;
         }
 
         // Connect child nodes
@@ -242,7 +249,6 @@ namespace Assets.Editor
             {
                 nodeRootList[selectIndex].Release();
                 nodeRootList.Remove(selectNode);
-                nodeRootList.ForEach((a) => a.IsRootNode = nodeRootList.Count == 1);
             }
         }
 
@@ -261,16 +267,23 @@ namespace Assets.Editor
                     nodeRoot.ChildNodeDataList.RemoveAt(i);
                     continue;
                 }
-                DrawNodeCurve(nodeRoot.WindowRect, childNode.WindowRect);
+                DrawNodeCurve(nodeRoot.WindowRect, childNode.WindowRect, i);
             }
         }
 
         // draw line
-        public static void DrawNodeCurve(Rect start, Rect end)
+        public static void DrawNodeCurve(Rect start, Rect end, int index = -1)
         {
             Vector3 startPos = new Vector3(start.x + start.width / 2, start.y + start.height, 0);
             Vector3 endPos = new Vector3(end.x + end.width / 2, end.y, 0);
-
+            if(index != -1)
+            {
+                GUIStyle style = new GUIStyle();
+                style.normal.textColor = Color.red;
+                style.fontSize = 8;
+                style.fontStyle = FontStyle.Bold;
+                Handles.Label(endPos + Vector3.down * 15 + Vector3.left * end.width/2.1f, index.ToString(), style);
+            }
             Handles.DrawLine(startPos, endPos);
         }
     }

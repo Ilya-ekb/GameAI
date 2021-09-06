@@ -8,9 +8,11 @@ namespace BehaviourTree.Data
     [System.Serializable]
     public class NodeData
     {
+        public int Index { get; set; }
         public bool IsRootNode { get => isRootNode; set => isRootNode = value; }
         public NodeType NodeType { get => nodeType; set => nodeType = value; }
         public BaseEventObject Action { get => action; set => action = value; }
+        public NodeData ParentNode { get; set; }
         public List<NodeData> ChildNodeDataList => childNodeDataList;
         public string Name { get => name; set => name = value; }
         public string Description { get => description; set => description = value; }
