@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: FoodGreates0
   m_EditorClassIdentifier: 
   id: 
-  checkingCondtions:
+  checkingConditions:
   - name: 
     variable: {fileID: 11400000, guid: ca36e14d8513dfd4c86608f4a94ebe5e, type: 2}
-    compairMode: 2
     value: 0
+    compareMode: 2

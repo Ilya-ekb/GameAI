@@ -2,6 +2,7 @@ using BehaviourTree.Core;
 using Models.CharacterModel.KnowledgeModel;
 using System.Collections.Generic;
 using System.Linq;
+using Models.Resources;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour
@@ -19,11 +20,16 @@ namespace Models.CharacterModel.Behaviour
 
             if (CanDo(character))
             {
-                foreach(var exchanger in variablesExchangers)
+                foreach (var exchanger in variablesExchangers)
                 {
                     exchanger.Exchange(character);
                 }
+
                 result = ResultType.Running;
+            }
+            else
+            {
+                Debug.Log($"{character} can't do {name}");
             }
 
             return result;

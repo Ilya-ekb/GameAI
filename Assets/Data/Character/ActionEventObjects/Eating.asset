@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Eating
   m_EditorClassIdentifier: 
   id: 
-  neededKnowlerges:
+  neededKnowledge:
   - {fileID: 11400000, guid: 02b500d04d783ef468eb28ff80602ddd, type: 2}
   variablesExchangers:
   - sourceContainer:
@@ -24,5 +24,5 @@ MonoBehaviour:
     - name: 
       variable: {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}
       value: 0
-      exchangeCoeficient: 0.6
+      exchangeCoefficient: 0.8
       actionSign: 0

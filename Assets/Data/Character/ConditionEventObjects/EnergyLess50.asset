@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EnergyLess50
   m_EditorClassIdentifier: 
   id: 
-  checkingCondtions:
+  checkingConditions:
   - name: 
     variable: {fileID: 11400000, guid: 9ed81a5070ee87742936371fe7cda086, type: 2}
     value: 90
-    compairMode: 5
+    compareMode: 5

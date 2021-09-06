@@ -613,6 +613,26 @@ PrefabInstance:
       propertyPath: CookTransform
       value: 
       objectReference: {fileID: 1702321251}
+    - target: {fileID: 4999275213549206660, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
+      propertyPath: knowledge.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999275213549206660, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
+      propertyPath: knowledge.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999275213549206660, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
+      propertyPath: knowledge.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4999275213549206660, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
+      propertyPath: knowledge.Array.data[0].variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 1a42da09da6120941bdea37edadf179c, type: 2}
+    - target: {fileID: 4999275213549206660, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
+      propertyPath: knowledge.Array.data[1].variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 02b500d04d783ef468eb28ff80602ddd, type: 2}
     - target: {fileID: 4999275213549206667, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
       propertyPath: m_RootOrder
       value: 3

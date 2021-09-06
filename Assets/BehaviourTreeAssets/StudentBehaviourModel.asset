@@ -44,7 +44,7 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 268
+            x: 226
             y: 501
             width: 120
             height: 100
@@ -57,8 +57,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 400
-            y: 501
+            x: 361
+            y: 499
             width: 120
             height: 100
           isRelease: 0
@@ -119,8 +119,8 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 474
-          y: 363
+          x: 462
+          y: 356
           width: 120
           height: 100
         isRelease: 0
@@ -132,8 +132,8 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 604
-          y: 362
+          x: 605
+          y: 356
           width: 120
           height: 100
         isRelease: 0

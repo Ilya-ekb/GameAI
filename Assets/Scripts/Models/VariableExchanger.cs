@@ -23,7 +23,7 @@ namespace Models
 
                 var sourceValue = Mathf.Min(source.Value, sourceContainer.Value);
                 var recValue = recipientContainer.GetValue(sourceValue);
-
+                
                 source.Value = Mathf.Clamp(source.Value - sourceValue, source.Variable.MinValue, source.Variable.MaxValue);
                 recCharCont.Value =  Mathf.Clamp(recCharCont.Value + recValue, recCharCont.Variable.MinValue, recCharCont.Variable.MaxValue);
 
