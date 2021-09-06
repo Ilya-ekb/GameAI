@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5d98dff8c6b5dd4492837dea704fd7d, type: 3}
   m_Name: StudentBehaviourModel
   m_EditorClassIdentifier: 
+  directoryPath: Assets/BehaviourTreeAssets
   nodeValue:
     isRootNode: 1
     nodeType: 1

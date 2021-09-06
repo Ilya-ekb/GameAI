@@ -12,11 +12,11 @@ namespace Models.CharacterModel.Conditions
 
     }
 
-    public enum ConditionAttribyte
+    public enum ConditionAttribute
     {
-        Healty,
-        Enegry,
+        Healthy,
+        Energy,
         Sentiment,
-        Knowlerge
+        Knowledge
     }
 }

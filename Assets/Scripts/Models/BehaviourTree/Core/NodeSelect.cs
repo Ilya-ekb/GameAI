@@ -21,18 +21,18 @@ namespace BehaviourTree.Core
         /// <returns></returns>
         public override ResultType Execute(ICharacter character)
         {
-            int index = 0;
+            var index = 0;
             if (lastRunningNode != null)
             {
                 index = lastRunningNode.NodeIndex;
             }
             lastRunningNode = null;
 
-            ResultType result = ResultType.Fail;
+            var result = ResultType.Fail;
 
-            for (int i = index; i < nodeChildList.Count; i++)
+            for (var i = index; i < nodeChildList.Count; i++)
             {
-                NodeRoot nodeRoot = nodeChildList[i];
+                var nodeRoot = nodeChildList[i];
                 result = nodeRoot.Execute(character);
                 if (result == ResultType.Fail)
                 {

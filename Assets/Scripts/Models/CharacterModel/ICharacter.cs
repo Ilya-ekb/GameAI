@@ -1,7 +1,7 @@
 using BehaviourTree.Core;
 
 using Models.CharacterModel.Conditions;
-using Models.CharacterModel.KnowlergeModel;
+using Models.CharacterModel.KnowledgeModel;
 using Models.Resources;
 using System.Collections.Generic;
 

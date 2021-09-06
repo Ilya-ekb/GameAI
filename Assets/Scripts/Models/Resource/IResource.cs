@@ -4,7 +4,7 @@ namespace Models.Resources
 {
     public interface IResource : IVariable
     {
-        IEnumerable<ResourceAttribute> ResoureAttributes { get; }
+        IEnumerable<ResourceAttribute> ResourceAttributes { get; }
     }
 
     public enum ResourceAttribute

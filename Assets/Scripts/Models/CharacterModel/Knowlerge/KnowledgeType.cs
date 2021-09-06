@@ -1,5 +1,5 @@
 
-namespace Models.CharacterModel.KnowlergeModel
+namespace Models.CharacterModel.KnowledgeModel
 {
     public enum KnowledgeType 
     {

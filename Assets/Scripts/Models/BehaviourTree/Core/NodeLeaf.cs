@@ -10,20 +10,16 @@ namespace BehaviourTree.Core
     /// </summary>
     public abstract class NodeLeaf : NodeRoot
     {
-        public IAction Action { get => action; set => action = value; }
-        
-        private IAction action;
-        
-        public NodeLeaf(NodeType nodeType, NodeData data) : base(nodeType) 
-        {
-            action = data.Action;
-        }
+        public IAction Action { get; set; }
 
+        protected NodeLeaf(NodeType nodeType, NodeData data) : base(nodeType) 
+        {
+            Action = data.Action;
+        }
 
         public override ResultType Execute(ICharacter character)
         {
-            return action is null ? ResultType.Fail : action.Do(character);
+            return Action?.Do(character) ?? ResultType.Fail;
         }
-
-}
+    }
 }

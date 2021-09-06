@@ -14,7 +14,7 @@ namespace Models.Resources
         public override float MaxValue => maxValue;
         public override float MinValue => minValue;
 
-        public IEnumerable<ResourceAttribute> ResoureAttributes => resourceAttributes;
+        public IEnumerable<ResourceAttribute> ResourceAttributes => resourceAttributes;
 
         [SerializeField] private List<ResourceAttribute> resourceAttributes;
         [SerializeField] private float maxValue;

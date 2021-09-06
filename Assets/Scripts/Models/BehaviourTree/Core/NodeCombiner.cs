@@ -8,7 +8,7 @@ namespace BehaviourTree.Core
     /// </summary>
     public abstract class NodeCombiner : NodeRoot
     {
-        public NodeCombiner(NodeType nodeType, NodeData data) : base(nodeType) 
+        protected NodeCombiner(NodeType nodeType, NodeData data) : base(nodeType) 
         {
             if(data?.ChildNodeDataList != null)
             {

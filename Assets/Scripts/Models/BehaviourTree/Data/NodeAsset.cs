@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 using UnityEditor;
 
 using UnityEngine;
@@ -11,6 +11,8 @@ namespace BehaviourTree.Data
     [Serializable]
     public class NodeAsset : ScriptableObject
     {
+        [SerializeField] private string directoryPath = "Assets/BehaviourTreeAssets";
+
         public NodeData NodeData => nodeValue;
         [SerializeField] private NodeData nodeValue = null;
 
@@ -20,7 +22,6 @@ namespace BehaviourTree.Data
             {
                 this.name = name;
                 nodeValue = rootNode;
-                string directoryPath = "Assets/BehaviourTreeAssets";
                 if (!Directory.Exists(directoryPath))
                 {
                     Directory.CreateDirectory(directoryPath);
@@ -42,24 +43,21 @@ namespace BehaviourTree.Data
             }
         }
 
-        public List<NodeData> ReturnNodeList(NodeData nodeValue)
+        public List<NodeData> ReturnNodeList(NodeData data)
         {
             var result = new List<NodeData>();
-            foreach (var data in nodeValue.ChildNodeDataList)
+            foreach (var list in data.ChildNodeDataList.Select(ReturnNodeList).Where(list => list != null))
             {
-                var list = ReturnNodeList(data);
-                if (list != null)
-                {
-                    result.AddRange(list);
-                }
+                result.AddRange(list);
             }
-            if (nodeValue.ChildNodeDataList.Count > 0)
+
+            if (data.ChildNodeDataList.Count <= 0)
             {
-                result.AddRange(nodeValue.ChildNodeDataList);
-                result.Add(nodeValue);
-                return result;
+                return null;
             }
-            return null;
+            result.AddRange(data.ChildNodeDataList);
+            result.Add(data);
+            return result;
         }
     }
 }

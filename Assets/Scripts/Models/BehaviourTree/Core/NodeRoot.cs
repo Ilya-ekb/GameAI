@@ -9,31 +9,22 @@ namespace BehaviourTree.Core
     /// </summary>
     public abstract class NodeRoot
     {
-        public int NodeIndex
-        {
-            get => nodeIndex;
-            set => nodeIndex = value;
-        }
+        /// <summary>
+        /// Node index in sequence
+        /// </summary>
+        public int NodeIndex { get; set; }
 
         /// <summary>
         /// Node type
         /// </summary>
         protected NodeType nodeType;
-        /// <summary>
-        /// Node index in sequence
-        /// </summary>
-        private int nodeIndex;
 
         protected List<NodeRoot> nodeChildList = new List<NodeRoot>();
 
-        public NodeRoot(NodeType nodeType)
+        protected NodeRoot(NodeType nodeType)
         {
             this.nodeType = nodeType;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>Return type of execution result</returns>
 
         /// <summary>
         /// Current character execution node abstract method

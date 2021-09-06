@@ -17,11 +17,10 @@ namespace BehaviourTree.Core
         /// <returns></returns>
         public override ResultType Execute(ICharacter character)
         {
-            ResultType result = ResultType.Fail;
-            int successCount = 0;
-            for(int i = 0; i < nodeChildList.Count; i++)
+            var result = ResultType.Fail;
+            var successCount = 0;
+            foreach (var nodeRoot in nodeChildList)
             {
-                NodeRoot nodeRoot = nodeChildList[i];
                 result = nodeRoot.Execute(character);
 
                 if(result == ResultType.Fail)

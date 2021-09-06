@@ -1,6 +1,7 @@
 using BehaviourTree.Core;
-using Models.CharacterModel.KnowlergeModel;
+using Models.CharacterModel.KnowledgeModel;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour
@@ -30,14 +31,7 @@ namespace Models.CharacterModel.Behaviour
 
         private bool CanDo(ICharacter character)
         {
-            foreach (var knowlerge in neededKnowledge)
-            {
-                if (!knowlerge.CanUse(character))
-                {
-                    return false;
-                }
-            }
-            return true;
+            return neededKnowledge.All(knowledge => knowledge.CanUse(character));
         }
     }
 }

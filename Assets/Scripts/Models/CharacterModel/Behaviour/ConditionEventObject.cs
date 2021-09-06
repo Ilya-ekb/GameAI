@@ -9,16 +9,16 @@ namespace Models
     [System.Serializable, CreateAssetMenu(fileName = "Condition Event Object", menuName = "Character/Behaviour/Condition Event Object")]
     public class ConditionEventObject : BaseEventObject
     {
-        [SerializeField] protected CompairContainer<BaseVariable>[] checkingCondtions;
+        [SerializeField] protected CompareContainer<BaseVariable>[] checkingConditions;
 
         public override ResultType Do(ICharacter character)
         {
-            if(checkingCondtions == null || checkingCondtions.Length == 0)
+            if(checkingConditions == null || checkingConditions.Length == 0)
             {
                 return ResultType.Fail;
             }
-            ResultType resultType = ResultType.Success;
-            foreach (var checkingCondition in checkingCondtions)
+            var resultType = ResultType.Success;
+            foreach (var checkingCondition in checkingConditions)
             {
                 var characterCondition = character.FindContainer(checkingCondition.Variable);
                 if (characterCondition == null)
@@ -27,11 +27,12 @@ namespace Models
                     break;
                 }
 
-                if (!CompairAction<BaseVariable>.Compairs[checkingCondition.CompairMode].Invoke(characterCondition, checkingCondition))
+                if (CompareAction<BaseVariable>.Compares[checkingCondition.CompareMode].Invoke(characterCondition, checkingCondition))
                 {
-                    resultType = ResultType.Fail;
-                    break;
+                    continue;
                 }
+                resultType = ResultType.Fail;
+                break;
             }
             Debug.Log($"Condition {name} result {resultType}");
             return resultType;

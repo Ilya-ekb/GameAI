@@ -8,15 +8,15 @@ namespace Models
     [Serializable]
     public class ExchangeContainer<T> : VariableContainer<T> where T : BaseVariable
     {
-        [SerializeField] private float exchangeCoeficient;
+        [SerializeField] private float exchangeCoefficient;
         [SerializeField] private ActionSign actionSign;
         public float GetValue(float incomeValue)
         {
-            var value = incomeValue * exchangeCoeficient;
+            var value = incomeValue * exchangeCoefficient;
             return actionSign == ActionSign.Add ? value : -value;
         }
 
-        enum ActionSign
+        private enum ActionSign
         {
             Add,
             Sub,

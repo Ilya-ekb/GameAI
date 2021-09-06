@@ -13,16 +13,16 @@ namespace BehaviourTree.Core
 
         public override ResultType Execute(ICharacter character)
         {
-            List<int> randomList = GetRandom(nodeChildList.Count);
+            var randomList = GetRandom(nodeChildList.Count);
             
-            int index = -1;
+            var index = -1;
             if(lastRunningNode != null)
             {
                 index = lastRunningNode.NodeIndex;
             }
             lastRunningNode = null;
 
-            ResultType result = ResultType.Fail;
+            var result = ResultType.Fail;
             while (randomList.Count > 0)
             {
                 if (index > 0)
@@ -30,7 +30,7 @@ namespace BehaviourTree.Core
                     index = randomList[randomList.Count - 1];
                     randomList.RemoveAt(randomList.Count - 1);
                 }
-                NodeRoot nodeRoot = nodeChildList[index];
+                var nodeRoot = nodeChildList[index];
                 index = -1;
                 result = nodeRoot.Execute(character);
 
@@ -52,19 +52,19 @@ namespace BehaviourTree.Core
             return result;
         }
 
-        private List<int> GetRandom(int count)
+        private static List<int> GetRandom(int count)
         {
-            List<int> resultList = new List<int>(count);
-            List<int> tempList = new List<int>(count);
+            var resultList = new List<int>(count);
+            var tempList = new List<int>(count);
             for(int i =0; i < count; i++)
             {
                 tempList.Add(i);
             }
 
-            System.Random random = new System.Random();
+            var random = new System.Random();
             while (tempList.Count > 0)
             {
-                int index = random.Next(0, (tempList.Count - 1));
+                var index = random.Next(0, (tempList.Count - 1));
                 resultList.Add(tempList[index]);
                 tempList.RemoveAt(index);
             }

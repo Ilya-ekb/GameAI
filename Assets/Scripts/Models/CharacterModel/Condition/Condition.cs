@@ -8,11 +8,11 @@ namespace Models.CharacterModel.Conditions
     [CreateAssetMenu(fileName = "Condition", menuName = "Character/Condition")]
     public class Condition : BaseVariable
     {
-        public IEnumerable<ConditionAttribyte> ConditionAttributes => conditionAttribytes;
+        public IEnumerable<ConditionAttribute> ConditionAttributes => conditionAttributes;
         public override float MaxValue => maxValue;
         public override float MinValue => minValue;
 
-        [SerializeField] private List<ConditionAttribyte> conditionAttribytes;
+        [SerializeField] private List<ConditionAttribute> conditionAttributes;
         [SerializeField] private float maxValue;
         [SerializeField] private float minValue;
 
