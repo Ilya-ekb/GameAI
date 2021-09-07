@@ -7,7 +7,8 @@ using Models.CharacterModel.KnowledgeModel;
 using Models.Resources;
 using System.Collections.Generic;
 using System.Linq;
-
+using Models.CharacterModel.Behaviour;
+using Models.CharacterModel.Data;
 using UnityEngine;
 
 namespace Models.CharacterModel
@@ -17,10 +18,18 @@ namespace Models.CharacterModel
         public List<VariableContainer<GameResource>> Resources => resources;
         public List<VariableContainer<Knowledge>> Knowledge => knowledge;
 
+        public BaseVisionBehaviour VisionBehaviour
+        {
+            get; 
+            protected set;
+        } 
+
         public List<VariableContainer<Condition>> Conditions => conditions;
         public Transform Transform => transform;
 
         [SerializeField] private NodeAsset behaviourModelData;
+        [SerializeField] protected VisionData visionData;
+
         [SerializeField] private List<VariableContainer<GameResource>> resources;
         [SerializeField] private List<VariableContainer<Knowledge>> knowledge;
         [SerializeField] private List<VariableContainer<Condition>> conditions;

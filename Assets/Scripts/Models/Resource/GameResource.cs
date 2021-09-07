@@ -1,5 +1,4 @@
-using Models.CharacterModel.Conditions;
-
+using Models.CharacterModel;
 using System;
 using System.Collections.Generic;
 

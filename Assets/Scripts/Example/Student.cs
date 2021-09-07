@@ -23,6 +23,7 @@ public class Student : MovableCharacter
     {
         base.Start();
         MoveBehaviour = new NavMeshMoveBehaviour(GetComponent<NavMeshAgent>());
+        VisionBehaviour = new RayVisionBehaviour(visionData);
     }
 
     protected override void Update()

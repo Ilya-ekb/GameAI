@@ -2,7 +2,7 @@ using System;
 
 using UnityEngine;
 
-namespace Models.CharacterModel.Conditions
+namespace Models.CharacterModel
 {
     [Serializable]
     public abstract class BaseVariable : ScriptableObject, IVariable

@@ -1,13 +1,13 @@
 
 namespace Models.CharacterModel.KnowledgeModel
 {
-    public enum KnowledgeType 
+    public enum KnowledgeAttribute 
     {
         None,
         Treatment,
         Shooting,
         Cook,
+        RestoreEnergy,
     }
-
 }
 
