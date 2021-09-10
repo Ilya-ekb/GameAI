@@ -4,7 +4,7 @@ using Models.CharacterModel;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Models.CharacterModel.Behaviour
+namespace Models.CharacterModel.Behaviour.MoveModel
 {
     public class NavMeshMoveBehaviour : IMoveBehaviour
     {
@@ -22,7 +22,7 @@ namespace Models.CharacterModel.Behaviour
 
         public void SetDestination(Vector3 destination)
         {
-            if (!agent)
+            if (!agent || !agent.enabled)
             {
                 return;
             }
@@ -34,12 +34,17 @@ namespace Models.CharacterModel.Behaviour
 
         public void StopMove()
         {
-            if (!agent)
+            if (!agent || !agent.enabled)
             {
                 return;
             }
 
             agent.SetDestination(agent.nextPosition);
+        }
+
+        public void DisableAgent()
+        {
+            agent.enabled = false;
         }
     }
 }

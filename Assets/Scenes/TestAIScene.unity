@@ -230,6 +230,27 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: a18519a403e5a634eafe6a434992b56d, type: 2}
+--- !u!1 &832274965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4999275213549206670, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
+  m_PrefabInstance: {fileID: 4999275213099603100}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &832274972
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832274965}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1074269913
 GameObject:
   m_ObjectHideFlags: 0

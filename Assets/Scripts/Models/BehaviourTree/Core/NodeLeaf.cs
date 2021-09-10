@@ -1,5 +1,4 @@
 using BehaviourTree.Data;
-
 using Models.CharacterModel;
 using Models.CharacterModel.Behaviour;
 

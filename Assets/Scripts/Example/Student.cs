@@ -1,6 +1,7 @@
 using Models;
 using Models.CharacterModel;
-using Models.CharacterModel.Behaviour;
+using Models.CharacterModel.Behaviour.MoveModel;
+using Models.CharacterModel.Behaviour.VisionModel;
 using Models.CharacterModel.Conditions;
 using Models.Resources;
 using UnityEngine;
@@ -24,8 +25,11 @@ public class Student : MovableCharacter
         base.Start();
         MoveBehaviour = new NavMeshMoveBehaviour(GetComponent<NavMeshAgent>());
         VisionBehaviour = new RayVisionBehaviour(visionData);
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        gameObject.GetComponent<Rigidbody>().useGravity = false;
     }
 
+    private bool once = false;
     protected override void Update()
     {
         if (FindContainer(Food).Value > 0 && FindContainer(Energy).Value <= 90 && FindContainer(Bread).Value <= 0)
@@ -36,6 +40,19 @@ public class Student : MovableCharacter
         if (FindContainer(Food).Value == 0 && FindContainer(Energy).Value <= 90)
         {
             SetTarget(CookTransform.position);
+        }
+
+        if (FindContainer(Energy).Value == 0)
+        {
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            gameObject.GetComponent<Rigidbody>().useGravity = true;
+            if (!once)
+            {
+                once = true;
+                gameObject.GetComponent<Rigidbody>().AddForce(gameObject.GetComponent<Rigidbody>().velocity * 10);
+            }
+
+            (MoveBehaviour as NavMeshMoveBehaviour)?.DisableAgent();
         }
 
         base.Update();

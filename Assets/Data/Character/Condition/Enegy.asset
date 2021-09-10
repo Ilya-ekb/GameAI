@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c82c49b98e596e4c86809a1802408da, type: 3}
   m_Name: Enegy
   m_EditorClassIdentifier: 
-  conditionAttribytes: 01000000
+  conditionAttributes: 01000000
   maxValue: 100
   minValue: 0

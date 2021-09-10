@@ -1,3 +1,4 @@
+using Models.CharacterModel.Behaviour.MoveModel;
 using UnityEngine;
 
 namespace Models.CharacterModel

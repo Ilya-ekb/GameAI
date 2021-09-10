@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25422e1a63139044a9f2533d593c3f8, type: 3}
   m_Name: CookBread
   m_EditorClassIdentifier: 
-  knowledgeType: 3
-  maxChangeValue: 0
+  knowledgeAttributes: 03000000
+  maxChangeValue: 5
   minChangeValue: 0
   needResources:
   - name: Bread > 0

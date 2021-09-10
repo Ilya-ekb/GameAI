@@ -6,5 +6,7 @@ namespace Models.CharacterModel.Data
 {
     public class VisionData : ScriptableObject
     {
+        public float ViewRadius = 3;
+        public float ViewAngle = 140;
     }
 }

@@ -1,7 +1,7 @@
 using BehaviourTree.Core;
 using UnityEngine;
 
-namespace Models.CharacterModel.Behaviour
+namespace Models.CharacterModel.Behaviour.MoveModel
 {
     [CreateAssetMenu(fileName = "Move Action", menuName = "Character/Behaviour/Move Action")]
     public class Move : ActionEventObject

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Models.CharacterModel
+namespace Models.CharacterModel.Behaviour.MoveModel
 {
     public interface IMoveBehaviour
     {
