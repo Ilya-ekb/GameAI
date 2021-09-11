@@ -25,7 +25,7 @@ MonoBehaviour:
       description: 
       windowRect:
         serializedVersion: 2
-        x: 62
+        x: 16
         y: 204
         width: 120
         height: 100
@@ -52,13 +52,26 @@ MonoBehaviour:
         - isRootNode: 0
           nodeType: 6
           childNodeDataList: []
+          action: {fileID: 11400000, guid: d48ba8c525afc514394fe6648f1c3103, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 134
+            y: 498
+            width: 120
+            height: 100
+          isRelease: 0
+        - isRootNode: 0
+          nodeType: 6
+          childNodeDataList: []
           action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
           name: 
           description: 
           windowRect:
             serializedVersion: 2
-            x: 218
-            y: 499
+            x: 270
+            y: 498
             width: 120
             height: 100
           isRelease: 0
@@ -70,8 +83,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 344
-            y: 498
+            x: 400
+            y: 497
             width: 120
             height: 100
           isRelease: 0
@@ -90,8 +103,8 @@ MonoBehaviour:
       description: 
       windowRect:
         serializedVersion: 2
-        x: 218
-        y: 206
+        x: 163
+        y: 205
         width: 120
         height: 100
       isRelease: 0
@@ -103,8 +116,8 @@ MonoBehaviour:
       description: 
       windowRect:
         serializedVersion: 2
-        x: 364
-        y: 204
+        x: 461
+        y: 206
         width: 120
         height: 100
       isRelease: 0
@@ -142,8 +155,21 @@ MonoBehaviour:
       description: 
       windowRect:
         serializedVersion: 2
-        x: 523
-        y: 205
+        x: 596
+        y: 208
+        width: 120
+        height: 100
+      isRelease: 0
+    - isRootNode: 0
+      nodeType: 6
+      childNodeDataList: []
+      action: {fileID: 11400000, guid: d48ba8c525afc514394fe6648f1c3103, type: 2}
+      name: 
+      description: 
+      windowRect:
+        serializedVersion: 2
+        x: 308
+        y: 208
         width: 120
         height: 100
       isRelease: 0

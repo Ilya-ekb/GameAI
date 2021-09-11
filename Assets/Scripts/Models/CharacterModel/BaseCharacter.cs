@@ -14,16 +14,13 @@ using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
+using Models.CharacterModel.Behaviour;
 
 namespace Models.CharacterModel
 {
     public abstract class BaseCharacter : MonoBehaviour, ICharacter
     {
-        public BaseVisionBehaviour VisionBehaviour
-        {
-            get;
-            protected set;
-        }
+        public BaseVisionBehaviour VisionBehaviour { get; set; }
 
         public List<VariableContainer<GameResource>> Resources => resources;
         public List<VariableContainer<Knowledge>> Knowledge => knowledge;
@@ -31,8 +28,9 @@ namespace Models.CharacterModel
         public List<VariableContainer<Skill>> Skills => skills; 
         public Transform Transform => transform;
 
+        public Target Target { get; set; }
+
         [SerializeField] private NodeAsset behaviourModelData;
-        [SerializeField] protected VisionData visionData;
 
         [SerializeField] private List<VariableContainer<GameResource>> resources;
         [SerializeField] private List<VariableContainer<Knowledge>> knowledge;
@@ -50,6 +48,7 @@ namespace Models.CharacterModel
 
         protected virtual void Update()
         {
+            VisionBehaviour?.FindVisibleTargets();
             behaviour?.Execute(this);
         }
 

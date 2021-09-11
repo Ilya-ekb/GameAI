@@ -6,60 +6,62 @@ using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour.VisionModel
 {
-    public class RayVisionBehaviour : BaseVisionBehaviour<LayerMask>
+    [Serializable]
+    public class RayVisionBehaviour : BaseVisionBehaviour
     {
-        private readonly float viewRadius;
-        private readonly float viewAngle;
-        private readonly Dictionary<VisibleTarget, float> validVisibleTarget = new Dictionary<VisibleTarget, float>();  
+        private LayerMask targetMask;
+        private LayerMask obstacleMask;
 
-        [SerializeField] private int targetStorage = 5;
-
-        [SerializeField] private LayerMask targetMask;
-        [SerializeField] private LayerMask obstacleMask;
-
-        public RayVisionBehaviour(VisionData data) : base(data)
+        public RayVisionBehaviour(Transform lookingTransform, VisionData data) : base(lookingTransform, data)
         {
-            viewAngle = data.ViewAngle;
-            viewRadius = data.ViewRadius;
+            targetMask = (data as RayVisionData) .TargetMask;
+            obstacleMask = (data as RayVisionData).ObstableMask;
         }
 
-        protected override VisibleTarget[] FindVisibleTargets()
+        public override Target[] FindVisibleTargets()
         {
             var headPosition = lookingTransform.position;
 
             RefreshValidTarget();
 
-            for (var t = 0; t < validVisibleTarget.Count; t++)
-            {
-                validVisibleTarget[validVisibleTarget.ElementAt(t).Key] = Mathf.Infinity;
-            }
+            UpdateDistance();
 
             Collider[] targetsInViewRadius = new Collider[targetStorage];
             _ = Physics.OverlapSphereNonAlloc(lookingTransform.position, viewRadius, targetsInViewRadius, targetMask);
 
             foreach (var target in targetsInViewRadius)
             {
-                if (target == null){ continue;}
+                if (target == null) { continue; }
 
-                var visibleTarget = new VisibleTarget(target.transform);
-                if (!IsVisible(headPosition, visibleTarget))
+                if (!IsVisible(headPosition, target.transform))
                 {
                     continue;
                 }
 
-                var distanceToTarget = Vector3.Distance(headPosition, visibleTarget.Position);
+                var distanceToTarget = Vector3.Distance(headPosition, target.transform.position);
 
-                if (validVisibleTarget.ContainsKey(visibleTarget))
+                var visibleTarget = validVisibleTarget.Where(e => e.Key.Id == target.transform.GetHashCode().ToString()).FirstOrDefault();
+
+                if(visibleTarget.Key == null)
                 {
-                    validVisibleTarget[visibleTarget] = distanceToTarget;
+                    validVisibleTarget.Add(new Target(target.transform), distanceToTarget);
                 }
                 else
                 {
-                    validVisibleTarget.Add(visibleTarget, distanceToTarget);
+                    validVisibleTarget[visibleTarget.Key] = distanceToTarget;
                 }
             }
 
             return validVisibleTarget.Keys.ToArray();
+        }
+
+        private void UpdateDistance()
+        {
+            for (var t = 0; t < validVisibleTarget.Count; t++)
+            {
+                var validTarget = validVisibleTarget.ElementAt(t);
+                validVisibleTarget[validTarget.Key] = Vector3.Distance(validTarget.Key.Position, lookingTransform.position);
+            }
         }
 
         private void RefreshValidTarget()
@@ -73,15 +75,15 @@ namespace Models.CharacterModel.Behaviour.VisionModel
             }
         }
 
-        private bool IsVisible(Vector3 headPosition, VisibleTarget target)
+        private bool IsVisible(Vector3 headPosition, Transform target)
         {
-            Vector3 directionToTarget = (target.Position - headPosition).normalized;
+            Vector3 directionToTarget = (target.position - headPosition).normalized;
             var angle = Vector3.Angle(lookingTransform.forward, directionToTarget);
             var cast = Physics.Raycast(headPosition, directionToTarget, viewRadius, obstacleMask);
             return angle < viewAngle / 2 && !cast;
         }
 
-        protected override VisibleTarget NearestTarget()
+        public override Target NearestTarget()
         {
             return validVisibleTarget.FirstOrDefault(e=> e.Value == validVisibleTarget.Min(e=>e.Value)).Key;
         }

@@ -1,15 +1,38 @@
 using Models.CharacterModel.Data;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour.VisionModel
 {
-    public class BaseVisionBehaviour<T> : MonoBehaviour
+    public class BaseVisionBehaviour 
     {
+        public Transform LookingTransform => lookingTransform;
+
         protected Transform lookingTransform;
-        public BaseVisionBehaviour(VisionData data) { }
+        protected float viewRadius;
+        protected float viewAngle;
+        protected readonly Dictionary<Target, float> validVisibleTarget = new Dictionary<Target, float>();
 
-        protected virtual VisibleTarget[] FindVisibleTargets() => null;
+        protected int targetStorage = 5;
 
-        protected virtual VisibleTarget NearestTarget() => default;
+        public BaseVisionBehaviour(Transform lookingTransform, VisionData data = null) 
+        {
+            this.lookingTransform = lookingTransform;
+            UpdateData(data);
+        }
+
+        public virtual void UpdateData(VisionData data)
+        {
+            if (data == null)
+            {
+                return;
+            }
+            viewAngle = data.ViewAngle;
+            viewRadius = data.ViewRadius;
+        }
+
+        public virtual Target[] FindVisibleTargets() => null;
+
+        public virtual Target NearestTarget() => default;
     }
 }
