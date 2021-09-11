@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c69581c906eab4d852c6a6ea61c4e7, type: 3}
   m_Name: EatTargetData
   m_EditorClassIdentifier: 
-  ViewRadius: 3
+  ViewRadius: 100
   ViewAngle: 140
   TargetMask:
     serializedVersion: 2

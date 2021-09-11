@@ -111,6 +111,19 @@ MonoBehaviour:
     - isRootNode: 0
       nodeType: 6
       childNodeDataList: []
+      action: {fileID: 11400000, guid: d8f5e34148b642b4ca8b5d8c76cc8a76, type: 2}
+      name: 
+      description: 
+      windowRect:
+        serializedVersion: 2
+        x: 308
+        y: 208
+        width: 120
+        height: 100
+      isRelease: 0
+    - isRootNode: 0
+      nodeType: 6
+      childNodeDataList: []
       action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
       name: 
       description: 
@@ -156,19 +169,6 @@ MonoBehaviour:
       windowRect:
         serializedVersion: 2
         x: 596
-        y: 208
-        width: 120
-        height: 100
-      isRelease: 0
-    - isRootNode: 0
-      nodeType: 6
-      childNodeDataList: []
-      action: {fileID: 11400000, guid: d48ba8c525afc514394fe6648f1c3103, type: 2}
-      name: 
-      description: 
-      windowRect:
-        serializedVersion: 2
-        x: 308
         y: 208
         width: 120
         height: 100
