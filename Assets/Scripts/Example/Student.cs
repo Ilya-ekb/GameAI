@@ -19,7 +19,7 @@ public class Student : MovableCharacter
     {
         base.Start();
         MoveBehaviour = new NavMeshMoveBehaviour(GetComponent<NavMeshAgent>());
-        VisionBehaviour = new BaseVisionBehaviour(head);
+        VisionBehaviour = new RayVisionBehaviour(head);
     }
 
     protected override void Update()

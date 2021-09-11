@@ -4,21 +4,27 @@ using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour.VisionModel
 {
-    public class BaseVisionBehaviour 
+    public abstract class BaseVisionBehaviour 
     {
         public Transform LookingTransform => lookingTransform;
 
         protected Transform lookingTransform;
-        protected float viewRadius;
-        protected float viewAngle;
         protected readonly Dictionary<Target, float> validVisibleTarget = new Dictionary<Target, float>();
 
+        protected float viewRadius;
+        protected float viewAngle;
         protected int targetStorage = 5;
 
-        public BaseVisionBehaviour(Transform lookingTransform, VisionData data = null) 
+        protected BaseVisionBehaviour(Transform lookingTransform, VisionData data = null) 
         {
             this.lookingTransform = lookingTransform;
-            UpdateData(data);
+            if (data == null)
+            {
+                return;
+            }
+
+            viewAngle = data.ViewAngle;
+            viewRadius = data.ViewRadius;
         }
 
         public virtual void UpdateData(VisionData data)
@@ -27,12 +33,15 @@ namespace Models.CharacterModel.Behaviour.VisionModel
             {
                 return;
             }
+
             viewAngle = data.ViewAngle;
             viewRadius = data.ViewRadius;
         }
 
-        public virtual Target[] FindVisibleTargets() => null;
+        public abstract Target[] FindVisibleTargets();
 
-        public virtual Target NearestTarget() => default;
+        public abstract Target NearestTarget();
+
+        public abstract Target RandomTarget();
     }
 }

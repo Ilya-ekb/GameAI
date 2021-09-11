@@ -1,8 +1,8 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using Models.CharacterModel.Data;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Models.CharacterModel.Behaviour.VisionModel
 {
@@ -11,11 +11,32 @@ namespace Models.CharacterModel.Behaviour.VisionModel
     {
         private LayerMask targetMask;
         private LayerMask obstacleMask;
+        private const float rotationStep = 90;
+        private Quaternion targetRotation;
 
-        public RayVisionBehaviour(Transform lookingTransform, VisionData data) : base(lookingTransform, data)
+        public RayVisionBehaviour(Transform lookingTransform, VisionData data = null) : base(lookingTransform, data)
         {
-            targetMask = (data as RayVisionData) .TargetMask;
-            obstacleMask = (data as RayVisionData).ObstableMask;
+            targetRotation = lookingTransform.rotation;
+
+            if (!(data is RayVisionData visionData))
+            {
+                return;
+            }
+
+
+            targetMask = visionData.TargetMask;
+            obstacleMask = visionData.ObstableMask;
+        }
+
+        public override void UpdateData(VisionData data)
+        {
+            base.UpdateData(data);
+            if (!(data is RayVisionData visionData))
+            {
+                return;
+            }
+            targetMask = visionData.TargetMask;
+            obstacleMask = visionData.ObstableMask;
         }
 
         public override Target[] FindVisibleTargets()
@@ -26,7 +47,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
 
             UpdateDistance();
 
-            Collider[] targetsInViewRadius = new Collider[targetStorage];
+            var targetsInViewRadius = new Collider[targetStorage];
             _ = Physics.OverlapSphereNonAlloc(lookingTransform.position, viewRadius, targetsInViewRadius, targetMask);
 
             foreach (var target in targetsInViewRadius)
@@ -40,7 +61,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
 
                 var distanceToTarget = Vector3.Distance(headPosition, target.transform.position);
 
-                var visibleTarget = validVisibleTarget.Where(e => e.Key.Id == target.transform.GetHashCode().ToString()).FirstOrDefault();
+                var visibleTarget = validVisibleTarget.FirstOrDefault(e => e.Key.Id == target.transform.GetHashCode().ToString());
 
                 if(visibleTarget.Key == null)
                 {
@@ -77,7 +98,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
 
         private bool IsVisible(Vector3 headPosition, Transform target)
         {
-            Vector3 directionToTarget = (target.position - headPosition).normalized;
+            var directionToTarget = (target.position - headPosition).normalized;
             var angle = Vector3.Angle(lookingTransform.forward, directionToTarget);
             var cast = Physics.Raycast(headPosition, directionToTarget, viewRadius, obstacleMask);
             return angle < viewAngle / 2 && !cast;
@@ -85,8 +106,23 @@ namespace Models.CharacterModel.Behaviour.VisionModel
 
         public override Target NearestTarget()
         {
-            return validVisibleTarget.FirstOrDefault(e=> e.Value == validVisibleTarget.Min(e=>e.Value)).Key;
+            var temp = validVisibleTarget.Where(e => (1 << e.Key.Transform.gameObject.layer & targetMask) != 0);
+            return temp.FirstOrDefault(e=> Mathf.Approximately(e.Value, temp.Min(e => e.Value))).Key;
         }
 
+        public override Target RandomTarget()
+        {
+            if (Quaternion.Angle(targetRotation, lookingTransform.rotation) < 1f)
+            {
+                var value = Random.Range(-rotationStep, rotationStep);
+                value += lookingTransform.rotation.y * Mathf.Rad2Deg;
+                targetRotation = Quaternion.AngleAxis(value, Vector3.up);
+            }
+            else
+            {
+                lookingTransform.rotation = Quaternion.Slerp(lookingTransform.rotation, targetRotation, Time.deltaTime);
+            }
+            return null;
+        }
     }
 }

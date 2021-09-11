@@ -20,7 +20,7 @@ namespace Models.CharacterModel.Behaviour.MoveModel
                     ResultType.Running;
             }
 
-            Debug.Log($"{name} action {result}");
+            Debug.Log($"{name} action is {result}");
 
             return result;
         }

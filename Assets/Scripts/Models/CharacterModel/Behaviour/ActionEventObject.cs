@@ -1,4 +1,5 @@
 using System.Linq;
+using BehaviourTree.Core;
 using Models.CharacterModel.KnowledgeModel;
 
 using UnityEngine;

@@ -3,8 +3,6 @@ using BehaviourTree.Core;
 using Models.CharacterModel.Behaviour.VisionModel;
 using Models.CharacterModel.Data;
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour
@@ -15,20 +13,17 @@ namespace Models.CharacterModel.Behaviour
         [SerializeField] private VisionData data;
         public override ResultType Do(ICharacter character)
         {
-            if (!(character.VisionBehaviour is RayVisionBehaviour)) 
+            var visionBehaviour = character.VisionBehaviour;
+            if (!(visionBehaviour is RayVisionBehaviour)) 
             {
-                character.VisionBehaviour = new RayVisionBehaviour(character.VisionBehaviour.LookingTransform, data);
+                visionBehaviour = new RayVisionBehaviour(visionBehaviour.LookingTransform, data);
             }
             else
             {
-                character.VisionBehaviour.UpdateData(data);
+                visionBehaviour.UpdateData(data);
             }
 
-            var visibleTarget = character.VisionBehaviour.NearestTarget();
-            if(visibleTarget == null)
-            {
-                return ResultType.Fail;
-            }
+            var visibleTarget = visionBehaviour.NearestTarget() ?? visionBehaviour.RandomTarget();
 
             character.Target = visibleTarget;
             return ResultType.Success;

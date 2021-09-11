@@ -140,7 +140,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!154 &144605811
 TerrainCollider:
@@ -230,27 +230,11 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: a18519a403e5a634eafe6a434992b56d, type: 2}
---- !u!1 &832274965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4999275213549206670, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
+--- !u!4 &832274971 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4999275213549206667, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
   m_PrefabInstance: {fileID: 4999275213099603100}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &832274972
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832274965}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &1074269913
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,7 +423,7 @@ GameObject:
   - component: {fileID: 1692284847}
   - component: {fileID: 1692284846}
   - component: {fileID: 1692284845}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -535,7 +519,7 @@ GameObject:
   - component: {fileID: 1702321250}
   - component: {fileID: 1702321249}
   - component: {fileID: 1702321248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cooking
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,6 +610,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4999275213549206660, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
+      propertyPath: head
+      value: 
+      objectReference: {fileID: 832274971}
     - target: {fileID: 4999275213549206660, guid: 4fa4d3014e1a4e44ea66c39d31e9fe84, type: 3}
       propertyPath: EatTransform
       value: 
