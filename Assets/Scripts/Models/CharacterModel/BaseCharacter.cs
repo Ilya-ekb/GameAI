@@ -8,19 +8,18 @@ using Models.CharacterModel.KnowledgeModel;
 using Models.CharacterModel.SkillModel;
 using Models.CharacterModel.Conditions;
 using Models.Resources;
-using Models.CharacterModel.Data;
 
 using System.Collections.Generic;
 using System.Linq;
 
 using UnityEngine;
-using Models.CharacterModel.Behaviour;
 
 namespace Models.CharacterModel
 {
-    public abstract class BaseCharacter : MonoBehaviour, ICharacter
+    public abstract class BaseCharacter : MonoBehaviour, ICharacter, IVariableSubject
     {
         public BaseVisionBehaviour VisionBehaviour { get; set; }
+        public IEnumerable<BaseVariableContainer> BaseVariableContainer { get; private set; }
 
         public List<VariableContainer<GameResource>> Resources => resources;
         public List<VariableContainer<Knowledge>> Knowledge => knowledge;
@@ -37,12 +36,11 @@ namespace Models.CharacterModel
         [SerializeField] private List<VariableContainer<Condition>> conditions;
         [SerializeField] private List<VariableContainer<Skill>> skills;
 
-        private IEnumerable<BaseVariableContainer> commonContainers;
         private NodeRoot behaviour;
 
         protected virtual void Start()
         {
-            commonContainers = AllVariableContainers();
+            BaseVariableContainer = AllVariableContainers();
             behaviour =  BehaviourImplementor.GetBehaviourNode(behaviourModelData.NodeData);
         }
 
@@ -54,7 +52,7 @@ namespace Models.CharacterModel
 
         public BaseVariableContainer FindContainer<T>(T variable) where T : BaseVariable
         {
-            return commonContainers.FirstOrDefault(e=>e.Variable == variable);
+            return BaseVariableContainer.FirstOrDefault(e=>e.Variable == variable);
         }
 
         private IEnumerable<BaseVariableContainer> AllVariableContainers()

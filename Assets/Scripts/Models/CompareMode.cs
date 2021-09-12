@@ -4,12 +4,6 @@ using System.Collections.Generic;
 
 namespace Models
 {
-    public interface IVariable 
-    {
-        float MaxValue { get; }
-        float MinValue { get; }
-    }
-
     public enum CompareMode 
     {
         Equals,

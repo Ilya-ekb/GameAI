@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour.MoveModel
 {
-    [CreateAssetMenu(fileName = "Move Action", menuName = "Character/Behaviour/Move Action")]
+    [CreateAssetMenu(fileName = "Move Action", menuName = "Character/Behaviour/Action Event Object/Move Action")]
     public class Move : ActionEventObject
     {
         public override ResultType Do(ICharacter character)

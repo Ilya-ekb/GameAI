@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Models.CharacterModel.Data;
 using UnityEngine;
@@ -9,10 +10,12 @@ namespace Models.CharacterModel.Behaviour.VisionModel
     [Serializable]
     public class RayVisionBehaviour : BaseVisionBehaviour
     {
-        private LayerMask targetMask;
-        private LayerMask obstacleMask;
-        private const float rotationStep = 90;
+        
+        protected LayerMask targetMask;
+        protected LayerMask obstacleMask;
+        private const float rotationStep = 360;
         private Quaternion targetRotation;
+        public Func<Target, bool> CheckTargetFunc;
 
         public RayVisionBehaviour(Transform lookingTransform, VisionData data = null) : base(lookingTransform, data)
         {
@@ -23,9 +26,8 @@ namespace Models.CharacterModel.Behaviour.VisionModel
                 return;
             }
 
-
             targetMask = visionData.TargetMask;
-            obstacleMask = visionData.ObstableMask;
+            obstacleMask = visionData.ObstacleMask;
         }
 
         public override void UpdateData(VisionData data)
@@ -36,7 +38,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
                 return;
             }
             targetMask = visionData.TargetMask;
-            obstacleMask = visionData.ObstableMask;
+            obstacleMask = visionData.ObstacleMask;
         }
 
         public override Target[] FindVisibleTargets()
@@ -63,7 +65,15 @@ namespace Models.CharacterModel.Behaviour.VisionModel
 
                 var visibleTarget = validVisibleTarget.FirstOrDefault(e => e.Key.Id == target.transform.GetHashCode().ToString());
 
-                if(visibleTarget.Key == null)
+                if (CheckTargetFunc != null)
+                {
+                    if (!CheckTargetFunc.Invoke(visibleTarget.Key))
+                    {
+                        continue;
+                    }
+                }
+
+                if (visibleTarget.Key == null)
                 {
                     validVisibleTarget.Add(new Target(target.transform), distanceToTarget);
                 }
@@ -107,7 +117,11 @@ namespace Models.CharacterModel.Behaviour.VisionModel
         public override Target NearestTarget()
         {
             var temp = validVisibleTarget.Where(e => (1 << e.Key.Transform.gameObject.layer & targetMask) != 0);
-            return temp.FirstOrDefault(e=> Mathf.Approximately(e.Value, temp.Min(e => e.Value))).Key;
+
+            var acceptedTargetDistancePair = temp as KeyValuePair<Target, float>[] ?? temp.ToArray();
+
+            return acceptedTargetDistancePair.FirstOrDefault(targetPair =>
+                Mathf.Approximately(targetPair.Value, acceptedTargetDistancePair.Min(targetDistancePair => targetDistancePair.Value))).Key;
         }
 
         public override Target RandomTarget()

@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour.VisionModel
@@ -7,11 +7,13 @@ namespace Models.CharacterModel.Behaviour.VisionModel
     {
         public string Id { get; }
 
-        public Transform Transform { get; private set; }
+        public Transform Transform { get; }
 
         public Vector3 Position { get; private set; }
 
         public Quaternion Rotation { get; private set; }
+
+        public IEnumerable<BaseVariableContainer> BaseVariableContainer { get; }
 
         public Target(Transform transform)
         {
@@ -19,7 +21,9 @@ namespace Models.CharacterModel.Behaviour.VisionModel
             Transform = transform;
             Position = transform.position;
             Rotation = transform.rotation;
+            BaseVariableContainer = transform.GetComponent<IVariableSubject>()?.BaseVariableContainer;
         }
+
         public Target(Vector3 position, Quaternion rotation)
         {
             Id = GetHashCode().ToString();

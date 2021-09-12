@@ -26,10 +26,10 @@ public class Student : MovableCharacter
     {
         base.Update();
 
-        OutcomeEnegry();
+        OutcomeEnergy();
     }
 
-    private void OutcomeEnegry()
+    private void OutcomeEnergy()
     {
         if (timer <= 0)
         {

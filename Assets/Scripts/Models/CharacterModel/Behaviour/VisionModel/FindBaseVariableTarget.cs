@@ -1,22 +1,22 @@
 using BehaviourTree.Core;
-
 using Models.CharacterModel.Behaviour.VisionModel;
 using Models.CharacterModel.Data;
-
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour
 {
-    [CreateAssetMenu(fileName = "Find Visible Target", menuName = "Character/Behaviour/Find Visible Target")]
-    public class FindVisibleTargets : ActionEventObject
+    [CreateAssetMenu(fileName = "Find Base Variable Target", menuName = "Character/Behaviour/Action Event Object/Find Base Variable Target")]
+    public class FindBaseVariableTarget : ActionEventObject
     {
         [SerializeField] private VisionData data;
+
         public override ResultType Do(ICharacter character)
         {
             var visionBehaviour = character.VisionBehaviour;
-            if (!(visionBehaviour is RayVisionBehaviour)) 
+
+            if (visionBehaviour is BaseVariableVisionBehaviour)
             {
-                visionBehaviour = new RayVisionBehaviour(visionBehaviour.LookingTransform, data);
+                visionBehaviour = new BaseVariableVisionBehaviour(visionBehaviour.LookingTransform, data);
             }
             else
             {
