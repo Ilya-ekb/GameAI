@@ -80,7 +80,7 @@ namespace Models.CharacterModel
                 result = ResultType.Running;
             }
 
-            if (!variableSubject.BaseVariableContainer.All(e => e.Value <= 0))
+            if (!CurrentInteractable.BaseVariableContainer.All(e => e.Value <= 0))
             {
                 return result;
             }

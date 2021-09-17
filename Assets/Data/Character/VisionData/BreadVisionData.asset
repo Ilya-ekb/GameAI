@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e5d3ca36453b841880b248c376ca15, type: 3}
   m_Name: BreadVisionData
   m_EditorClassIdentifier: 
-  ViewRadius: 3
+  ViewRadius: 100
   ViewAngle: 140
   TargetMask:
     serializedVersion: 2

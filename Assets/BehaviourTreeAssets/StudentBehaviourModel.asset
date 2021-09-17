@@ -200,32 +200,6 @@ MonoBehaviour:
         height: 100
       isRelease: 0
     - isRootNode: 0
-      nodeType: 6
-      childNodeDataList: []
-      action: {fileID: 11400000, guid: d8f5e34148b642b4ca8b5d8c76cc8a76, type: 2}
-      name: 
-      description: 
-      windowRect:
-        serializedVersion: 2
-        x: 468
-        y: 207
-        width: 120
-        height: 100
-      isRelease: 0
-    - isRootNode: 0
-      nodeType: 6
-      childNodeDataList: []
-      action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
-      name: 
-      description: 
-      windowRect:
-        serializedVersion: 2
-        x: 601
-        y: 207
-        width: 120
-        height: 100
-      isRelease: 0
-    - isRootNode: 0
       nodeType: 0
       childNodeDataList:
       - isRootNode: 0
@@ -242,8 +216,47 @@ MonoBehaviour:
           height: 100
         isRelease: 0
       - isRootNode: 0
-        nodeType: 6
-        childNodeDataList: []
+        nodeType: 1
+        childNodeDataList:
+        - isRootNode: 0
+          nodeType: 6
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: d8f5e34148b642b4ca8b5d8c76cc8a76, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 739
+            y: 472
+            width: 120
+            height: 100
+          isRelease: 0
+        - isRootNode: 0
+          nodeType: 6
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 873
+            y: 472
+            width: 120
+            height: 100
+          isRelease: 0
+        - isRootNode: 0
+          nodeType: 6
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: f72cdec64009c5d408ea745348e956ee, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 1008
+            y: 473
+            width: 120
+            height: 100
+          isRelease: 0
         action: {fileID: 11400000, guid: f72cdec64009c5d408ea745348e956ee, type: 2}
         name: 
         description: 

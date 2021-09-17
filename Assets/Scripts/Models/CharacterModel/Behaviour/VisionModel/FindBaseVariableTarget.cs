@@ -12,11 +12,10 @@ namespace Models.CharacterModel.Behaviour
 
         public override ResultType Do(ICharacter character)
         {
-            var visionBehaviour = character.VisionBehaviour;
-
-            if (visionBehaviour is BaseVariableVisionBehaviour)
+            if (!(character.VisionBehaviour is BaseVariableVisionBehaviour visionBehaviour) )
             {
-                visionBehaviour = new BaseVariableVisionBehaviour(visionBehaviour.LookingTransform, data);
+                visionBehaviour = new BaseVariableVisionBehaviour(character.VisionBehaviour.LookingTransform, data);
+                character.VisionBehaviour = visionBehaviour;
             }
             else
             {

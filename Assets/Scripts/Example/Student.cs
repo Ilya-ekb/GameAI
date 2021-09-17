@@ -43,4 +43,15 @@ public class Student : MovableCharacter
 
         timer -= Time.deltaTime;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var variableSubject = other.GetComponent<IVariableSubject>();
+        if (variableSubject is null)
+        {
+            return;
+        }
+
+        variableSubject.Interaction(this);
+    }
 }

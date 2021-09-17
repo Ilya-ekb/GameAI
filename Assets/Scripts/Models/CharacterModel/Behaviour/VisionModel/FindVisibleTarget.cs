@@ -15,9 +15,10 @@ namespace Models.CharacterModel.Behaviour
         {
             var visionBehaviour = character.VisionBehaviour;
 
-            if (!(visionBehaviour is RayVisionBehaviour)) 
+            if (!(visionBehaviour.GetType() == typeof(RayVisionBehaviour))) 
             {
                 visionBehaviour = new RayVisionBehaviour(visionBehaviour.LookingTransform, data);
+                character.VisionBehaviour = visionBehaviour;
             }
             else
             {

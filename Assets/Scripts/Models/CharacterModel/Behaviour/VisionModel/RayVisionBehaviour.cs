@@ -126,7 +126,8 @@ namespace Models.CharacterModel.Behaviour.VisionModel
 
         public override Target RandomTarget()
         {
-            if (Quaternion.Angle(targetRotation, lookingTransform.rotation) < 1f)
+            var angel = Quaternion.Angle(targetRotation, lookingTransform.rotation);
+            if ( angel < 1f)
             {
                 var value = Random.Range(-rotationStep, rotationStep);
                 value += lookingTransform.rotation.y * Mathf.Rad2Deg;
