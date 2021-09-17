@@ -9,5 +9,7 @@ namespace Models
     {
         public CompareMode CompareMode => compareMode;
         [SerializeField] protected CompareMode compareMode;
+
+        public CompareContainer(T variable, float value) : base(variable, value) { }
     }
 }

@@ -2,7 +2,6 @@ using BehaviourTree.Core;
 using Models.CharacterModel.KnowledgeModel;
 using System.Collections.Generic;
 using System.Linq;
-using Models.Resources;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour
@@ -12,7 +11,7 @@ namespace Models.CharacterModel.Behaviour
     {
         [SerializeField] protected Knowledge[] neededKnowledge;
 
-        [SerializeField] private List<VariableExchanger> variablesExchangers;
+        [SerializeField] private List<InternalExchanger> variablesExchangers;
 
         public override ResultType Do(ICharacter character)
         {

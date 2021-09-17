@@ -56,7 +56,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
             {
                 if (target == null) { continue; }
 
-                if (!IsVisible(headPosition, target.transform))
+                if (!IsVisible(headPosition, target.transform) || target.transform == lookingTransform.transform || target.transform == lookingTransform.transform.parent)
                 {
                     continue;
                 }

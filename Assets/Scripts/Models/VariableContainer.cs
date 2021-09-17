@@ -9,6 +9,11 @@ namespace Models
     [Serializable]
     public class VariableContainer<T> : BaseVariableContainer where T : BaseVariable
     {
+        public VariableContainer(T variable, float value)
+        {
+            this.variable = variable;
+            this.value = value;
+        }
         public override BaseVariable Variable => variable;
         public override float Value { get => value; internal set => this.value = Mathf.Max(value, variable.MinValue); }
 

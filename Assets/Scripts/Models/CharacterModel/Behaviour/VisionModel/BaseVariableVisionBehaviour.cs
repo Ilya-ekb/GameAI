@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Models.CharacterModel.Data;
-using UnityEditorInternal;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour.VisionModel
@@ -31,9 +29,10 @@ namespace Models.CharacterModel.Behaviour.VisionModel
                                                          e.Key.BaseVariableContainer.Any(b => b.Variable == variable)));
 
             var acceptedTargetDistancePair= temp as KeyValuePair<Target, float>[] ?? temp.ToArray();
+            var minDist = acceptedTargetDistancePair.Min(targetDistancePair => targetDistancePair.Value);
+            var result = acceptedTargetDistancePair.FirstOrDefault(targetPair => Mathf.Approximately(targetPair.Value, minDist));
 
-            return acceptedTargetDistancePair.FirstOrDefault(targetPair => 
-                Mathf.Approximately(targetPair.Value, acceptedTargetDistancePair.Min(targetDistancePair => targetDistancePair.Value))).Key;
+            return result.Key;
         }
     }
 }

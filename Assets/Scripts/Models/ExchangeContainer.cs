@@ -10,13 +10,16 @@ namespace Models
     {
         [SerializeField] private float exchangeCoefficient;
         [SerializeField] private ActionSign actionSign;
+
+        public ExchangeContainer(T variable, float value, float exchangeCoefficient = 0.7f, ActionSign actionSign = ActionSign.Add) : base(variable, value) { }
+
         public float GetValue(float incomeValue)
         {
             var value = incomeValue * exchangeCoefficient;
             return actionSign == ActionSign.Add ? value : -value;
         }
 
-        private enum ActionSign
+        public enum ActionSign
         {
             Add,
             Sub,

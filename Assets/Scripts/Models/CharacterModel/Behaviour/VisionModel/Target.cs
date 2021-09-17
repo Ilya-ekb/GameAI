@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Codice.CM.Client.Differences;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour.VisionModel
@@ -7,6 +8,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
     {
         public string Id { get; }
 
+        public string Name { get; }
         public Transform Transform { get; }
 
         public Vector3 Position { get; private set; }
@@ -18,6 +20,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
         public Target(Transform transform)
         {
             Id = transform.GetHashCode().ToString();
+            Name = transform.name;
             Transform = transform;
             Position = transform.position;
             Rotation = transform.rotation;
@@ -27,6 +30,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
         public Target(Vector3 position, Quaternion rotation)
         {
             Id = GetHashCode().ToString();
+            Name = Id;
             Transform = null;
             Position = position;
             Rotation = rotation;

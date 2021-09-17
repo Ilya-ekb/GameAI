@@ -26,6 +26,7 @@ namespace Models.CharacterModel.Behaviour
             var visibleTarget = visionBehaviour.NearestTarget() ?? visionBehaviour.RandomTarget();
 
             character.Target = visibleTarget;
+            Debug.Log($"Action {name} target {character.Target?.Name}");
             return ResultType.Success;
         }
     }
