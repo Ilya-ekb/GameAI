@@ -5,6 +5,7 @@ using BehaviourTree.Core;
 using BehaviourTree.Data;
 using Models;
 using Models.CharacterModel.Behaviour;
+using NUnit.Framework;
 using UnityEditor;
 using UnityEngine;
 
@@ -156,10 +157,11 @@ namespace Assets.Editor
             }
         }
 
+        private bool selectedRoot;
         void DrawNodeWindow(int id)
         {
             NodeData nodeRoot = nodeRootList[id];
-            nodeRoot.ShowName = GUI.Toggle(new Rect(1, 2, 10, 20), nodeRoot.ShowName, "", EditorStyles.miniButton);
+            nodeRoot.ShowName = GUI.Toggle(new Rect(2, 2, 10, 20), nodeRoot.ShowName, "", EditorStyles.miniButton);
             if (nodeRoot.ShowName)
             {
                 nodeRoot.Name = GUILayout.TextField(nodeRoot.Name, 15);
@@ -174,12 +176,16 @@ namespace Assets.Editor
             {
                 nodeRoot.Action = (ConditionEventObject)EditorGUILayout.ObjectField(nodeRoot.Action, typeof(ConditionEventObject));
             }
-            if(nodeRoot.NodeType == NodeType.Sequence)
+            if(nodeRoot.NodeType == NodeType.Sequence ||
+               nodeRoot.NodeType == NodeType.Parallel ||
+               nodeRoot.NodeType == NodeType.Select)
             {
-                for(var i = 0; i < nodeRoot.ChildNodeDataList.Count; i++)
+                if (!selectedRoot || nodeRoot.IsRootNode)
                 {
-                    var nodeChild = nodeRoot.ChildNodeDataList[i];
+                    nodeRoot.IsRootNode = GUI.Toggle(new Rect(2, 40, 100, 20), nodeRoot.IsRootNode, " is Root Node");
+                    selectedRoot = nodeRoot.IsRootNode;
                 }
+
             }
             // The window that can be dragged
             GUI.DragWindow();

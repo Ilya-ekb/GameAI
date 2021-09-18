@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31cf2f4901e90d7498b9a6e47491551f, type: 3}
-  m_Name: Food
+  m_Script: {fileID: 11500000, guid: 254a3c4b228d1f24abe2e34d2be63b6a, type: 3}
+  m_Name: BatteryE0
   m_EditorClassIdentifier: 
-  resourceAttributes: 01000000
-  maxValue: Infinity
-  minValue: 0
+  id: 
+  checkingConditions:
+  - name: 
+    variable: {fileID: 0}
+    value: 0
+    compareMode: 0

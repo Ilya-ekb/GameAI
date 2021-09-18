@@ -42,7 +42,7 @@ namespace Models.CharacterModel
         protected virtual void Start()
         {
             BaseVariableContainer = AllVariableContainers();
-            behaviour =  BehaviourImplementor.GetBehaviourNode(behaviourModelData.NodeData);
+            behaviour = BehaviourImplementor.GetBehaviourNode(behaviourModelData?.NodeData);
         }
 
         protected virtual void Update()
@@ -86,7 +86,7 @@ namespace Models.CharacterModel
             }
 
             result = ResultType.Success;
-            variableSubject.EmptiedAction?.Invoke();
+            CurrentInteractable.EmptiedAction?.Invoke();
 
             return result;
         }

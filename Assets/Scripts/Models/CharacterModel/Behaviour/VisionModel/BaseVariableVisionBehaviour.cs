@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using BehaviourTree.Core;
 using Models.CharacterModel.Data;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
             baseVariables = bvData.BaseVariables;
         }
 
-        public override Target NearestTarget()
+        public override Target NearestTarget(ref ResultType resultType)
         {
             Target result = null;
             if (baseVariables == null)
@@ -50,6 +51,11 @@ namespace Models.CharacterModel.Behaviour.VisionModel
                 var minDist = acceptedTargetDistancePair.Min(targetDistancePair => targetDistancePair.Value);
                 result = acceptedTargetDistancePair
                     .FirstOrDefault(targetPair => Mathf.Approximately(targetPair.Value, minDist)).Key;
+            }
+
+            if (result != null)
+            {
+                resultType = ResultType.Success;
             }
 
             return result;

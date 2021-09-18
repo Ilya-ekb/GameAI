@@ -9,9 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3c39789f4bb9947ad9a4e71ddfed40, type: 3}
-  m_Name: FindBread
+  m_Script: {fileID: 11500000, guid: e6c69581c906eab4d852c6a6ea61c4e7, type: 3}
+  m_Name: RecyclingTargetData
   m_EditorClassIdentifier: 
-  id: 
-  data: {fileID: 11400000, guid: d1c6f9ff0cdb0dc4d81112833de184e4, type: 2}
-  findingVariables: []
+  ViewRadius: 100
+  ViewAngle: 140
+  TargetMask:
+    serializedVersion: 2
+    m_Bits: 64
+  ObstableMask:
+    serializedVersion: 2
+    m_Bits: 0

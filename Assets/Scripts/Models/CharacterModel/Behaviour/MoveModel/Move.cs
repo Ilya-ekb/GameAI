@@ -15,13 +15,8 @@ namespace Models.CharacterModel.Behaviour.MoveModel
 
                 movableCharacter.Move();
 
-                result = movableCharacter.IsReached ? ResultType.Success :
-                    movableCharacter.Velocity.magnitude < .1f ? ResultType.Fail :
-                    ResultType.Running;
+                result = movableCharacter.IsReached ? ResultType.Success : ResultType.Running;
             }
-
-            Debug.Log($"{name} action is {result}");
-
             return result;
         }
     }

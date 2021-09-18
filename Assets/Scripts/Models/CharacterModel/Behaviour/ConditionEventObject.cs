@@ -34,7 +34,6 @@ namespace Models
                 resultType = ResultType.Fail;
                 break;
             }
-            Debug.Log($"Condition {name} result {resultType}");
             return resultType;
         }
     }

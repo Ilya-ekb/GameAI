@@ -15,7 +15,7 @@ namespace Models.CharacterModel.Behaviour
 
         public override ResultType Do(ICharacter character)
         {
-            var result = ResultType.Fail;
+            ResultType result;
 
             if (CanDo(character))
             {
@@ -28,7 +28,7 @@ namespace Models.CharacterModel.Behaviour
             }
             else
             {
-                Debug.Log($"{character} can't do {name}");
+                result = ResultType.Success;
             }
 
             return result;

@@ -1,6 +1,8 @@
 using BehaviourTree.Data;
 using Models.CharacterModel;
 using Models.CharacterModel.Behaviour;
+using Unity.IO.LowLevel.Unsafe;
+using UnityEngine;
 
 namespace BehaviourTree.Core
 {
@@ -18,7 +20,9 @@ namespace BehaviourTree.Core
 
         public override ResultType Execute(ICharacter character)
         {
-            return Action?.Do(character) ?? ResultType.Fail;
+             var result = Action?.Do(character) ?? ResultType.Fail;
+             Debug.Log($"{Action?.Name} for {character.Transform?.name} is {result} [Target: {character.Target?.Transform?.name}]");
+             return result;
         }
     }
 }

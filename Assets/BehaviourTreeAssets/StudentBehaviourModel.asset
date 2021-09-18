@@ -15,7 +15,7 @@ MonoBehaviour:
   directoryPath: Assets/BehaviourTreeAssets
   nodeValue:
     isRootNode: 1
-    nodeType: 1
+    nodeType: 0
     childNodeDataList:
     - isRootNode: 0
       nodeType: 1
@@ -28,8 +28,8 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 49
-          y: 333
+          x: 7
+          y: 422
           width: 120
           height: 100
         isRelease: 0
@@ -39,13 +39,13 @@ MonoBehaviour:
         - isRootNode: 0
           nodeType: 5
           childNodeDataList: []
-          action: {fileID: 11400000, guid: fcceea483edfcb2489de308926382e92, type: 2}
+          action: {fileID: 11400000, guid: e8423be422ed84147bbbdf6ef0af60bb, type: 2}
           name: 
           description: 
           windowRect:
             serializedVersion: 2
-            x: 48
-            y: 465
+            x: 7
+            y: 549
             width: 120
             height: 100
           isRelease: 0
@@ -53,15 +53,28 @@ MonoBehaviour:
           nodeType: 1
           childNodeDataList:
           - isRootNode: 0
-            nodeType: 6
+            nodeType: 5
             childNodeDataList: []
-            action: {fileID: 11400000, guid: f2f651c4ac7ca2d4d852647bd49ea413, type: 2}
+            action: {fileID: 11400000, guid: fcceea483edfcb2489de308926382e92, type: 2}
             name: 
             description: 
             windowRect:
               serializedVersion: 2
-              x: 50
-              y: 598
+              x: 9
+              y: 677
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: d48ba8c525afc514394fe6648f1c3103, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 141
+              y: 679
               width: 120
               height: 100
             isRelease: 0
@@ -73,21 +86,21 @@ MonoBehaviour:
             description: 
             windowRect:
               serializedVersion: 2
-              x: 181
-              y: 599
+              x: 274
+              y: 681
               width: 120
               height: 100
             isRelease: 0
           - isRootNode: 0
             nodeType: 6
             childNodeDataList: []
-            action: {fileID: 11400000, guid: b99b6270db2ec064d834aac5acf1586e, type: 2}
+            action: {fileID: 11400000, guid: 68699cb0ad4f8444ea155f48f1407d69, type: 2}
             name: 
             description: 
             windowRect:
               serializedVersion: 2
-              x: 320
-              y: 601
+              x: 409
+              y: 683
               width: 120
               height: 100
             isRelease: 0
@@ -96,8 +109,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 181
-            y: 466
+            x: 140
+            y: 552
             width: 120
             height: 100
           isRelease: 0
@@ -106,164 +119,86 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 180
-          y: 335
-          width: 120
-          height: 100
-        isRelease: 0
-      action: {fileID: 11400000, guid: 0474c171a36662e4e8c4464471ea524a, type: 2}
-      name: 
-      description: 
-      windowRect:
-        serializedVersion: 2
-        x: 181
-        y: 205
-        width: 120
-        height: 100
-      isRelease: 0
-    - isRootNode: 0
-      nodeType: 0
-      childNodeDataList:
-      - isRootNode: 0
-        nodeType: 5
-        childNodeDataList: []
-        action: {fileID: 11400000, guid: e8423be422ed84147bbbdf6ef0af60bb, type: 2}
-        name: 
-        description: 
-        windowRect:
-          serializedVersion: 2
-          x: 321
-          y: 335
+          x: 140
+          y: 423
           width: 120
           height: 100
         isRelease: 0
       - isRootNode: 0
-        nodeType: 1
+        nodeType: 0
         childNodeDataList:
         - isRootNode: 0
-          nodeType: 6
+          nodeType: 5
           childNodeDataList: []
-          action: {fileID: 11400000, guid: d48ba8c525afc514394fe6648f1c3103, type: 2}
+          action: {fileID: 11400000, guid: b001b6bbdc8478c4d8a4c02d6aeb9822, type: 2}
           name: 
           description: 
           windowRect:
             serializedVersion: 2
-            x: 322
-            y: 469
+            x: 275
+            y: 553
             width: 120
             height: 100
           isRelease: 0
         - isRootNode: 0
-          nodeType: 6
-          childNodeDataList: []
-          action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
-          name: 
-          description: 
-          windowRect:
-            serializedVersion: 2
-            x: 465
-            y: 471
-            width: 120
-            height: 100
-          isRelease: 0
-        - isRootNode: 0
-          nodeType: 6
-          childNodeDataList: []
-          action: {fileID: 11400000, guid: 68699cb0ad4f8444ea155f48f1407d69, type: 2}
-          name: 
-          description: 
-          windowRect:
-            serializedVersion: 2
-            x: 600
-            y: 471
-            width: 120
-            height: 100
-          isRelease: 0
-        action: {fileID: 0}
-        name: 
-        description: 
-        windowRect:
-          serializedVersion: 2
-          x: 464
-          y: 336
-          width: 120
-          height: 100
-        isRelease: 0
-      action: {fileID: 0}
-      name: 
-      description: 
-      windowRect:
-        serializedVersion: 2
-        x: 320
-        y: 207
-        width: 120
-        height: 100
-      isRelease: 0
-    - isRootNode: 0
-      nodeType: 0
-      childNodeDataList:
-      - isRootNode: 0
-        nodeType: 5
-        childNodeDataList: []
-        action: {fileID: 11400000, guid: b001b6bbdc8478c4d8a4c02d6aeb9822, type: 2}
-        name: 
-        description: 
-        windowRect:
-          serializedVersion: 2
-          x: 738
-          y: 339
-          width: 120
-          height: 100
-        isRelease: 0
-      - isRootNode: 0
-        nodeType: 1
-        childNodeDataList:
-        - isRootNode: 0
-          nodeType: 6
-          childNodeDataList: []
-          action: {fileID: 11400000, guid: d8f5e34148b642b4ca8b5d8c76cc8a76, type: 2}
-          name: 
-          description: 
-          windowRect:
-            serializedVersion: 2
-            x: 739
-            y: 472
-            width: 120
-            height: 100
-          isRelease: 0
-        - isRootNode: 0
-          nodeType: 6
-          childNodeDataList: []
-          action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
-          name: 
-          description: 
-          windowRect:
-            serializedVersion: 2
-            x: 873
-            y: 472
-            width: 120
-            height: 100
-          isRelease: 0
-        - isRootNode: 0
-          nodeType: 6
-          childNodeDataList: []
+          nodeType: 1
+          childNodeDataList:
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: d8f5e34148b642b4ca8b5d8c76cc8a76, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 543
+              y: 688
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 677
+              y: 688
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: f72cdec64009c5d408ea745348e956ee, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 810
+              y: 689
+              width: 120
+              height: 100
+            isRelease: 0
           action: {fileID: 11400000, guid: f72cdec64009c5d408ea745348e956ee, type: 2}
           name: 
           description: 
           windowRect:
             serializedVersion: 2
-            x: 1008
-            y: 473
+            x: 411
+            y: 556
             width: 120
             height: 100
           isRelease: 0
-        action: {fileID: 11400000, guid: f72cdec64009c5d408ea745348e956ee, type: 2}
+        action: {fileID: 0}
         name: 
         description: 
         windowRect:
           serializedVersion: 2
-          x: 872
-          y: 340
+          x: 276
+          y: 424
           width: 120
           height: 100
         isRelease: 0
@@ -272,8 +207,73 @@ MonoBehaviour:
       description: 
       windowRect:
         serializedVersion: 2
-        x: 739
-        y: 208
+        x: 7
+        y: 285
+        width: 120
+        height: 100
+      isRelease: 0
+    - isRootNode: 0
+      nodeType: 4
+      childNodeDataList:
+      - isRootNode: 0
+        nodeType: 6
+        childNodeDataList: []
+        action: {fileID: 11400000, guid: f2f651c4ac7ca2d4d852647bd49ea413, type: 2}
+        name: 
+        description: 
+        windowRect:
+          serializedVersion: 2
+          x: 409
+          y: 425
+          width: 120
+          height: 100
+        isRelease: 0
+      - isRootNode: 0
+        nodeType: 1
+        childNodeDataList:
+        - isRootNode: 0
+          nodeType: 6
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 543
+            y: 556
+            width: 120
+            height: 100
+          isRelease: 0
+        - isRootNode: 0
+          nodeType: 6
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: b99b6270db2ec064d834aac5acf1586e, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 676
+            y: 557
+            width: 120
+            height: 100
+          isRelease: 0
+        action: {fileID: 0}
+        name: 
+        description: 
+        windowRect:
+          serializedVersion: 2
+          x: 543
+          y: 426
+          width: 120
+          height: 100
+        isRelease: 0
+      action: {fileID: 0}
+      name: 
+      description: 
+      windowRect:
+        serializedVersion: 2
+        x: 143
+        y: 287
         width: 120
         height: 100
       isRelease: 0
@@ -282,8 +282,8 @@ MonoBehaviour:
     description: 
     windowRect:
       serializedVersion: 2
-      x: 468
-      y: 67
+      x: 7
+      y: 149
       width: 120
       height: 100
     isRelease: 0

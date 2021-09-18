@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BehaviourTree.Core;
 using Models.CharacterModel.Data;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -114,30 +115,39 @@ namespace Models.CharacterModel.Behaviour.VisionModel
             return angle < viewAngle / 2 && !cast;
         }
 
-        public override Target NearestTarget()
+        public override Target NearestTarget(ref ResultType resultType)
         {
             var temp = validVisibleTarget.Where(e => (1 << e.Key.Transform.gameObject.layer & targetMask) != 0);
 
             var acceptedTargetDistancePair = temp as KeyValuePair<Target, float>[] ?? temp.ToArray();
-
-            return acceptedTargetDistancePair.FirstOrDefault(targetPair =>
+            
+            var result = acceptedTargetDistancePair.FirstOrDefault(targetPair =>
                 Mathf.Approximately(targetPair.Value, acceptedTargetDistancePair.Min(targetDistancePair => targetDistancePair.Value))).Key;
+            
+            if (result != null)
+            {
+                resultType = ResultType.Success;
+            }
+
+            return result;
         }
 
-        public override Target RandomTarget()
+        public override Target RandomTarget(ref ResultType resultType)
         {
+            Target target = null;
+            resultType = ResultType.Running;
             var angel = Quaternion.Angle(targetRotation, lookingTransform.rotation);
+            var value = Random.Range(-rotationStep, rotationStep);
             if ( angel < 1f)
             {
-                var value = Random.Range(-rotationStep, rotationStep);
                 value += lookingTransform.rotation.y * Mathf.Rad2Deg;
                 targetRotation = Quaternion.AngleAxis(value, Vector3.up);
             }
             else
             {
-                lookingTransform.rotation = Quaternion.Slerp(lookingTransform.rotation, targetRotation, Time.deltaTime);
+                lookingTransform.rotation = Quaternion.RotateTowards(lookingTransform.rotation, targetRotation, 2f);
             }
-            return null;
+            return target;
         }
     }
 }

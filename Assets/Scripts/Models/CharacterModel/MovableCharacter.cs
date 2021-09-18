@@ -5,7 +5,6 @@ namespace Models.CharacterModel
 {
     public abstract class MovableCharacter : BaseCharacter
     {
-        public Vector3 Velocity => MoveBehaviour.Velocity;
         public virtual bool IsReached => (target - MoveBehaviour.CurrentPosition).magnitude <= stopDistance;
 
         public virtual IMoveBehaviour MoveBehaviour

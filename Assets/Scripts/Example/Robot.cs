@@ -9,7 +9,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 // ReSharper disable once CheckNamespace
-public class Student : MovableCharacter
+public class Robot : MovableCharacter
 {
     public float Period;
     private float timer;

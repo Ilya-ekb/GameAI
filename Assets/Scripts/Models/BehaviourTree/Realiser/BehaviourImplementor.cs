@@ -8,31 +8,21 @@ namespace BehaviourTree.Implementor
     {
         public static NodeRoot GetBehaviourNode(NodeData data)
         {
-            NodeRoot result = null;
-            switch (data.NodeType)
+            if (data == null)
             {
-                case NodeType.Select:
-                    result = new NodeSelect(data);
-                    break;
-                case NodeType.Sequence:
-                    result = new NodeSequence(data);
-                    break;
-                case NodeType.Decorator:
-                    result = new NodeDecorator(data);
-                    break;
-                case NodeType.Condition:
-                    result = new NodeCondition(data);
-                    break;
-                case NodeType.Parallel:
-                    result = new NodeParallel(data);
-                    break;
-                case NodeType.Random:
-                    result = new NodeRandom(data);
-                    break;
-                case NodeType.Action:
-                    result = new NodeAction(data);
-                    break;
+                return null;
             }
+            NodeRoot result = data.NodeType switch
+            {
+                NodeType.Select => new NodeSelect(data),
+                NodeType.Sequence => new NodeSequence(data),
+                NodeType.Decorator => new NodeDecorator(data),
+                NodeType.Condition => new NodeCondition(data),
+                NodeType.Parallel => new NodeParallel(data),
+                NodeType.Random => new NodeRandom(data),
+                NodeType.Action => new NodeAction(data),
+                _ => null
+            };
 
             return result;
         }

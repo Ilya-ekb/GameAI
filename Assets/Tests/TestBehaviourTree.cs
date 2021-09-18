@@ -9,7 +9,7 @@ using UnityEngine.TestTools;
 public class TestBehaviourTree
 {
 
-    private Student student;
+    private Robot student;
 
     [UnityTest]
     public IEnumerator TestBehaviourTreeWithEnumeratorPasses()
@@ -17,7 +17,7 @@ public class TestBehaviourTree
         student = 
             MonoBehaviour.Instantiate(
                 Resources.Load<GameObject>("Assets/Prefabs/Student"))
-                .GetComponent<Student>();
+                .GetComponent<Robot>();
         yield return null;
     }
 }

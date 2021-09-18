@@ -19,6 +19,8 @@ namespace Models.CharacterModel.Behaviour
             }
         }
 
+        public string Name => name;
+
         [SerializeField] protected string id;
 
         public abstract ResultType Do(ICharacter character);

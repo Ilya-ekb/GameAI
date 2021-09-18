@@ -1,6 +1,7 @@
 using Models.CharacterModel.Data;
 using System.Collections.Generic;
 using System.Linq;
+using BehaviourTree.Core;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour.VisionModel
@@ -42,9 +43,9 @@ namespace Models.CharacterModel.Behaviour.VisionModel
 
         public abstract Target[] FindVisibleTargets();
 
-        public abstract Target NearestTarget();
+        public abstract Target NearestTarget(ref ResultType resultType);
 
-        public abstract Target RandomTarget();
+        public abstract Target RandomTarget(ref ResultType resultType);
 
         protected virtual void GetValidTargets()
         {

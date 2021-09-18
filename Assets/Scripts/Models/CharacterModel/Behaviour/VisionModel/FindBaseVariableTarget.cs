@@ -22,11 +22,13 @@ namespace Models.CharacterModel.Behaviour
                 visionBehaviour.UpdateData(data);
             }
 
-            var visibleTarget = visionBehaviour.NearestTarget() ?? visionBehaviour.RandomTarget();
+            var result = ResultType.Fail;
+
+            var visibleTarget = visionBehaviour.NearestTarget(ref result) ?? visionBehaviour.RandomTarget(ref result);
 
             character.Target = visibleTarget;
-            Debug.Log($"Action {name} target {character.Target?.Name}");
-            return ResultType.Success;
+
+            return result;
         }
     }
 }

@@ -8,12 +8,12 @@ namespace Models.CharacterModel.Behaviour
     {
         public override ResultType Do(ICharacter character)
         {
-            if (!(character is IVariableSubject variableSubject))
+            var result = ResultType.Fail;
+            if (character is IVariableSubject variableSubject)
             {
-                return ResultType.Fail;
+                result = variableSubject.Interaction(variableSubject);
             }
-
-            return variableSubject.Interaction(variableSubject);
+            return result;
         }
     }
 }
