@@ -16,7 +16,7 @@ MonoBehaviour:
   maxChangeValue: 5
   minChangeValue: 0
   needResources:
-  - name: Bread > 0
+  - name: Garbage > 0
     variable: {fileID: 11400000, guid: a601899db9dc5144b90b90c46e8403be, type: 2}
     value: 0
     compareMode: 2

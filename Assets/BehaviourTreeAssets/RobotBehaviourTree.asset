@@ -18,201 +18,6 @@ MonoBehaviour:
     nodeType: 0
     childNodeDataList:
     - isRootNode: 0
-      nodeType: 1
-      childNodeDataList:
-      - isRootNode: 0
-        nodeType: 5
-        childNodeDataList: []
-        action: {fileID: 11400000, guid: 0474c171a36662e4e8c4464471ea524a, type: 2}
-        name: 
-        description: 
-        windowRect:
-          serializedVersion: 2
-          x: 245
-          y: 363
-          width: 120
-          height: 100
-        isRelease: 0
-      - isRootNode: 0
-        nodeType: 0
-        childNodeDataList:
-        - isRootNode: 0
-          nodeType: 5
-          childNodeDataList: []
-          action: {fileID: 11400000, guid: e8423be422ed84147bbbdf6ef0af60bb, type: 2}
-          name: 
-          description: 
-          windowRect:
-            serializedVersion: 2
-            x: 244
-            y: 507
-            width: 120
-            height: 100
-          isRelease: 0
-        - isRootNode: 0
-          nodeType: 1
-          childNodeDataList:
-          - isRootNode: 0
-            nodeType: 5
-            childNodeDataList: []
-            action: {fileID: 11400000, guid: fcceea483edfcb2489de308926382e92, type: 2}
-            name: 
-            description: 
-            windowRect:
-              serializedVersion: 2
-              x: 113
-              y: 651
-              width: 120
-              height: 100
-            isRelease: 0
-          - isRootNode: 0
-            nodeType: 6
-            childNodeDataList: []
-            action: {fileID: 11400000, guid: d48ba8c525afc514394fe6648f1c3103, type: 2}
-            name: 
-            description: 
-            windowRect:
-              serializedVersion: 2
-              x: 245
-              y: 652
-              width: 120
-              height: 100
-            isRelease: 0
-          - isRootNode: 0
-            nodeType: 6
-            childNodeDataList: []
-            action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
-            name: 
-            description: 
-            windowRect:
-              serializedVersion: 2
-              x: 377
-              y: 653
-              width: 120
-              height: 100
-            isRelease: 0
-          - isRootNode: 0
-            nodeType: 6
-            childNodeDataList: []
-            action: {fileID: 11400000, guid: 68699cb0ad4f8444ea155f48f1407d69, type: 2}
-            name: 
-            description: 
-            windowRect:
-              serializedVersion: 2
-              x: 510
-              y: 653
-              width: 120
-              height: 100
-            isRelease: 0
-          action: {fileID: 0}
-          name: 
-          description: 
-          windowRect:
-            serializedVersion: 2
-            x: 376
-            y: 510
-            width: 120
-            height: 100
-          isRelease: 0
-        action: {fileID: 0}
-        name: 
-        description: 
-        windowRect:
-          serializedVersion: 2
-          x: 377
-          y: 363
-          width: 120
-          height: 100
-        isRelease: 0
-      - isRootNode: 0
-        nodeType: 0
-        childNodeDataList:
-        - isRootNode: 0
-          nodeType: 5
-          childNodeDataList: []
-          action: {fileID: 11400000, guid: b001b6bbdc8478c4d8a4c02d6aeb9822, type: 2}
-          name: 
-          description: 
-          windowRect:
-            serializedVersion: 2
-            x: 508
-            y: 510
-            width: 120
-            height: 100
-          isRelease: 0
-        - isRootNode: 0
-          nodeType: 1
-          childNodeDataList:
-          - isRootNode: 0
-            nodeType: 6
-            childNodeDataList: []
-            action: {fileID: 11400000, guid: d8f5e34148b642b4ca8b5d8c76cc8a76, type: 2}
-            name: 
-            description: 
-            windowRect:
-              serializedVersion: 2
-              x: 641
-              y: 654
-              width: 120
-              height: 100
-            isRelease: 0
-          - isRootNode: 0
-            nodeType: 6
-            childNodeDataList: []
-            action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
-            name: 
-            description: 
-            windowRect:
-              serializedVersion: 2
-              x: 773
-              y: 655
-              width: 120
-              height: 100
-            isRelease: 0
-          - isRootNode: 0
-            nodeType: 6
-            childNodeDataList: []
-            action: {fileID: 11400000, guid: f72cdec64009c5d408ea745348e956ee, type: 2}
-            name: 
-            description: 
-            windowRect:
-              serializedVersion: 2
-              x: 908
-              y: 657
-              width: 120
-              height: 100
-            isRelease: 0
-          action: {fileID: 0}
-          name: 
-          description: 
-          windowRect:
-            serializedVersion: 2
-            x: 641
-            y: 510
-            width: 120
-            height: 100
-          isRelease: 0
-        action: {fileID: 0}
-        name: 
-        description: 
-        windowRect:
-          serializedVersion: 2
-          x: 508
-          y: 364
-          width: 120
-          height: 100
-        isRelease: 0
-      action: {fileID: 0}
-      name: 
-      description: 
-      windowRect:
-        serializedVersion: 2
-        x: 510
-        y: 210
-        width: 120
-        height: 100
-      isRelease: 0
-    - isRootNode: 0
       nodeType: 4
       childNodeDataList:
       - isRootNode: 0
@@ -223,8 +28,8 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 643
-          y: 364
+          x: 1074
+          y: 306
           width: 120
           height: 100
         isRelease: 0
@@ -239,8 +44,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 775
-            y: 511
+            x: 1206
+            y: 453
             width: 120
             height: 100
           isRelease: 0
@@ -252,8 +57,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 907
-            y: 511
+            x: 1338
+            y: 453
             width: 120
             height: 100
           isRelease: 0
@@ -262,18 +67,265 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 775
-          y: 364
+          x: 1206
+          y: 306
           width: 120
           height: 100
         isRelease: 0
       action: {fileID: 0}
-      name: 
+      name: Find garbage
       description: 
       windowRect:
         serializedVersion: 2
-        x: 643
-        y: 210
+        x: 1074
+        y: 152
+        width: 120
+        height: 100
+      isRelease: 0
+    - isRootNode: 0
+      nodeType: 1
+      childNodeDataList:
+      - isRootNode: 0
+        nodeType: 5
+        childNodeDataList: []
+        action: {fileID: 11400000, guid: 0474c171a36662e4e8c4464471ea524a, type: 2}
+        name: Energy condition
+        description: 
+        windowRect:
+          serializedVersion: 2
+          x: 674
+          y: 305
+          width: 120
+          height: 100
+        isRelease: 0
+      - isRootNode: 0
+        nodeType: 0
+        childNodeDataList:
+        - isRootNode: 0
+          nodeType: 5
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: e8423be422ed84147bbbdf6ef0af60bb, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 673
+            y: 449
+            width: 120
+            height: 100
+          isRelease: 0
+        - isRootNode: 0
+          nodeType: 1
+          childNodeDataList:
+          - isRootNode: 0
+            nodeType: 0
+            childNodeDataList:
+            - isRootNode: 0
+              nodeType: 1
+              childNodeDataList:
+              - isRootNode: 0
+                nodeType: 5
+                childNodeDataList: []
+                action: {fileID: 11400000, guid: 39dbdb482b752c641936cb6a31ec22a6, type: 2}
+                name: 
+                description: 
+                windowRect:
+                  serializedVersion: 2
+                  x: 283
+                  y: 868
+                  width: 120
+                  height: 100
+                isRelease: 0
+              - isRootNode: 0
+                nodeType: 5
+                childNodeDataList: []
+                action: {fileID: 11400000, guid: 6652eaa683f8f3c4fbfad4926f3e4afc, type: 2}
+                name: 
+                description: 
+                windowRect:
+                  serializedVersion: 2
+                  x: 413
+                  y: 869
+                  width: 120
+                  height: 100
+                isRelease: 0
+              action: {fileID: 0}
+              name: 
+              description: 
+              windowRect:
+                serializedVersion: 2
+                x: 412
+                y: 734
+                width: 120
+                height: 100
+              isRelease: 0
+            - isRootNode: 0
+              nodeType: 5
+              childNodeDataList: []
+              action: {fileID: 11400000, guid: fcceea483edfcb2489de308926382e92, type: 2}
+              name: 
+              description: 
+              windowRect:
+                serializedVersion: 2
+                x: 543
+                y: 734
+                width: 120
+                height: 100
+              isRelease: 0
+            action: {fileID: 11400000, guid: fcceea483edfcb2489de308926382e92, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 542
+              y: 594
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: d48ba8c525afc514394fe6648f1c3103, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 674
+              y: 594
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 806
+              y: 595
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: 68699cb0ad4f8444ea155f48f1407d69, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 939
+              y: 595
+              width: 120
+              height: 100
+            isRelease: 0
+          action: {fileID: 0}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 805
+            y: 452
+            width: 120
+            height: 100
+          isRelease: 0
+        action: {fileID: 0}
+        name: Recycle
+        description: 
+        windowRect:
+          serializedVersion: 2
+          x: 806
+          y: 305
+          width: 120
+          height: 100
+        isRelease: 0
+      - isRootNode: 0
+        nodeType: 0
+        childNodeDataList:
+        - isRootNode: 0
+          nodeType: 5
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: 18fcf77b3d74a0240b6f7d6dd8c73fa7, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 936
+            y: 452
+            width: 120
+            height: 100
+          isRelease: 0
+        - isRootNode: 0
+          nodeType: 1
+          childNodeDataList:
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: d8f5e34148b642b4ca8b5d8c76cc8a76, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 1070
+              y: 599
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 1203
+              y: 599
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: f72cdec64009c5d408ea745348e956ee, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 1336
+              y: 598
+              width: 120
+              height: 100
+            isRelease: 0
+          action: {fileID: 0}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 1071
+            y: 454
+            width: 120
+            height: 100
+          isRelease: 0
+        action: {fileID: 0}
+        name: Charging
+        description: 
+        windowRect:
+          serializedVersion: 2
+          x: 936
+          y: 306
+          width: 120
+          height: 100
+        isRelease: 0
+      action: {fileID: 0}
+      name: Recycle&Charging
+      description: 
+      windowRect:
+        serializedVersion: 2
+        x: 939
+        y: 152
         width: 120
         height: 100
       isRelease: 0
@@ -282,8 +334,8 @@ MonoBehaviour:
     description: 
     windowRect:
       serializedVersion: 2
-      x: 570
-      y: 65
+      x: 1074
+      y: 11
       width: 120
       height: 100
     isRelease: 0

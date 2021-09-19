@@ -15,7 +15,7 @@ namespace Models.CharacterModel.Behaviour.MoveModel
 
                 movableCharacter.Move();
 
-                result = movableCharacter.IsReached ? ResultType.Success : ResultType.Running;
+                result = movableCharacter.IsReached ? ResultType.Success : ResultType.Fail;
             }
             return result;
         }

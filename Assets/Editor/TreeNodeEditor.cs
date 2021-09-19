@@ -242,7 +242,7 @@ namespace Assets.Editor
             nodeRoot.ShowName = GUI.Toggle(new Rect(2, 2, 10, 20), nodeRoot.ShowName, "", EditorStyles.miniButton);
             if (nodeRoot.ShowName)
             {
-                nodeRoot.Name = GUILayout.TextField(nodeRoot.Name, 15);
+                nodeRoot.Name = GUILayout.TextField(nodeRoot.Name, 20);
             }
             nodeRoot.NodeType = (NodeType)EditorGUILayout.Popup((int)nodeRoot.NodeType, Enum.GetValues(typeof(NodeType)).Cast<NodeType>().Select(x => x.ToString()).ToArray());
 
