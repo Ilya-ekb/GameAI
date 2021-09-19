@@ -21,7 +21,7 @@ namespace BehaviourTree.Core
         public override ResultType Execute(ICharacter character)
         {
              var result = Action?.Do(character) ?? ResultType.Fail;
-             Debug.Log($"{Action?.Name} for {character.Transform?.name} is {result} [Target: {character.Target?.Transform?.name}]");
+             //Debug.Log($"{Action?.Name} for {character.Transform?.name} is {result} [Target: {character.Target?.Transform?.name}]");
              return result;
         }
     }

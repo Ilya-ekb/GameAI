@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: RecyclingTargetData
   m_EditorClassIdentifier: 
   ViewRadius: 100
-  ViewAngle: 140
+  ViewAngle: 210
   TargetMask:
     serializedVersion: 2
     m_Bits: 64
-  ObstableMask:
+  ObstacleMask:
     serializedVersion: 2
     m_Bits: 0

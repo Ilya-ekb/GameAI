@@ -2,24 +2,33 @@ using Models;
 using Models.CharacterModel;
 using Models.CharacterModel.Behaviour.MoveModel;
 using Models.CharacterModel.Behaviour.VisionModel;
-using Models.CharacterModel.Conditions;
-using Models.CharacterModel.Data;
-using Models.Resources;
 using UnityEngine;
 using UnityEngine.AI;
 
-// ReSharper disable once CheckNamespace
 public class Robot : MovableCharacter
 {
     public float Period;
     private float timer;
     [SerializeField] private Transform head;
+    [SerializeField] private ToolbarItem energyToolbar;
+    private BaseVariableContainer energyContainer;
+    [SerializeField] private BaseVariable energy;
+    [SerializeField] private ToolbarItem garbageToolbar;
+    private BaseVariableContainer garbageContainer;
+    [SerializeField] private BaseVariable garbage;
+    [SerializeField] private ToolbarItem batteryToolbar;
+    private BaseVariableContainer  batteryContainer;
+    [SerializeField] private BaseVariable battery;
 
     protected override void Start()
     {
         base.Start();
         MoveBehaviour = new NavMeshMoveBehaviour(GetComponent<NavMeshAgent>());
         VisionBehaviour = new RayVisionBehaviour(head);
+
+        energyContainer = FindContainer(energy);
+        garbageContainer = FindContainer(garbage);
+        batteryContainer = FindContainer(battery);
     }
 
     protected override void Update()
@@ -27,17 +36,20 @@ public class Robot : MovableCharacter
         base.Update();
 
         OutcomeEnergy();
+        UpdateToolbar();
     }
 
     private void OutcomeEnergy()
     {
         if (timer <= 0)
         {
-            foreach (var condition in Conditions)
+            energyContainer.Value -= .05f;
+            if (energyContainer.Value <= 0.0f)
             {
-                condition.Value -= .05f;
+               DestroyImmediate(GetComponent<NavMeshAgent>());
+               GetComponent<Rigidbody>().isKinematic = false;
+               GetComponent<Rigidbody>().useGravity = true;
             }
-
             timer = Period;
         }
 
@@ -47,11 +59,15 @@ public class Robot : MovableCharacter
     private void OnTriggerEnter(Collider other)
     {
         var variableSubject = other.GetComponent<IVariableSubject>();
-        if (variableSubject is null)
-        {
-            return;
-        }
 
-        variableSubject.Interaction(this);
+        variableSubject?.Interaction(this);
+    }
+
+    private void UpdateToolbar()
+    {
+        energyToolbar?.Repaint(energyContainer.Value);
+        garbageToolbar?.Repaint(garbageContainer.Value);
+        batteryToolbar?.Repaint(batteryContainer.Value);
     }
 }
+

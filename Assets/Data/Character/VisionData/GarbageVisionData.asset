@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GarbageVisionData
   m_EditorClassIdentifier: 
   ViewRadius: 100
-  ViewAngle: 140
+  ViewAngle: 210
   TargetMask:
     serializedVersion: 2
     m_Bits: 2147483647

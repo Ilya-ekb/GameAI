@@ -36,10 +36,9 @@ public class GarbageGenerator : MonoBehaviour
     {
         if (timer <= 0)
         {
-            timer = period;
             foreach (var gar in garbage)
             {
-                if (!gar.activeSelf)
+                if (!gar.activeSelf && timer <= 0)
                 {
                     x = Random.Range(-instanceAreaHalfScale, instanceAreaHalfScale);
                     z = Random.Range(-instanceAreaHalfScale, instanceAreaHalfScale);
@@ -50,8 +49,10 @@ public class GarbageGenerator : MonoBehaviour
                     {
                         container.Value = Random.Range(10, 101);
                     }
+                    timer = period;
 
                     gar.SetActive(true);
+                    break;
                 }
             }
         }

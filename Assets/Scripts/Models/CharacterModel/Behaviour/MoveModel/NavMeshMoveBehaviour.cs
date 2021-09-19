@@ -8,10 +8,10 @@ namespace Models.CharacterModel.Behaviour.MoveModel
 {
     public class NavMeshMoveBehaviour : IMoveBehaviour
     {
-        public Vector3 Velocity => agent.velocity;
-        public Vector3 Destination => agent.destination;
+        public Vector3 Velocity => agent == null ? default : agent.velocity;
+        public Vector3 Destination => agent == null ? default :  agent.destination;
 
-        public Vector3 CurrentPosition => agent.transform.position + Vector3.down * (agent.height / 2);
+        public Vector3 CurrentPosition => agent == null ? default : agent.transform.position + Vector3.down * (agent.height / 2); 
 
         private readonly NavMeshAgent agent;
 

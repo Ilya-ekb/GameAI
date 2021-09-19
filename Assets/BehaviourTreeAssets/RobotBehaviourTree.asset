@@ -1,0 +1,289 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5d98dff8c6b5dd4492837dea704fd7d, type: 3}
+  m_Name: RobotBehaviourTree
+  m_EditorClassIdentifier: 
+  directoryPath: Assets/BehaviourTreeAssets
+  nodeValue:
+    isRootNode: 1
+    nodeType: 0
+    childNodeDataList:
+    - isRootNode: 0
+      nodeType: 1
+      childNodeDataList:
+      - isRootNode: 0
+        nodeType: 5
+        childNodeDataList: []
+        action: {fileID: 11400000, guid: 0474c171a36662e4e8c4464471ea524a, type: 2}
+        name: 
+        description: 
+        windowRect:
+          serializedVersion: 2
+          x: 354
+          y: 413
+          width: 120
+          height: 100
+        isRelease: 0
+      - isRootNode: 0
+        nodeType: 0
+        childNodeDataList:
+        - isRootNode: 0
+          nodeType: 5
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: e8423be422ed84147bbbdf6ef0af60bb, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 344
+            y: 557
+            width: 120
+            height: 100
+          isRelease: 0
+        - isRootNode: 0
+          nodeType: 1
+          childNodeDataList:
+          - isRootNode: 0
+            nodeType: 5
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: fcceea483edfcb2489de308926382e92, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 198
+              y: 735
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: d48ba8c525afc514394fe6648f1c3103, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 345
+              y: 737
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 493
+              y: 734
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: 68699cb0ad4f8444ea155f48f1407d69, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 635
+              y: 734
+              width: 120
+              height: 100
+            isRelease: 0
+          action: {fileID: 0}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 495
+            y: 557
+            width: 120
+            height: 100
+          isRelease: 0
+        action: {fileID: 0}
+        name: 
+        description: 
+        windowRect:
+          serializedVersion: 2
+          x: 497
+          y: 417
+          width: 120
+          height: 100
+        isRelease: 0
+      - isRootNode: 0
+        nodeType: 0
+        childNodeDataList:
+        - isRootNode: 0
+          nodeType: 5
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: b001b6bbdc8478c4d8a4c02d6aeb9822, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 652
+            y: 560
+            width: 120
+            height: 100
+          isRelease: 0
+        - isRootNode: 0
+          nodeType: 1
+          childNodeDataList:
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: d8f5e34148b642b4ca8b5d8c76cc8a76, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 773
+              y: 725
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 906
+              y: 725
+              width: 120
+              height: 100
+            isRelease: 0
+          - isRootNode: 0
+            nodeType: 6
+            childNodeDataList: []
+            action: {fileID: 11400000, guid: f72cdec64009c5d408ea745348e956ee, type: 2}
+            name: 
+            description: 
+            windowRect:
+              serializedVersion: 2
+              x: 1042
+              y: 728
+              width: 120
+              height: 100
+            isRelease: 0
+          action: {fileID: 0}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 803
+            y: 563
+            width: 120
+            height: 100
+          isRelease: 0
+        action: {fileID: 0}
+        name: 
+        description: 
+        windowRect:
+          serializedVersion: 2
+          x: 654
+          y: 414
+          width: 120
+          height: 100
+        isRelease: 0
+      action: {fileID: 0}
+      name: 
+      description: 
+      windowRect:
+        serializedVersion: 2
+        x: 653
+        y: 236
+        width: 120
+        height: 100
+      isRelease: 0
+    - isRootNode: 0
+      nodeType: 4
+      childNodeDataList:
+      - isRootNode: 0
+        nodeType: 6
+        childNodeDataList: []
+        action: {fileID: 11400000, guid: f2f651c4ac7ca2d4d852647bd49ea413, type: 2}
+        name: 
+        description: 
+        windowRect:
+          serializedVersion: 2
+          x: 848
+          y: 408
+          width: 120
+          height: 100
+        isRelease: 0
+      - isRootNode: 0
+        nodeType: 1
+        childNodeDataList:
+        - isRootNode: 0
+          nodeType: 6
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: 30cfb9361a33b124097f89c6ffda5594, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 1000
+            y: 562
+            width: 120
+            height: 100
+          isRelease: 0
+        - isRootNode: 0
+          nodeType: 6
+          childNodeDataList: []
+          action: {fileID: 11400000, guid: b99b6270db2ec064d834aac5acf1586e, type: 2}
+          name: 
+          description: 
+          windowRect:
+            serializedVersion: 2
+            x: 1139
+            y: 562
+            width: 120
+            height: 100
+          isRelease: 0
+        action: {fileID: 0}
+        name: 
+        description: 
+        windowRect:
+          serializedVersion: 2
+          x: 1000
+          y: 411
+          width: 120
+          height: 100
+        isRelease: 0
+      action: {fileID: 0}
+      name: 
+      description: 
+      windowRect:
+        serializedVersion: 2
+        x: 842
+        y: 237
+        width: 120
+        height: 100
+      isRelease: 0
+    action: {fileID: 0}
+    name: Root node
+    description: 
+    windowRect:
+      serializedVersion: 2
+      x: 753
+      y: 80
+      width: 120
+      height: 100
+    isRelease: 0
