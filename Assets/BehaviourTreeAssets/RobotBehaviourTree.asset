@@ -28,8 +28,8 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 354
-          y: 413
+          x: 245
+          y: 363
           width: 120
           height: 100
         isRelease: 0
@@ -44,8 +44,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 344
-            y: 557
+            x: 244
+            y: 507
             width: 120
             height: 100
           isRelease: 0
@@ -60,8 +60,8 @@ MonoBehaviour:
             description: 
             windowRect:
               serializedVersion: 2
-              x: 198
-              y: 735
+              x: 113
+              y: 651
               width: 120
               height: 100
             isRelease: 0
@@ -73,8 +73,8 @@ MonoBehaviour:
             description: 
             windowRect:
               serializedVersion: 2
-              x: 345
-              y: 737
+              x: 245
+              y: 652
               width: 120
               height: 100
             isRelease: 0
@@ -86,8 +86,8 @@ MonoBehaviour:
             description: 
             windowRect:
               serializedVersion: 2
-              x: 493
-              y: 734
+              x: 377
+              y: 653
               width: 120
               height: 100
             isRelease: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
             description: 
             windowRect:
               serializedVersion: 2
-              x: 635
-              y: 734
+              x: 510
+              y: 653
               width: 120
               height: 100
             isRelease: 0
@@ -109,8 +109,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 495
-            y: 557
+            x: 376
+            y: 510
             width: 120
             height: 100
           isRelease: 0
@@ -119,8 +119,8 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 497
-          y: 417
+          x: 377
+          y: 363
           width: 120
           height: 100
         isRelease: 0
@@ -135,8 +135,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 652
-            y: 560
+            x: 508
+            y: 510
             width: 120
             height: 100
           isRelease: 0
@@ -151,8 +151,8 @@ MonoBehaviour:
             description: 
             windowRect:
               serializedVersion: 2
-              x: 773
-              y: 725
+              x: 641
+              y: 654
               width: 120
               height: 100
             isRelease: 0
@@ -164,8 +164,8 @@ MonoBehaviour:
             description: 
             windowRect:
               serializedVersion: 2
-              x: 906
-              y: 725
+              x: 773
+              y: 655
               width: 120
               height: 100
             isRelease: 0
@@ -177,8 +177,8 @@ MonoBehaviour:
             description: 
             windowRect:
               serializedVersion: 2
-              x: 1042
-              y: 728
+              x: 908
+              y: 657
               width: 120
               height: 100
             isRelease: 0
@@ -187,8 +187,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 803
-            y: 563
+            x: 641
+            y: 510
             width: 120
             height: 100
           isRelease: 0
@@ -197,8 +197,8 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 654
-          y: 414
+          x: 508
+          y: 364
           width: 120
           height: 100
         isRelease: 0
@@ -207,8 +207,8 @@ MonoBehaviour:
       description: 
       windowRect:
         serializedVersion: 2
-        x: 653
-        y: 236
+        x: 510
+        y: 210
         width: 120
         height: 100
       isRelease: 0
@@ -223,8 +223,8 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 848
-          y: 408
+          x: 643
+          y: 364
           width: 120
           height: 100
         isRelease: 0
@@ -239,8 +239,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 1000
-            y: 562
+            x: 775
+            y: 511
             width: 120
             height: 100
           isRelease: 0
@@ -252,8 +252,8 @@ MonoBehaviour:
           description: 
           windowRect:
             serializedVersion: 2
-            x: 1139
-            y: 562
+            x: 907
+            y: 511
             width: 120
             height: 100
           isRelease: 0
@@ -262,8 +262,8 @@ MonoBehaviour:
         description: 
         windowRect:
           serializedVersion: 2
-          x: 1000
-          y: 411
+          x: 775
+          y: 364
           width: 120
           height: 100
         isRelease: 0
@@ -272,8 +272,8 @@ MonoBehaviour:
       description: 
       windowRect:
         serializedVersion: 2
-        x: 842
-        y: 237
+        x: 643
+        y: 210
         width: 120
         height: 100
       isRelease: 0
@@ -282,8 +282,8 @@ MonoBehaviour:
     description: 
     windowRect:
       serializedVersion: 2
-      x: 753
-      y: 80
+      x: 570
+      y: 65
       width: 120
       height: 100
     isRelease: 0

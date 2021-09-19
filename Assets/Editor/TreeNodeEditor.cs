@@ -15,8 +15,12 @@ namespace Assets.Editor
     {
         // Save all nodes in the window
         private List<NodeData> nodeRootList = new List<NodeData>();
+        
         // currently selected node
         private NodeData selectNode = null;
+        private List<OffsetData> selectNodeChildsOffsets = new List<OffsetData>();
+        private List<NodeData> selectNodeChild= new List<NodeData>();
+
         private NodeAsset asset;
         private string assetName = string.Empty;
 
@@ -31,12 +35,13 @@ namespace Assets.Editor
 
         // Add connection
         private bool makeTransitionMode;
+
         private void OnGUI()
         {
             Event _event = Event.current;
             mousePosition = _event.mousePosition;
 
-            if(nodeRootList != null)
+            if (nodeRootList != null)
             {
                 //Traverse all nodes and remove invalid nodes
                 for (var i = nodeRootList.Count - 1; i >= 0; --i)
@@ -63,6 +68,36 @@ namespace Assets.Editor
                 }
             }
 
+            if (_event.button == 0) // left click
+            {
+                switch (_event.type)
+                {
+                    case EventType.MouseDown:
+                        if (!makeTransitionMode)
+                        {
+                            var clickedOnNode = false;
+                            selectNode = GetMouseInNode(out var selectIndex);
+                            clickedOnNode = (selectNode != null);
+                            if (clickedOnNode)
+                            {
+                                ClearSelectChilds();
+                                GetOffsets(selectNode);
+                            }
+                        }
+
+                        break;
+                    case EventType.MouseUp:
+                        ClearSelectChilds();
+                        selectNode = null;
+                        break;
+                }
+            }
+
+
+            if (selectNode != null)
+            {
+                SetOffsets();
+            }
 
             DrawMainMenu();
 
@@ -83,7 +118,7 @@ namespace Assets.Editor
             // In the connection state, press the mouse
             if (makeTransitionMode && _event.type == EventType.MouseDown)
             {
-                NodeData newSelectNode = GetMouseInNode(out int selectIndex);
+                var newSelectNode = GetMouseInNode(out var selectIndex);
                 // If a node is selected when the mouse is pressed, the newly selected root node is added as a child node of selectNode
                 if (selectNode != newSelectNode)
                 {
@@ -100,7 +135,7 @@ namespace Assets.Editor
             if (makeTransitionMode && selectNode != null)
             {
                 // Get the mouse position
-                Rect mouseRect = new Rect(mousePosition.x, mousePosition.y, 10, 10);
+                var mouseRect = new Rect(mousePosition.x, mousePosition.y, 10, 10);
                 // Show the line from the selected node to the mouse position
                 DrawNodeCurve(selectNode.WindowRect, mouseRect);
             }
@@ -111,18 +146,57 @@ namespace Assets.Editor
             for (int i = 0; i < nodeRootList?.Count; i++)
             {
                 NodeData nodeRoot = nodeRootList[i];
-                var showName = string.IsNullOrEmpty(nodeRoot.Name) ? nodeRoot.NodeType.ToString() + " node " : nodeRoot.Name;
+                var showName = string.IsNullOrEmpty(nodeRoot.Name)
+                    ? nodeRoot.NodeType.ToString() + " node "
+                    : nodeRoot.Name;
                 nodeRoot.WindowRect = GUI.Window(i, nodeRoot.WindowRect, DrawNodeWindow, showName);
 
                 DrawToChildCurve(nodeRoot);
             }
+
             EndWindows();
 
             // repaint
             Repaint();
         }
 
-        void DrawMainMenu()
+        private void ClearSelectChilds()
+        {
+            selectNodeChild.Clear();
+            selectNodeChildsOffsets.Clear();
+        }
+
+        private void SetOffsets()
+        {
+            for (var i = 0; i < selectNodeChild.Count; i++)
+            {
+                selectNodeChild[i].WindowRect = new Rect(selectNode.WindowRect.position + GetOffset(i),
+                    selectNodeChild[i].WindowRect.size);
+            }
+        }
+
+        private Vector2 GetOffset(int index)
+        {
+            return selectNodeChildsOffsets.Count > index ? selectNodeChildsOffsets[index].Offset : default;
+        }
+
+        private void GetOffsets(NodeData selectNode)
+        {
+            if (selectNode?.ChildNodeDataList == null)
+            {
+                return;
+            }
+
+            foreach (var childNodeData in selectNode.ChildNodeDataList)
+            {
+                selectNodeChild.Add(childNodeData);
+                selectNodeChildsOffsets.Add(new OffsetData(selectNodeChildsOffsets.Count,
+                    childNodeData.WindowRect.position - this.selectNode.WindowRect.position));
+                GetOffsets(childNodeData);
+            }
+        }
+
+        private void DrawMainMenu()
         {
             if (nodeRootList.Count > 0)
             {
@@ -146,21 +220,25 @@ namespace Assets.Editor
             {
                 assetName = string.Empty;
                 asset = (NodeAsset)EditorGUI.ObjectField(new Rect(10, 10, 200, 20), asset, typeof(NodeAsset));
-                if (asset)
+                if (!asset)
                 {
-                    if(GUI.Button(new Rect(220, 10, 100, 20), "Load"))
-                    {
-                        assetName = asset.name;
-                        nodeRootList = asset.ReturnNodeList(asset.NodeData);
-                    }
+                    return;
                 }
+
+                if (!GUI.Button(new Rect(220, 10, 100, 20), "Load"))
+                {
+                    return;
+                }
+                assetName = asset.name;
+                nodeRootList = asset.ReturnNodeList(asset.NodeData);
             }
         }
 
         private bool selectedRoot;
-        void DrawNodeWindow(int id)
+
+        private void DrawNodeWindow(int id)
         {
-            NodeData nodeRoot = nodeRootList[id];
+            var nodeRoot = nodeRootList[id];
             nodeRoot.ShowName = GUI.Toggle(new Rect(2, 2, 10, 20), nodeRoot.ShowName, "", EditorStyles.miniButton);
             if (nodeRoot.ShowName)
             {
@@ -236,8 +314,10 @@ namespace Assets.Editor
         // add node
         private void AddNode()
         {
-            NodeData nodeSelect = new NodeData();
-            nodeSelect.WindowRect = new Rect(mousePosition.x, mousePosition.y, 120, 100);
+            var nodeSelect = new NodeData
+            {
+                WindowRect = new Rect(mousePosition.x, mousePosition.y, 120, 100)
+            };
             nodeRootList.Add(nodeSelect);
         }
 
@@ -262,11 +342,11 @@ namespace Assets.Editor
         ///  Draw lines from the node to all child nodes every frame
         /// </summary>
         /// <param name="nodeRoot"></param>
-        private void DrawToChildCurve(NodeData nodeRoot)
+        private static void DrawToChildCurve(NodeData nodeRoot)
         {
-            for (int i = nodeRoot.ChildNodeDataList.Count - 1; i >= 0; --i)
+            for (var i = nodeRoot.ChildNodeDataList.Count - 1; i >= 0; --i)
             {
-                NodeData childNode = nodeRoot.ChildNodeDataList[i];
+                var childNode = nodeRoot.ChildNodeDataList[i];
                 // delete invalid nodes
                 if (childNode == null || childNode.IsRelease)
                 {
@@ -280,17 +360,35 @@ namespace Assets.Editor
         // draw line
         public static void DrawNodeCurve(Rect start, Rect end, int index = -1)
         {
-            Vector3 startPos = new Vector3(start.x + start.width / 2, start.y + start.height, 0);
-            Vector3 endPos = new Vector3(end.x + end.width / 2, end.y, 0);
+            var startPos = new Vector3(start.x + start.width / 2, start.y + start.height, 0);
+            var endPos = new Vector3(end.x + end.width / 2, end.y, 0);
             if(index != -1)
             {
-                GUIStyle style = new GUIStyle();
-                style.normal.textColor = Color.red;
-                style.fontSize = 8;
-                style.fontStyle = FontStyle.Bold;
+                var style = new GUIStyle
+                {
+                    normal =
+                    {
+                        textColor = Color.red
+                    },
+                    fontSize = 8,
+                    fontStyle = FontStyle.Bold
+                };
                 Handles.Label(endPos + Vector3.down + Vector3.left * end.width/1.8f, index.ToString(), style);
             }
             Handles.DrawLine(startPos, endPos);
+        }
+
+        private struct OffsetData
+        {
+            public Vector2 Offset => offset;
+            public OffsetData(int index, Vector2 offset)
+            {
+                this.index = index;
+                this.offset = offset;
+            }
+
+            private int index;
+            private Vector2 offset;
         }
     }
 }
