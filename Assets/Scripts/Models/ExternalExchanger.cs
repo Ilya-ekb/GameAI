@@ -16,8 +16,7 @@ namespace Models
         public override void Exchange(IVariableSubject variableSubject)
         {
             var sourceInteractableSubject = variableSubject.CurrentInteractable;
-            var sourceInteractableContainer = sourceInteractableSubject?.BaseVariableContainer.FirstOrDefault(e =>
-                e.Variable == this.sourceContainer.Variable);
+            var sourceInteractableContainer = sourceInteractableSubject?.BaseVariableContainer[sourceContainer.Variable];
 
             if (!(variableSubject is ICharacter character) || sourceInteractableContainer == null)
             {
@@ -28,7 +27,7 @@ namespace Models
 
             foreach (var recipientContainer in recipientContainers)
             {
-                var characterRecipientContainer = character.FindContainer(recipientContainer.Variable);
+                var characterRecipientContainer = character.GetContainerWith(recipientContainer.Variable);
 
                 var recValue = recipientContainer.GetValue(sourceValue);
                 

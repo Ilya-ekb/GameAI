@@ -42,7 +42,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
             obstacleMask = visionData.ObstacleMask;
         }
 
-        public override Target[] FindVisibleTargets()
+        public override void FindVisibleTargets()
         {
             var headPosition = lookingTransform.position;
 
@@ -83,8 +83,6 @@ namespace Models.CharacterModel.Behaviour.VisionModel
                     validVisibleTarget[visibleTarget.Key] = distanceToTarget;
                 }
             }
-
-            return validVisibleTarget.Keys.ToArray();
         }
 
         private void UpdateDistance()

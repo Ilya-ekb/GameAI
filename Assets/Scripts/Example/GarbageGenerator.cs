@@ -25,7 +25,7 @@ public class GarbageGenerator : MonoBehaviour
             var containers = garbage[i].GetComponent<SimpleVariableSubject>().BaseVariableContainer;
             foreach (var container in containers)
             {
-                container.Value = Random.Range(10, 101);
+                container.Value.Value = Random.Range(10, 101);
             }
 
             garbage[i].SetActive(false);
@@ -47,7 +47,7 @@ public class GarbageGenerator : MonoBehaviour
                     var containers = gar.GetComponent<SimpleVariableSubject>().BaseVariableContainer;
                     foreach (var container in containers)
                     {
-                        container.Value = Random.Range(10, 101);
+                        container.Value.Value = Random.Range(10, 101);
                     }
                     timer = period;
 

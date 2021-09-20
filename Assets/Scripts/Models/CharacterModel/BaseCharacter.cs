@@ -18,7 +18,7 @@ namespace Models.CharacterModel
     public abstract class BaseCharacter : MonoBehaviour, ICharacter, IVariableSubject
     {
         public BaseVisionBehaviour VisionBehaviour { get; set; }
-        public  IEnumerable<BaseVariableContainer> BaseVariableContainer { get; set; }
+        public  Dictionary<BaseVariable,BaseVariableContainer> BaseVariableContainer { get; set; }
         public IVariableSubject CurrentInteractable { get; set; }
         public List<VariableContainer<GameResource>> Resources => resources;
         public List<VariableContainer<Knowledge>> Knowledge => knowledge;
@@ -67,8 +67,8 @@ namespace Models.CharacterModel
             }
 
             var exchangers =
-                externalExchangers.FindAll(
-                    e => BaseVariableContainer.Any(f => f.Variable == e.SourceContainer.Variable));
+                externalExchangers.FindAll(e => BaseVariableContainer.ContainsKey(e.SourceContainer.Variable));
+
             if (exchangers.Count == 0)
             {
                 return ResultType.Fail;
@@ -80,7 +80,7 @@ namespace Models.CharacterModel
                 result = ResultType.Running;
             }
 
-            if (!CurrentInteractable.BaseVariableContainer.All(e => e.Value <= 0))
+            if (!CurrentInteractable.BaseVariableContainer.All(e => e.Value.Value <= 0))
             {
                 return result;
             }
@@ -93,18 +93,18 @@ namespace Models.CharacterModel
 
         public Action EmptiedAction { get; set; }
 
-        public BaseVariableContainer FindContainer<T>(T variable) where T : BaseVariable
+        public BaseVariableContainer GetContainerWith<T>(T variable) where T : BaseVariable
         {
-            return BaseVariableContainer.FirstOrDefault(e=>e.Variable == variable);
+            return BaseVariableContainer[variable];
         }
 
-        private IEnumerable<BaseVariableContainer> AllVariableContainers()
+        private Dictionary<BaseVariable, BaseVariableContainer> AllVariableContainers()
         {
-            var result = resources.Concat(conditions.Cast<BaseVariableContainer>());
-            
-            result = result.Concat(knowledge);
+            var allContainers= resources.Concat(conditions.Cast<BaseVariableContainer>());
 
-            return result;
+            allContainers = allContainers.Concat(knowledge);
+
+            return allContainers.ToDictionary(baseVariableContainer => baseVariableContainer.Variable);
         }
     }
 }

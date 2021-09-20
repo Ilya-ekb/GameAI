@@ -21,6 +21,6 @@ namespace Models.CharacterModel
 
         Target Target { get; set; }
 
-        BaseVariableContainer FindContainer<T>(T container) where T: BaseVariable;
+        BaseVariableContainer GetContainerWith<T>(T container) where T: BaseVariable;
     }
 }

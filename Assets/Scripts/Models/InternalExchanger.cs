@@ -10,12 +10,12 @@ namespace Models
     {
         public override void Exchange(ICharacter character)
         {
-            var source = character.FindContainer(sourceContainer.Variable);
+            var source = character.GetContainerWith(sourceContainer.Variable);
             var sourceValue = Mathf.Min(source.Value, sourceContainer.Value);
 
             foreach (var recipientContainer in recipientContainers)
             {
-                var recCharCont = character.FindContainer(recipientContainer.Variable);
+                var recCharCont = character.GetContainerWith(recipientContainer.Variable);
 
                 var recValue = recipientContainer.GetValue(sourceValue);
                 

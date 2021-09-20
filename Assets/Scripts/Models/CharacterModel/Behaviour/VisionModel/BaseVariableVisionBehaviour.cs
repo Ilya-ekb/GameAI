@@ -40,7 +40,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
             }
 
             foreach (var item in temp.Where(item =>
-                !baseVariables.All(variable => item.Key.BaseVariableContainer.Any(e => e.Variable == variable))))
+                !baseVariables.All(variable => item.Key.BaseVariableContainer.ContainsKey(variable))))
             {
                 temp.Remove(item.Key);
             }

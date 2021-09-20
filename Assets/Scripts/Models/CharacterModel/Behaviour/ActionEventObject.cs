@@ -10,7 +10,7 @@ namespace Models.CharacterModel.Behaviour
     {
         protected float ComputeChangeValue(ICharacter character, Knowledge[] knowledgeArray)
         {
-            var result = knowledgeArray.Select(character.FindContainer).Select(knowledgeContainer => knowledgeContainer.Value).Sum();
+            var result = knowledgeArray.Select(character.GetContainerWith).Select(knowledgeContainer => knowledgeContainer.Value).Sum();
 
             Debug.Log($"Action {name} result {result}");
             return result;
