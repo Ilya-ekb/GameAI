@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Codice.CM.Client.Differences;
 using UnityEngine;
 
 namespace Models.CharacterModel.Behaviour.VisionModel
