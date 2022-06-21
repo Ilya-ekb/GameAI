@@ -26,9 +26,9 @@ public class Robot : MovableCharacter
         MoveBehaviour = new NavMeshMoveBehaviour(GetComponent<NavMeshAgent>());
         VisionBehaviour = new RayVisionBehaviour(head);
 
-        energyContainer = FindContainer(energy);
-        garbageContainer = FindContainer(garbage);
-        batteryContainer = FindContainer(battery);
+        energyContainer = GetContainerWith(energy);
+        garbageContainer = GetContainerWith(garbage);
+        batteryContainer = GetContainerWith(battery);
     }
 
     protected override void Update()

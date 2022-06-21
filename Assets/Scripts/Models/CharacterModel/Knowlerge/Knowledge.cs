@@ -49,7 +49,7 @@ namespace Models.CharacterModel.KnowledgeModel
 
         private static bool Enough<T>(ICharacter character, IEnumerable<CompareContainer<T>> compareContainer)  where T : BaseVariable
         {
-            return !(from comparable in compareContainer let characterCondition = character.FindContainer(comparable.Variable) where characterCondition != null where !CompareAction<T>.Compares[comparable.CompareMode].Invoke(characterCondition, comparable) select comparable).Any();
+            return !(from comparable in compareContainer let characterCondition = character.GetContainerWith(comparable.Variable) where characterCondition != null where !CompareAction<T>.Compares[comparable.CompareMode].Invoke(characterCondition, comparable) select comparable).Any();
         }
 
         private void OnValidate()

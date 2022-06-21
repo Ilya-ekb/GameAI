@@ -14,7 +14,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
 
         public Quaternion Rotation { get; private set; }
 
-        public IEnumerable<BaseVariableContainer> BaseVariableContainer { get; }
+        public Dictionary<BaseVariable, BaseVariableContainer> BaseVariableContainer { get; }
 
         public Target(Transform transform)
         {

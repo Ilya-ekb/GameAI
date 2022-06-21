@@ -5,10 +5,10 @@ using UnityEngine;
 
 namespace Models
 {
-    public interface IVariableSubject 
+    public interface IVariableSubject
     {
         Transform Transform { get; }
-        IEnumerable<BaseVariableContainer> BaseVariableContainer { get; }
+        Dictionary<BaseVariable, BaseVariableContainer> BaseVariableContainer { get; }
         IVariableSubject CurrentInteractable { get; set; }
         ResultType Interaction(IVariableSubject character = null);
         public Action EmptiedAction { get; set; }

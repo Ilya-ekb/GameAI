@@ -41,7 +41,7 @@ namespace Models.CharacterModel.Behaviour.VisionModel
             GetValidTargets();
         }
 
-        public abstract Target[] FindVisibleTargets();
+        public abstract void FindVisibleTargets();
 
         public abstract Target NearestTarget(ref ResultType resultType);
 
@@ -50,7 +50,8 @@ namespace Models.CharacterModel.Behaviour.VisionModel
         protected virtual void GetValidTargets()
         {
             validVisibleTarget =
-                     validVisibleTarget.Where(e => e.Key.Transform.gameObject.activeSelf).ToDictionary(e=>e.Key, e=>e.Value);
+                validVisibleTarget.Where(e => e.Key.Transform.gameObject.activeSelf)
+                    .ToDictionary(e => e.Key, e => e.Value);
         }
     }
 }

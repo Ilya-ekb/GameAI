@@ -20,7 +20,7 @@ namespace Models
             var resultType = ResultType.Success;
             foreach (var checkingCondition in checkingConditions)
             {
-                var characterCondition = character.FindContainer(checkingCondition.Variable);
+                var characterCondition = character.GetContainerWith(checkingCondition.Variable);
                 if (characterCondition == null)
                 {
                     resultType = ResultType.Fail;

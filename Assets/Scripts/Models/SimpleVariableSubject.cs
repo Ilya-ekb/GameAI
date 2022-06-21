@@ -9,14 +9,20 @@ namespace Models
     public class SimpleVariableSubject : MonoBehaviour, IVariableSubject
     {
         public Transform Transform => transform;
-        public IEnumerable<BaseVariableContainer> BaseVariableContainer => baseVariableContainers;
+        public Dictionary<BaseVariable, BaseVariableContainer> BaseVariableContainer => baseVariableContainersDictionary;
         public IVariableSubject CurrentInteractable { get; set; }
         public Action EmptiedAction { get; set; }
+        private readonly Dictionary<BaseVariable, BaseVariableContainer> baseVariableContainersDictionary = new Dictionary<BaseVariable, BaseVariableContainer>();
 
         [SerializeField] private VariableContainer<BaseVariable>[] baseVariableContainers;
 
         private void Start()
         {
+            foreach (var baseVariableContainer in baseVariableContainers)
+            {
+               baseVariableContainersDictionary.Add(baseVariableContainer.Variable, baseVariableContainer); 
+            }
+
             EmptiedAction += () => { gameObject.SetActive(false); };
         }
 
