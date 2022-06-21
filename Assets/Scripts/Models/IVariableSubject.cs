@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using BehaviourTree.Core;
+using Models.CharacterModel;
 using UnityEngine;
 
 namespace Models
